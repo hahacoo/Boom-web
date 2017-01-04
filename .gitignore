@@ -1,0 +1,7 @@
+*.o
+node_modules
+npm-debug.log
+
+static/css/commons/css
+static/js/dev
+static/js/pro

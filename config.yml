@@ -1,0 +1,89 @@
+##########################
+# express服务器配置文件 v1.0
+##########################
+
+# 应用信息
+name: boom_app
+
+# 模板引擎
+#views: views/ejs
+#engine: ejs
+
+# 本地服务端口port，默认3000端口
+port: 3000
+
+# 以下请求将会被转发到代理服务器
+#proxy:
+ # 开启代理
+ #enable: false
+ # baseURL
+ #baseUrl: /app
+ # 目标服务器
+ #target: localhost:4000
+ # 匹配规则
+ # rules:
+ #  支持对象
+ #  - 
+ #    url: /test1
+ #    enable: false
+ #  支持字符串
+ #  - /test2
+
+##########################
+# end express
+##########################
+
+##########################
+# gulp构建配置文件 v1.0
+##########################
+
+# 模板地址
+#template: ./static/js/src/layout.ejs
+# html文件输出 相对webpack编译后的地址
+#outputPath: ../../../views/ejs/index.ejs
+
+# 基础样式文件，不需要webpack处理
+base:
+ less: ./static/css/commons/less/boom.less
+ lessPath: ./static/css/commons/less/**/*.less
+ lessRoot: ./static/css/commons/less
+ cssDest: ./static/css/commons/css
+ css: ./static/css/commons/css/boom.css
+
+# 源文件
+src:
+ # 根路径
+ root: ./static/js/js/src
+ # 入口文件
+ index: ./static/js/src/apps/index.es6
+ # webpack loader路径
+ #loaderMoules: node_modules
+ # alias变量
+ bases:  ./static/js/src/bases
+ # 第三方库，单独打包
+ vendor:
+  - react
+  - react-dom
+  - react-router
+
+# 开发模式下发布路径
+dev:
+ root: ./static/js/dev
+ publicPath: /static/js/dev/
+
+# 发布模式下发布路径
+pro:
+ root: ./static/js/pro
+ publicPath: /static/js/pro/
+
+# sftp信息
+sftp:
+ host:
+ port:
+ user:
+ pass:
+ remotePath: 
+
+##########################
+# end gulp
+##########################
