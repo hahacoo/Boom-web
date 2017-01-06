@@ -15,14 +15,17 @@
 
 //node模块
 var gulp = require('gulp'),
+	os = require('os'),
 	fs = require('fs'),
 	path = require('path'),
 	del = require('del'), //文件删除,只删除当前工作目录的文件
 	minimist = require('minimist'), //参数处理
 	webpack = require('webpack'),
+	WebpackMd5Hash = require('webpack-md5-hash'),
 	ExtractTextPlugin = require('extract-text-webpack-plugin'),
 	HtmlWebpackPlugin = require('html-webpack-plugin'),
 	DirectoryNameAsMain = require('webpack-directory-name-as-main'),
+	UglifyJsParallelPlugin = require('webpack-uglify-parallel'),
 	yaml = require('js-yaml')
 
 //gulp插件
@@ -170,86 +173,103 @@ function webpackBundle(done) {
 			output: {
 				path: _config.pro.root, //输出路径
 				publicPath: _config.pro.publicPath, //webpack加载资源路径前缀
-				filename: '[name].[hash].js', //bundle文件名
-				chunkFilename: '[id].[chunkhash].js' //chunk文件名
+				//bundle文件名, hash是compilation对象计算所得，而不是具体文件计算所得。只要任何文件发生变化，compilation就会重新计算，结果就是所有的hash是一样的
+				filename: '[name].[chunkhash:8].js', 
+				chunkFilename: '[id].[chunkhash:8].js' //chunk文件名
 			},
 
 			watch: false,
 
 			devtool: '#source-map', //sourcemap生成方式
 
-			preLoaders: [
-	        	{
-					test: /\.es6$/,
-					exclude: /(node_modules|libs)/,
-					loader: "eslint-loader",
-				},
-	        ],
+	        module: {
 
-			loaders: [{
-					test: /\.css$/,
-					loader: ExtractTextPlugin.extract("style-loader", "css-loader!postcss-loader")
-				}, {
-					test: /\.less$/,
-					loader: ExtractTextPlugin.extract("style-loader", "css-loader!postcss-loader!less-loader") //可以指定多个extract
-				}, {
-					test: /\.es6$/,
-					exclude: /(node_modules|libs)/,
-					loader: "babel-loader",
-					query: {
-						presets: ['es2015', 'react'],
-						plugins: [
-							'add-module-exports',
-							['transform-runtime', {
-
-								"helpers": true, // defaults to true
-							    "polyfill": true, // defaults to true
-							    "regenerator": true, // defaults to true
-							    "moduleName": "babel-runtime" // defaults to "babel-runtime"
-							}]
-						]
+	        	preLoaders: [
+		        	{
+						test: /\.es6$/,
+						exclude: /(node_modules|libs)/,
+						loader: "eslint-loader",
 					}
-				}, {
-					//文件加载器，处理文件静态资源
-					//name: 打包后文件名称
-					//publicPath: 打包后文件绝对路径
-					//文件输出地址按name属性来决定
-					test: /\.(woff|woff2|ttf|eot|svg)(\?v=[0-9]\.[0-9]\.[0-9])?$/,
-					loader: 'file-loader?name=/static/fonts/[name].[ext]'
-				}, {
-					//图片加载器，更适合图片，
-					//特点：可以将较小的图片转成base64（data-src），减少http请求
-					//如下配置，将小于8192byte的图片转成base64码
-					test: /\.(png|jpg|gif)$/,
-					loader: 'url-loader?limit=8192&name=../../img/[hash].[ext]'
-				}, {
-					test: /\.(html|tpl)$/,
-					loader: "html?attrs=img:src img:data-src" //处理html中img的资源加载
-				}
+		        ],
 
-			],
+	        	loaders: [
+	        		{
+						test: /\.css$/,
+						loader: ExtractTextPlugin.extract("style-loader", "css-loader!postcss-loader")
+					},
+	        		{
+						test: /\.less$/,
+						loader: ExtractTextPlugin.extract("style-loader", "css-loader!postcss-loader!less-loader") //可以指定多个extract
+					}, 
+					{
+						test: /\.es6$/,
+						exclude: /(node_modules|libs)/,
+						loader: "babel-loader",
+						query: {
+							presets: ['es2015', 'react'],
+							plugins: [
+								'add-module-exports',
+								['transform-runtime', {
+
+									"helpers": true, // defaults to true
+								    "polyfill": true, // defaults to true
+								    "regenerator": true, // defaults to true
+								    "moduleName": "babel-runtime" // defaults to "babel-runtime"
+								}]
+							]
+						}
+					}, 
+					{
+						//文件加载器，处理文件静态资源
+						//name: 打包后文件名称
+						//publicPath: 打包后文件绝对路径
+						//文件输出地址按name属性来决定
+						test: /\.(woff|woff2|ttf|eot|svg)(\?v=[0-9]\.[0-9]\.[0-9])?$/,
+						loader: 'file-loader?name=/static/fonts/[name].[ext]'
+					}, 
+					{
+						//图片加载器，更适合图片，
+						//特点：可以将较小的图片转成base64（data-src），减少http请求
+						//如下配置，将小于8192byte的图片转成base64码
+						test: /\.(png|jpg|gif)$/,
+						loader: 'url-loader?limit=8192&name=../../img/[hash].[ext]'
+					}, 
+					{
+						test: /\.(html|tpl)$/,
+						loader: "html?attrs=img:src img:data-src" //处理html中img的资源加载
+					}
+
+				]
+	        },
 
 			plugins: [
+				new WebpackMd5Hash(),
 				new webpack.DefinePlugin({
 					'process.env': {
 						NODE_ENV: JSON.stringify('production')
 					}
 				}),
+				new webpack.ProvidePlugin({
+					$: "jquery",
+					jQuery: "jquery",
+					"window.jQuery": "jquery"
+				}),
 				new webpack.ResolverPlugin([
 		    		new DirectoryNameAsMain()
 		    	]),
+		    	//抽取css文件
+	            new ExtractTextPlugin("[name].[contenthash:8].css"),
 				//提取公用组件
 		        new webpack.optimize.CommonsChunkPlugin({
 		            names: ['commons', 'vendor']
 		        }),
 		        //文件压缩
-	            new webpack.optimize.UglifyJsPlugin({
+	            new UglifyJsParallelPlugin({
+	            	workers: os.cpus().length,
 				    compress: {
-				        warnings: true
+				        warnings: false
 				    }
 				}),
-	            //抽取css文件
-	            new ExtractTextPlugin("style.css"),
 	            //模板文件
 	            new HtmlWebpackPlugin({
 	                title: _config.name, //网站标题
@@ -273,64 +293,73 @@ function webpackBundle(done) {
 
 			devtool: '#cheap-module-eval-source-map', //sourcemap生成方式
 
-			preLoaders: [
-	        	{
-					test: /\.es6$/,
-					exclude: /(node_modules|libs)/,
-					loader: "eslint-loader",
-				},
-	        ],
+	        module: {
 
-			loaders: [
-	        	{
-					test: /\.css$/,
-					loader: "style-loader!css-loader!postcss-loader"
-				}, {
-					test: /\.less$/,
-					//modules&localIdentName=[path][name][local][hash:base64:5]路径|文件名|样式名|编码截取
-					//实现css模块化
-					loader: "style-loader!css-loader!postcss-loader!less-loader"
-				},	{
-					test: /\.es6$/,
-					exclude: /(node_modules|libs)/,
-					loader: "babel-loader",
-					query: {
-						presets: ['es2015', 'react'],
-						plugins: [
-							'add-module-exports',
-							['transform-runtime', {
-
-								"helpers": true, // defaults to true
-							    "polyfill": true, // defaults to true
-							    "regenerator": true, // defaults to true
-							    "moduleName": "babel-runtime" // defaults to "babel-runtime"
-							}]
-						]
+	        	preLoaders: [
+		        	{
+						test: /\.es6$/,
+						exclude: /(node_modules|libs)/,
+						loader: "eslint-loader",
 					}
-				}, {
-	                //文件加载器，处理文件静态资源
-	                //name: 打包后文件名称
-	                //publicPath: 打包后文件绝对路径
-	                //文件输出地址按name属性来决定
-	                test: /\.(woff|woff2|ttf|eot|svg)(\?v=[0-9]\.[0-9]\.[0-9])?$/,
-	                loader: 'file-loader?name=/static/fonts/[name].[ext]'
-	            }, {
-	                //图片加载器，更适合图片，
-	                //特点：可以将较小的图片转成base64（data-src），减少http请求
-	                //如下配置，将小于8192byte的图片转成base64码
-	                test: /\.(png|jpg|gif)$/,
-	                loader: 'url-loader?limit=8192&name=../../img/[name].[ext]'
-	            }, {
-	                test: /\.(html|tpl)$/,
-	                loader: "html?attrs=img:src img:data-src" //处理html中img的资源加载
-	            }
+		        ],
 
-	        ],
+	        	loaders: [
+	        		{
+						test: /\.css$/,
+						loader: "style-loader!css-loader!postcss-loader"
+					},
+		        	{
+						test: /\.less$/,
+						//modules&localIdentName=[path][name][local][hash:base64:5]路径|文件名|样式名|编码截取
+						//实现css模块化
+						loader: "style-loader!css-loader!postcss-loader!less-loader"
+					},	{
+						test: /\.es6$/,
+						exclude: /(node_modules|libs)/,
+						loader: "babel-loader",
+						query: {
+							presets: ['es2015', 'react'],
+							plugins: [
+								'add-module-exports',
+								['transform-runtime', {
+
+									"helpers": true, // defaults to true
+								    "polyfill": true, // defaults to true
+								    "regenerator": true, // defaults to true
+								    "moduleName": "babel-runtime" // defaults to "babel-runtime"
+								}]
+							]
+						}
+					}, {
+		                //文件加载器，处理文件静态资源
+		                //name: 打包后文件名称
+		                //publicPath: 打包后文件绝对路径
+		                //文件输出地址按name属性来决定
+		                test: /\.(woff|woff2|ttf|eot|svg)(\?v=[0-9]\.[0-9]\.[0-9])?$/,
+		                loader: 'file-loader?name=/static/fonts/[name].[ext]'
+		            }, {
+		                //图片加载器，更适合图片，
+		                //特点：可以将较小的图片转成base64（data-src），减少http请求
+		                //如下配置，将小于8192byte的图片转成base64码
+		                test: /\.(png|jpg|gif)$/,
+		                loader: 'url-loader?limit=8192&name=../../img/[name].[ext]'
+		            }, {
+		                test: /\.(html|tpl)$/,
+		                loader: "html?attrs=img:src img:data-src" //处理html中img的资源加载
+		            }
+
+		        ]
+	        },
 
 			plugins: [
 				new webpack.ResolverPlugin([
 		    		new DirectoryNameAsMain()
 		    	]),
+		    	new webpack.ProvidePlugin({
+					$: "jquery",
+					jQuery: "jquery",
+					"window.jQuery": "jquery"
+				}),
 		        new webpack.optimize.CommonsChunkPlugin({
 		            names: ['commons', 'vendor']
 		        }),

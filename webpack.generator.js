@@ -44,7 +44,8 @@ function generator(config, options) {
 		        	{
 						test: /\.css$/,
 						loader: "style-loader!css-loader!postcss-loader"
-					}, {
+					},
+		        	{
 						test: /\.less$/,
 						//modules&localIdentName=[path][name][local][hash:base64:5]路径|文件名|样式名|编码截取
 						//实现css模块化
@@ -78,6 +79,12 @@ function generator(config, options) {
 		    	new webpack.ResolverPlugin([
 		    		new DirectoryNameAsMain()
 		    	]),
+		    	//将jquery作为全局导出，使模块可以任意调用
+		    	new webpack.ProvidePlugin({
+					$: "jquery",
+					jQuery: "jquery",
+					"window.jQuery": "jquery"
+				}),
 		    	// commons chunk
 		        new webpack.optimize.CommonsChunkPlugin({
 		            names: ['commons', 'vendor']
@@ -88,7 +95,10 @@ function generator(config, options) {
 		    	new webpack.NoErrorsPlugin()
 		    ], 
 
-		    postcss: [autoprefix({ browsers: ['last 2 versions'] })],
+		    postcss: function() {
+
+		    	return [autoprefix({ browsers: ['last 2 versions'] })]
+		    },
 
 		    resolve: {
 		        //自己代码模块配置
@@ -100,7 +110,9 @@ function generator(config, options) {
 		            bases: path.resolve(src.bases)
 		        },
 
-		        extensions: ['', '.js', '.es6', '.less', '.html']
+		        extensions: ['', '.js', '.es6', '.less', '.html'],
+
+		        fallback: [path.resolve(src.materialize)]
 		    },
 		    
 		    resolveLoader: {
