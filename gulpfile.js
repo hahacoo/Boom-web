@@ -215,7 +215,8 @@ function webpackBundle(done) {
 								    "polyfill": true, // defaults to true
 								    "regenerator": true, // defaults to true
 								    "moduleName": "babel-runtime" // defaults to "babel-runtime"
-								}]
+								}],
+								"transform-async-to-generator"
 							]
 						}
 					}, 
@@ -327,7 +328,8 @@ function webpackBundle(done) {
 								    "polyfill": true, // defaults to true
 								    "regenerator": true, // defaults to true
 								    "moduleName": "babel-runtime" // defaults to "babel-runtime"
-								}]
+								}],
+								"transform-async-to-generator"
 							]
 						}
 					}, {

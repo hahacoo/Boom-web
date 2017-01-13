@@ -64,8 +64,8 @@ function generator(config, options) {
 		            }, {
 		                //图片加载器，更适合图片，
 		                //特点：可以将较小的图片转成base64（data-src），减少http请求
-		                //如下配置，将小于8192byte的图片转成base64码
-		                test: /\.(png|jpg|gif)$/,
+		                //如下配置，将小于8192KB的图片转成base64码
+		                test: /\.(png|jpg|jpeg|svg|gif)$/,
 		                loader: 'url-loader?limit=8192&name=../../img/[name].[ext]'
 		            }, {
 		                test: /\.(html|tpl)$/,
