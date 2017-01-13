@@ -110,9 +110,7 @@ function generator(config, options) {
 		            bases: path.resolve(src.bases)
 		        },
 
-		        extensions: ['', '.js', '.es6', '.less', '.html'],
-
-		        fallback: [path.resolve(src.materialize)]
+		        extensions: ['', '.js', '.es6', '.less', '.html']
 		    },
 		    
 		    resolveLoader: {
