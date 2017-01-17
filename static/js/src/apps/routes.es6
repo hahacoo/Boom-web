@@ -1,7 +1,8 @@
 import React from 'react'
 import { Route, IndexRoute} from 'react-router'
 
-import Home from './home'
+//引入容器组件
+import Home from './home/container'
 
 export default (
 	<Route path='boom'>

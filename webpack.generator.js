@@ -107,7 +107,10 @@ function generator(config, options) {
 		        ],
 
 		        alias: {
-		            bases: path.resolve(src.bases)
+		        	
+		        	apps: path.resolve(src.apps),
+		            bases: path.resolve(src.bases),
+		            state: path.resolve(src.state)
 		        },
 
 		        extensions: ['', '.js', '.es6', '.less', '.html']

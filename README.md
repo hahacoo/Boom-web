@@ -16,7 +16,7 @@
 	gulp工具采用4.0版本，如果之前安装过gulp，请移除之前版本再执行如下命令：
 
 	```
-	npm install gulpjs/gulp#4.0 -g
+	npm install gulp-cli -g
 	```
 
 ## 使用

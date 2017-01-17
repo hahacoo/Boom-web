@@ -59,12 +59,16 @@ src:
  # webpack loader路径
  #loaderMoules: node_modules
  # alias变量
- bases:  ./static/js/src/bases
+ apps: ./static/js/src/apps
+ bases: ./static/js/src/bases
+ state: ./static/js/src/state
  # 第三方库，单独打包
  vendor:
   - react
   - react-dom
   - react-router
+  - redux
+  - react-redux
 
 # 开发模式下发布路径
 dev:

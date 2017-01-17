@@ -80,24 +80,14 @@ var args = minimist(process.argv.slice(2), {
 
 /**
  * 文件夹清空任务
+ * promise和done不要混用
  * @return {[type]} [description]
  */
 function clean(done) {
 
-	if (isProduct) {
-
-		return del(pro.root, {
-			force: true
-		}).then(function() {
-			done()
-		});
-	}
-
-	return del(dev.root, {
+	return del(isProduct ? pro.root : dev.root, {
 		force: true
-	}).then(function() {
-		done()
-	});
+	})
 }
 
 /**
@@ -106,11 +96,10 @@ function clean(done) {
  * @return {[type]}        [description]
  */
 function cleanBaseLess(done) {
+
 	return del(base.cssDest, {
 		force: true
-	}).then(function() {
-		done()
-	});
+	})
 }
 
 /**
@@ -216,7 +205,8 @@ function webpackBundle(done) {
 								    "regenerator": true, // defaults to true
 								    "moduleName": "babel-runtime" // defaults to "babel-runtime"
 								}],
-								"transform-async-to-generator"
+								"transform-async-to-generator",
+								"transform-object-rest-spread"
 							]
 						}
 					}, 
@@ -329,7 +319,8 @@ function webpackBundle(done) {
 								    "regenerator": true, // defaults to true
 								    "moduleName": "babel-runtime" // defaults to "babel-runtime"
 								}],
-								"transform-async-to-generator"
+								"transform-async-to-generator",
+								"transform-object-rest-spread"
 							]
 						}
 					}, {
