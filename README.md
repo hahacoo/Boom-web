@@ -1,6 +1,6 @@
-# Boom-React前端开发环境
+# STI-WEB前端开发环境
 
-该项目提供了express搭建的一个本地node服务器，方便本地调试，同时使用gulp+webpack构建前端，提高编译效率，前端框架采用React。
+该项目提供了express搭建的一个本地node服务器，方便本地调试，同时使用gulp+webpack构建前端，提高编译效率，前端框架采用Vue2.0。
 
 ## 安装依赖
 
@@ -80,6 +80,11 @@ npm run build
 npm run build:pro
 ```
 将前端代码编译到`pro`目录下，进行压缩、混淆、hash处理
+
+```
+npm run build:css
+```
+编译平台样式库
 
 
 
