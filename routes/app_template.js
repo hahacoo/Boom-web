@@ -11,15 +11,16 @@ function template(port) {
 <head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width,initial-scale=1">
-	<title>boom-react</title>
+	<title>sti-app</title>
 	<link rel="icon" type="image/x-icon" href="/static/favicon.ico">
 	<link rel="stylesheet" type="text/css" href="/static/css/bootstrap/dist/css/bootstrap.min.css">
-	<link rel="stylesheet" type="text/css" href="/static/css/commons/css/boom.css">
+	<link rel="stylesheet" type="text/css" href="/static/css/vue_material/dist/roboto.css">
+	<link rel="stylesheet" type="text/css" href="/static/css/vue_material/dist/google-icon.css">
+	<link rel="stylesheet" type="text/css" href="/static/css/vue_material/dist/vue-material.css">
+	<link rel="stylesheet" type="text/css" href="/static/css/commons/css/sti.css">
 </head>
 <body>
-	<div id="react-app" class="boom-app">
-		
-	</div>
+	<div id="sti-app" class="sti-main" :class="theme"></div>
 	<script type="text/javascript" src="http://localhost:${port}/vendor.js"></script>
 	<script type="text/javascript" src="http://localhost:${port}/commons.js"></script>
 	<script type="text/javascript" src="http://localhost:${port}/main.js"></script>

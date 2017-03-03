@@ -1,37 +1,31 @@
 /**
- * App入口文件
+ * app入口文件
+ * 1.第三方插件注册
+ * 2.平台自身插件注册
+ * 3.一级路由入口
+ * 
+ * by zhangdi 03/01/17
  */
-import React, { Component } from 'react'
-import { render } from 'react-dom'
-import { Provider } from 'react-redux'
-import { Router, browserHistory} from 'react-router'
 
-import routes from './routes'
-import store from 'state/store'
-import AppHeader from 'bases/components/header/index'
+/* 第三方依赖 */
+import Vue from 'vue'
+import VueMaterial from 'vue-material'
+import store from 'store'
+import router from 'router'
+/* 平台依赖 */
+import template from './view'
+import Sti from 'plugins/Sti'
 
-class App extends Component {
+Vue.use(VueMaterial)
+Vue.use(Sti)
 
-	render () {
+let app = new Vue({
 
-		return 	<div className='boom-container'>
-					<AppHeader />
+	el: '#sti-app',
 
-					<Router routes={routes} history={browserHistory} />
-				</div>
-	}
-}
+	template,
 
-//挂载到DOM上，将Redux绑定到React，让所有容器组件可以访问store
-render(
-		<Provider store={store}>
-			<App />
-		</Provider>
-	, document.getElementById('react-app'))
+	store,
 
-//开启热替换
-if(module.hot) {
-	
-	module.hot.accept()
-}
-
+	router
+})

@@ -3,14 +3,14 @@
 ##########################
 
 # 应用信息
-name: boom_app
+name: sti-app
 
 # 模板引擎
 #views: views/ejs
 #engine: ejs
 
 # 本地服务端口port，默认3000端口
-port: 3000
+port: 8080
 
 # 以下请求将会被转发到代理服务器
 #proxy:
@@ -44,31 +44,39 @@ port: 3000
 
 # 基础样式文件，不需要webpack处理
 base:
- less: ./static/css/commons/less/boom.less
+ less: ./static/css/commons/less/sti.less
  lessPath: ./static/css/commons/less/**/*.less
  lessRoot: ./static/css/commons/less
  cssDest: ./static/css/commons/css
- css: ./static/css/commons/css/boom.css
+ css: ./static/css/commons/css/sti.css
 
 # 源文件
 src:
  # 根路径
- root: ./static/js/js/src
+ root: ./static/js/src
  # 入口文件
  index: ./static/js/src/apps/index.es6
  # webpack loader路径
  #loaderMoules: node_modules
  # alias变量
- apps: ./static/js/src/apps
- bases: ./static/js/src/bases
- state: ./static/js/src/state
+ alias:
+  apps: ./static/js/src/apps
+  bases: ./static/js/src/bases
+  components: ./static/js/src/components
+  i18n: ./static/js/src/i18n
+  plugins: ./static/js/src/plugins
+  router: ./static/js/src/router
+  store: ./static/js/src/store
+# 模块alias
+ moduleAlias:
+  vue$: vue/dist/vue.common.js
  # 第三方库，单独打包
  vendor:
-  - react
-  - react-dom
-  - react-router
-  - redux
-  - react-redux
+  - vue
+  - vuex
+  - vue-material
+  - vue-router
+  - jquery
 
 # 开发模式下发布路径
 dev:

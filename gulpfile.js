@@ -10,6 +10,7 @@
  *  cssmin, css文件压缩--gulp-cssmin
  *  babel, es6文件转化--webpack
  *  uglify, js文件压缩混淆
+ *  progeny, 查找css/template依赖
  *  ssh, 模块上传服务器--gulp-sftp
  */
 
@@ -38,6 +39,8 @@ var util = require('gulp-util'), //gulputil插件
 	}),
 	cssmin = require('gulp-cssmin'), //gulp-css压缩插件
 	rename = require('gulp-rename'), //gulp重命名插件
+	cached = require('gulp-cached'),
+	progeny = require('gulp-progeny'),
 	sftp = require('gulp-sftp') //gulpsftp插件
 
 var processes = {
@@ -195,7 +198,7 @@ function webpackBundle(done) {
 						exclude: /(node_modules|libs)/,
 						loader: "babel-loader",
 						query: {
-							presets: ['es2015', 'react'],
+							presets: ['es2015'],
 							plugins: [
 								'add-module-exports',
 								['transform-runtime', {
@@ -309,7 +312,7 @@ function webpackBundle(done) {
 						exclude: /(node_modules|libs)/,
 						loader: "babel-loader",
 						query: {
-							presets: ['es2015', 'react'],
+							presets: ['es2015'],
 							plugins: [
 								'add-module-exports',
 								['transform-runtime', {
@@ -401,6 +404,9 @@ process.on('uncaughtException', function(e) {
 	util.log(util.colors.red(e))
 });
 
+//上传服务器
+gulp.task('publish', ssh)
+
 //打包源文件
 gulp.task('bundle', webpackBundle)
 
@@ -417,9 +423,7 @@ gulp.task('complie', gulp.parallel(
 	gulp.series(clean, 'bundle')
 ));
 
-//上传服务器
-gulp.task('publish', ssh)
-
+gulp.task('complie:css', gulp.series('complie:base', watch))
 
 if (isProduct) {
 

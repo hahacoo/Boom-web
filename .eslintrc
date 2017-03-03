@@ -7,6 +7,7 @@ parserOptions:
 	 jsx: true
 # 添加全局环境，引入全局变量
 env:
+ node: true
  browser: true
  es6: true
  commonjs: true
@@ -21,6 +22,8 @@ rules:
   - 'never'
  # 允许使用console
  no-console: 0
+ # 允许使用debugger
+ no-debugger: 0
  # 不使用var
  no-var: 2
  # if语句包含一个return语句， else就多余
@@ -28,13 +31,13 @@ rules:
  # 禁止与null不进行类型比较(===)
  no-eq-null: 2
  # 建议将经常出现的数字提取为变量
- no-magic-numbers: 1
+ no-magic-numbers: [1, {ignoreArrayIndexes: true}]
  # 禁止对变量重复命名
  no-redeclare: [2, {builtinGlobals: true}]
  # 建议不必要的字符串拼接
  no-useless-concat: 1
  # 禁止变量声明覆盖外层作用域
- no-shadow: [2, {builtinGlobals: true}]
+ no-shadow: [2, {builtinGlobals: true, allow: [state, resolve, reject, done]}]
  # 允许出现未使用过的变量
  no-unused-vars: 0
  # 将立即执行的函数包裹起来

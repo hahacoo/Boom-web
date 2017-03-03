@@ -110,11 +110,11 @@ app.use(cookieParser());
 
 //中间件和路由的匹配原则不同，使用根路径会对所有请求进行隐射
 app.get("/", function(req, res, next) {
-    res.redirect('/boom');
+    res.redirect('/ngsoc');
 })
 
 //注册路由中间件
-app.use('/boom', home(isProduct, _config.port));
+app.use('/ngsoc', home(isProduct, _config.port));
 
 //注册代理转发中间件
 var proxy = Object(_config.proxy),

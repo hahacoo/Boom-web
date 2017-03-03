@@ -20,6 +20,18 @@ function generator(config, options) {
     	pro = config.pro,
     	dev = config.dev
 
+    var alias = {}
+
+    for(var k in src.alias) {
+
+    	alias[k] = path.resolve(src.alias[k])
+    }
+
+    for(var k in src.moduleAlias) {
+
+    	alias[k] = src.moduleAlias[k]
+    }
+
     return extend({
 
 			entry: {
@@ -104,14 +116,10 @@ function generator(config, options) {
 		        //自己代码模块配置
 		        root: [
 		            path.resolve(src.root), //src
+		            path.resolve('./node_modules')
 		        ],
 
-		        alias: {
-		        	
-		        	apps: path.resolve(src.apps),
-		            bases: path.resolve(src.bases),
-		            state: path.resolve(src.state)
-		        },
+		        alias: alias,
 
 		        extensions: ['', '.js', '.es6', '.less', '.html']
 		    },
