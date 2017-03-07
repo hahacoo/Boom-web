@@ -38,7 +38,7 @@ port: 8080
 ##########################
 
 # 模板地址
-#template: ./static/js/src/layout.ejs
+#template: ./layout.ejs
 # html文件输出 相对webpack编译后的地址
 #outputPath: ../../../views/ejs/index.ejs
 
@@ -55,18 +55,19 @@ src:
  # 根路径
  root: ./static/js/src
  # 入口文件
- index: ./static/js/src/apps/index.es6
+ index: ./static/js/src/index.es6
  # webpack loader路径
  #loaderMoules: node_modules
  # alias变量
  alias:
   apps: ./static/js/src/apps
-  bases: ./static/js/src/bases
   components: ./static/js/src/components
+  mixins: ./static/js/src/mixins
   i18n: ./static/js/src/i18n
   plugins: ./static/js/src/plugins
   router: ./static/js/src/router
   store: ./static/js/src/store
+  utils: ./static/js/src/utils
 # 模块alias
  moduleAlias:
   vue$: vue/dist/vue.common.js
@@ -77,6 +78,8 @@ src:
   - vue-material
   - vue-router
   - jquery
+  - lodash
+  - crypto-js
 
 # 开发模式下发布路径
 dev:

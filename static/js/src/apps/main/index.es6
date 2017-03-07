@@ -6,11 +6,20 @@
  */
 import { mapGetters } from 'vuex'
 
-import './style'
-import template from './view'
+import { createApp } from 'utils/StiBuilder'
 import appHeader from 'components/header'
 
-export default {
+let template = `
+
+<main class="sti-main" :class="theme">
+	<!--头部区域-->
+	<app-header></app-header>
+	<!--app区域-->
+	<router-view></router-view>
+</main>
+`
+
+export default createApp({
 
 	template,
 
@@ -35,4 +44,4 @@ export default {
 
 		appHeader
 	}
-}
+})

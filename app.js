@@ -8,6 +8,7 @@ var bodyParser = require('body-parser');
 var eproxy = require('express-http-proxy');
 var yaml = require('js-yaml');
 var fs = require('fs');
+var chalk = require('chalk');
 
 // custom router
 var home = require('./routes/index'),
@@ -79,20 +80,27 @@ if(!isProduct) {
         
     webpackConfig.entry.main.push('webpack-hot-middleware/client?reload=true')
 
-    var compiler = webpack(webpackConfig)
+    var compiler = webpack(webpackConfig),
+        webpackDevMiddlewareInstance = webpackDevMiddleware(compiler, {
+
+                                            compress: true,
+                                            clientLogLevel: 'info',
+                                            noInfo: true,
+                                            poll: 1000, // use polling instead of native watchers
+                                            stats: {
+                                                colors: true
+                                            }
+                                        })
 
     // 加载webpck中间件
-    app.use(webpackDevMiddleware(compiler, {
-        compress: true,
-        clientLogLevel: 'info',
-        noInfo: true,
-        poll: 1000, // use polling instead of native watchers
-        stats: {
-            colors: true
-        }
-    }))
+    app.use(webpackDevMiddlewareInstance)
     // webpack热替换中间件
     app.use(webpackHotMiddleware(compiler))
+
+    webpackDevMiddlewareInstance.waitUntilValid(function(){
+
+        console.log(chalk.green.bold('[sti-web] webpack打包完成'));
+    });
 }
 
 //注册静态资源

@@ -58,41 +58,50 @@ input {
 /**
  * layout
  */
-.sti-main {
+#sti-app {
   height: 100%;
-  padding-top: 50px;
+}
+#sti-app .sti-main {
+  height: 100%;
+  padding-top: 64px;
   overflow-x: hidden;
   overflow-y: auto;
 }
-.sti-main .sti-header {
-  height: 50px;
+#sti-app .sti-main .sti-header {
+  height: 64px;
+  line-height: 64px;
   width: 100%;
   position: fixed;
   top: 0;
 }
-.sti-main .sti-header .header-main {
+#sti-app .sti-main .sti-header .header-nav {
   height: 100%;
 }
-.sti-main .sti-body {
-  height: 100%;
+.sti-fade-enter-active,
+.sti-fade-leave-active {
+  transition: opacity 0.5s;
+}
+.sti-fade-enter,
+.sti-fade-leave-active {
+  opacity: 0;
 }
 /**
  * layout
  */
+.sti-main.default {
+  background-color: #f3f3f4;
+}
 .sti-main.default .sti-header {
-  background-color: #fff;
-}
-.sti-main.default .sti-body {
-  background-color: #fff;
+  background-color: #f3f3f4;
 }
 /**
  * layout
  */
+.sti-main.dark {
+  background-color: #2d353c;
+}
 .sti-main.dark .sti-header {
   background-color: #000;
-}
-.sti-main.dark .sti-body {
-  background-color: #2d353c;
 }
 
 /*# sourceMappingURL=map/sti.css.map */

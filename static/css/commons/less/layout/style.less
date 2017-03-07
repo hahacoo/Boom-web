@@ -4,28 +4,29 @@
 @import '../base/variables.less';
 @import '../base/mixins.less';
 
-.sti-main {
-
+#sti-app {
+	
 	height: 100%;
-	padding-top: @header-height;
-	overflow-x: hidden;
-	overflow-y: auto;
 
-	.sti-header {
-		
-		height: @header-height;
-		width: 100%;
-		position: fixed;
-		top: 0;
+	.sti-main {
 
-		.header-main {
-			
-			height: 100%;
-		}
-	}
-
-	.sti-body {
-		
 		height: 100%;
+		padding-top: @header-height;
+		overflow-x: hidden;
+		overflow-y: auto;
+
+		.sti-header {
+			
+			height: @header-height;
+			line-height: @header-height;
+			width: 100%;
+			position: fixed;
+			top: 0;
+
+			.header-nav {
+				
+				height: 100%;
+			}
+		}
 	}
 }

@@ -267,8 +267,8 @@ function webpackBundle(done) {
 	            //模板文件
 	            new HtmlWebpackPlugin({
 	                title: _config.name, //网站标题
-	                filename: _config.outputPath|| '../../../views/ejs/index.ejs', //html输出地址
-	                template: _config.template || './static/js/src/layout.ejs', //模板文件
+	                filename: _config.outputPath || '../../../views/ejs/index.ejs', //html输出地址
+	                template: _config.template || './layout.ejs', //模板文件
 	                inject: 'body', //js插入位置 head | body
 	                hash: false, //为生成的静态资源生成hash值
 	                //chunk: [], //需要引入的资源，默认为全部资源

@@ -1,6 +1,12 @@
 /**
  * 测试app
  */
-import { createApp } from 'bases/StiBuilder'
+import { createApp } from 'utils/StiBuilder'
 
-export default createApp()
+export default createApp({
+
+	mounted() {
+
+		console.log(this.isLogin)
+	}
+})

@@ -41,12 +41,13 @@
 |   |-commonjs 符合commonjs语法规范的测试用例
 |   |-es6 符合ES6语法规范的测试用例
 |-views 服务端模板文件
-|-app.js 服务端入口文件
-|-config.yml 项目配置文件
 |-.babelrc babel配置文件
 |-.eslintrc eslint配置文件
+|-app.js 服务端入口文件
+|-config.yml 项目配置文件
 |-gulpfile gulp配置文件
 |-karma.conf.js karma配置文件
+|-layout.ejs 模板文件
 |-nodemon.json nodemon配置文件
 ```
 2. 命令
