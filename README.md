@@ -87,5 +87,8 @@ npm run build:css
 ```
 编译平台样式库
 
+Change Logs
 
+* 0.0.2:文件结构调整
+* 0.0.1:项目首次创建
 
