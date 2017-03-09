@@ -53,21 +53,24 @@ base:
 # 源文件
 src:
  # 根路径
- root: ./static/js/src
+ root: ./static/src
  # 入口文件
- index: ./static/js/src/index.es6
+ index: ./static/src/index.es6
  # webpack loader路径
  #loaderMoules: node_modules
  # alias变量
  alias:
-  apps: ./static/js/src/apps
-  components: ./static/js/src/components
-  mixins: ./static/js/src/mixins
-  i18n: ./static/js/src/i18n
-  plugins: ./static/js/src/plugins
-  router: ./static/js/src/router
-  store: ./static/js/src/store
-  utils: ./static/js/src/utils
+  apps: ./static/src/apps
+  bases: ./static/src/bases
+  components: ./static/src/components
+  constant: ./static/src/constant
+  mixins: ./static/src/mixins
+  i18n: ./static/src/i18n
+  plugins: ./static/src/plugins
+  router: ./static/src/router
+  services: ./static/src/services
+  store: ./static/src/store
+  utils: ./static/src/utils
 # 模块alias
  moduleAlias:
   vue$: vue/dist/vue.common.js
@@ -77,19 +80,20 @@ src:
   - vuex
   - vue-material
   - vue-router
+  - vue-i18n
   - jquery
   - lodash
   - crypto-js
 
 # 开发模式下发布路径
 dev:
- root: ./static/js/dev
- publicPath: /static/js/dev/
+ root: ./static/dist
+ publicPath: /static/dist/
 
 # 发布模式下发布路径
 pro:
- root: ./static/js/pro
- publicPath: /static/js/pro/
+ root: ./static/dist
+ publicPath: /static/dist/
 
 # sftp信息
 sftp:

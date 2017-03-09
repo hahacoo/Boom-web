@@ -1,0 +1,23 @@
+<div class="sti-card" @click="click">
+	
+	<md-card  md-with-hover>
+
+		<md-card-header>
+
+			<div class="md-title">{{title}}</div>
+			<div class="md-subhead">{{subTitle}}</div>
+		</md-card-header>
+
+		<md-card-content>
+		    {{desc}} 
+		</md-card-content>
+
+		<md-card-actions>
+			<slot></slot>
+		</md-card-actions>
+	</md-card>
+
+	<div class="card-mask" :class="{'full-mask': clicked}" :style="{transformOrigin: transformOrigin}" ref="mask">
+		
+	</div>
+</div>

@@ -14,8 +14,7 @@ function template(port) {
 	<title>sti-app</title>
 	<link rel="stylesheet" type="text/css" href="/static/css/animate/animate.min.css">
 	<link rel="stylesheet" type="text/css" href="/static/css/bootstrap/dist/css/bootstrap.min.css">
-	<link rel="stylesheet" type="text/css" href="/static/css/vue_material/dist/roboto.css">
-	<link rel="stylesheet" type="text/css" href="/static/css/vue_material/dist/google-icon.css">
+	<link rel="stylesheet" type="text/css" href="/static/css/font-awesome/css/font-awesome.min.css">
 	<link rel="stylesheet" type="text/css" href="/static/css/vue_material/dist/vue-material.css">
 	<link rel="stylesheet" type="text/css" href="/static/css/commons/css/sti.css">
 </head>

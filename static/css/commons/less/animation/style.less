@@ -1,7 +1,46 @@
 
 .sti-fade-enter-active, .sti-fade-leave-active {
-  transition: opacity .5s
+
+  	transition: opacity .5s
 }
+
 .sti-fade-enter, .sti-fade-leave-active {
-  opacity: 0
+
+  	opacity: 0
 }
+/*
+ * 大屏切换
+ */
+.sti-zoom-enter-active {
+
+	animation: zoomIn .5s
+}
+
+.sti-zoom-leave-active {
+
+	animation: zoomOut .5s
+}
+
+.sti-flip-enter-active {
+
+	animation: flipInX .5s
+}
+
+.sti-flip-leave-active {
+
+	animation: flipOutX .5s
+}
+
+/*
+ * 菜单切换效果
+ */
+.sti-fadeInUp-enter-active {
+
+	animation: fadeInUp .5s
+}
+
+.sti-fadeInUp-leave-active {
+
+	animation: fadeOutDown .5s
+}
+

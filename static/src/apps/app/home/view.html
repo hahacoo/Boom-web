@@ -1,0 +1,24 @@
+<div class="sti-home">
+	
+	<div class="home-banner">
+		
+	</div>
+	<div class="home-content row">
+		
+		<div class="col-md-3 content-card" v-for="app in apps">
+
+			<sti-card :title="app.c_name" :desc="app.desc" :path="app.path">
+
+				<md-button class="md-icon-button" @click.native.stop>
+					
+					<sti-icon icon="heart"></sti-icon>
+			    </md-button>
+
+			    <md-button class="md-icon-button" @click.native.stop>
+					
+					<sti-icon icon="bookmark"></sti-icon>
+			    </md-button>
+			</sti-card>
+		</div>
+	</div>
+</div>
