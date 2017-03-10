@@ -133,12 +133,7 @@ let baseUrl = '/ngsoc',
  */
 router.beforeEach((to, from, next) => {
 
-	if(process.env.NODE_ENV !== 'product') {
-
-		//开发模式下记录操作信息
-		log(to, from, next, store)
-	}
-
+	log(to, from, next, store)
 	filter(to, from, next, store)
 })
 
