@@ -226,7 +226,7 @@ function webpackBundle(done) {
 						//特点：可以将较小的图片转成base64（data-src），减少http请求
 						//如下配置，将小于8192byte的图片转成base64码
 						test: /\.(png|jpg|gif)$/,
-						loader: 'url-loader?limit=8192&name=../../img/[hash].[ext]'
+						loader: 'url-loader?limit=8192&name=../img/[hash].[ext]'
 					}, 
 					{
 						test: /\.(html|tpl)$/,
@@ -267,8 +267,8 @@ function webpackBundle(done) {
 	            //模板文件
 	            new HtmlWebpackPlugin({
 	                title: _config.name, //网站标题
-	                filename: _config.outputPath || '../../../views/ejs/index.ejs', //html输出地址
-	                template: _config.template || './layout.ejs', //模板文件
+	                filename: _config.outputPath || path.resolve('./views/ejs/index.ejs'), //html输出地址
+	                template: _config.template || path.resolve('./layout.ejs'), //模板文件
 	                inject: 'body', //js插入位置 head | body
 	                hash: false, //为生成的静态资源生成hash值
 	                //chunk: [], //需要引入的资源，默认为全部资源
@@ -338,7 +338,7 @@ function webpackBundle(done) {
 		                //特点：可以将较小的图片转成base64（data-src），减少http请求
 		                //如下配置，将小于8192byte的图片转成base64码
 		                test: /\.(png|jpg|gif)$/,
-		                loader: 'url-loader?limit=8192&name=../../img/[name].[ext]'
+		                loader: 'url-loader?limit=8192&name=../img/[name].[ext]'
 		            }, {
 		                test: /\.(html|tpl)$/,
 		                loader: "html?attrs=img:src img:data-src" //处理html中img的资源加载
@@ -361,8 +361,8 @@ function webpackBundle(done) {
 		        }),
 	            new HtmlWebpackPlugin({
 	                title: _config.name,
-	                filename: _config.outputPath || '../../../views/ejs/index.ejs',
-	                template: _config.template || './static/js/src/layout.ejs',
+	                filename: _config.outputPath || path.resolve('./views/ejs/index.ejs'),
+	                template: _config.template || path.resolve('./layout.ejs'),
 	                inject: 'body',
 	                hash: true, 
 	                minify: {
