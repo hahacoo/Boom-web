@@ -2,8 +2,7 @@
  * 过滤器插件
  *
  * 注册的插件必须满足
- * 1.如果包含异步操作，一定要返回异步对象，或者调用done函数，表明操作已结束
- * 2.如果为同步操作，必须调用done函数，表明操作结束
+ * 过滤结束必须调用done函数，跳转到下一个过滤器，否则无法继续执行
  */
 import $ from 'jquery'
 
@@ -35,18 +34,7 @@ function makePromise(to, from, callback){
 
 	return new Promise((resolve, reject) => {
 
-		let filterResult = callback(to, from, resolve)
-
-		if(filterResult instanceof Promise) {
-
-			filterResult.then(res => {
-
-				resolve(res)
-			}).catch(error => {
-
-				console.log(error)
-			})
-		}
+		callback(to, from, resolve)
 
 	}).catch(error => {
 
