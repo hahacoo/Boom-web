@@ -1,49 +1,91 @@
+/**
+ * 过滤器插件
+ *
+ * 注册的插件必须满足
+ * 1.如果包含异步操作，一定要返回异步对象，或者调用done函数，表明操作已结束
+ * 2.如果为同步操作，必须调用done函数，表明操作结束
+ */
+import $ from 'jquery'
+
 import loginFilters from './login'
 
 let authfilters = [
-	
-	loginFilters
+
+	function before(to, from, done) {
+
+		done()
+	},
+
+	loginFilters,
+
+	function after(to, from, done) {
+
+		done()
+	}
 ]
 
-export default function filter(to, from, next, store) {
+/**
+ * 将过滤器统一转换为promise对象
+ * @param  {[type]}   to       [description]
+ * @param  {[type]}   from     [description]
+ * @param  {Function} callback [description]
+ * @return {[type]}            [description]
+ */
+function makePromise(to, from, callback){
+
+	return new Promise((resolve, reject) => {
+
+		let filterResult = callback(to, from, resolve)
+
+		if(filterResult instanceof Promise) {
+
+			filterResult.then(res => {
+
+				resolve(res)
+			}).catch(error => {
+
+				console.log(error)
+			})
+		}
+
+	}).catch(error => {
+
+		console.log('error')
+	})
+}
+
+async function go(to, from, filters) {
+
+	let i = 0,
+		len = filters.length
+
+	for(; i < len; i++) {
+
+		let result = await makePromise(to, from, filters[i])
+
+		//过滤失败
+		if(typeof result === 'boolean' && !result) {
+
+			return false
+		}
+
+		//发生跳转
+		if(typeof result === 'string' || typeof result === 'object') {
+
+			return result
+		}
+	}
+
+}
+
+function filter(to, from, store) {
 
 	let rootRoute = to.matched[0]
 
 	if(to.meta.requestAuth) {
 
-		//只有业务APP才需要过过滤器
-		let len = authfilters.length
-
-		for(let i = 0; i < len; i++) {
-
-			let result = authfilters[i](to, from, store)
-
-			//过滤失败
-			if(!result) {
-
-				return next(false)
-			}
-
-			//发生跳转
-			if(typeof result === 'string' || typeof result === 'object') {
-
-				return next(result)
-			}
-		}
+		return go(to, from, authfilters)
 	}
-
-	if(rootRoute.name === 'login') {
-
-		//登录页面
-		let result = loginFilters(to, from, store)
-
-		if(typeof result === 'boolean' && result) {
-
-			//已登录，返回首页
-			return next('/')
-		}
-	}
-
-	//正常跳转
-	next()
 }
+
+export default filter

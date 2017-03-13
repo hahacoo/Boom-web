@@ -16,7 +16,7 @@ function Logger({
 			`
 } = {}) {
 
-	this.prefix = `%c${prefix} %c'`
+	this.prefix = `%c${prefix} %c`
 	this.labelStyle = labelStyle
 	this.normalStyle = normalStyle
 }

@@ -31,7 +31,7 @@ export default {
 		...mapState({
 
 			locale: state => state.locale,
-			theme: state => state.theme.curTheme,
+			theme: state => state.theme,
 		})
 	},
 

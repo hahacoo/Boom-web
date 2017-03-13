@@ -1,0 +1,4 @@
+<md-snackbar :md-position="position" ref="snackbar" :md-duration="duration" :class='type'>
+	<span>{{message}}</span>
+	<md-button class="md-accent" md-theme="light-blue" @click.native="$refs.snackbar.close()">close</md-button>
+</md-snackbar>

@@ -61,15 +61,17 @@ src:
  # alias变量
  alias:
   apps: ./static/src/apps
-  bases: ./static/src/bases
   components: ./static/src/components
   constant: ./static/src/constant
+  event: ./static/src/event
   mixins: ./static/src/mixins
   i18n: ./static/src/i18n
+  lib: ./static/src/lib
   plugins: ./static/src/plugins
   router: ./static/src/router
   services: ./static/src/services
   store: ./static/src/store
+  theme: ./static/src/theme
   utils: ./static/src/utils
 # 模块alias
  moduleAlias:

@@ -47,6 +47,20 @@ function localDatas(baseUrl) {
             }])
         })
 
+    router.route('/login')
+        .all(function(req, res, next) {
+
+            // res.json([
+
+            //     username: 'zhang'
+            // ])
+
+            res.json({
+
+                username: 'xxx'
+            })
+        })
+
     return router
 }
 

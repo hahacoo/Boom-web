@@ -8,9 +8,15 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
 
-import { STI_LOCALE_ZH, STI_LOCALE_EN } from 'constant'
+import { 
+
+	STI_LOCALE_ZH, 
+	STI_LOCALE_EN, 
+	STI_THEME_DEFAULT, 
+	STI_THEME_DARK, 
+	STI_THEME_DASHBORD 
+} from 'constant'
 import * as types from './types'
-import theme from './modules/theme'
 import storage from './plugins/storage'
 
 Vue.use(Vuex)
@@ -25,7 +31,8 @@ const state = {
 		roles: [],
 		org: 'STI-WEB'
 	}, //用户信息
-	locale: STI_LOCALE_ZH //国际化信息
+	locale: STI_LOCALE_ZH, //国际化信息
+	theme: STI_THEME_DEFAULT //主题信息
 }
 
 const mutations = {
@@ -41,6 +48,10 @@ const mutations = {
 	[types.LOCALE_UPDATE](state, locale) {
 
 		state.locale = locale
+	},
+	[types.THEME_UPDATE](state, theme) {
+		
+		state.theme = theme
 	}
 }
 
@@ -65,6 +76,16 @@ const actions = {
 			: STI_LOCALE_ZH
 			
 		commit(types.LOCALE_UPDATE, locale)
+	},
+	updateTheme: ({commit}, theme) => {
+
+		let themes = [ STI_THEME_DEFAULT, STI_THEME_DARK, STI_THEME_DASHBORD ]
+
+		theme = themes.some((item) => item === theme) 
+			? theme 
+			: STI_THEME_DEFAULT
+
+		commit(types.THEME_UPDATE, theme)
 	}
 }
 
@@ -74,10 +95,6 @@ export default new Vuex.Store({
 	mutations,
 	getters,
 	actions,
-	modules: {
-
-		theme
-	},
 	plugins: [storage({
 
 		persistence: [ 'theme', 'locale' ]

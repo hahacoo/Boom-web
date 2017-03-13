@@ -30,12 +30,10 @@
 |	|-index 主页路由
 |-static 静态文件
 |	|-css css文件（基础样式库）
+|   |-dist 前端编译文件
 |	|-fonts 字体文件
 |	|-img 图片
-|	|-js 前端代码
-|		|-dev 开发环境编译后文件夹
-|		|-pro 发布环境编译后文件夹
-|		|-src 前端es6文件
+|	|-src 前端es6文件
 |-test 测试用例
 |   |-mocha.opts mocha配置文件
 |   |-commonjs 符合commonjs语法规范的测试用例

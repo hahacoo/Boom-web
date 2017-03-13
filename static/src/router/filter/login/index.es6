@@ -1,4 +1,19 @@
-export default function loginFilter() {
+import $ from 'jquery'
 
-	return true
+export default function loginFilter(to, from, done) {
+
+	return new Promise((resolve, reject) => {
+
+			$.ajax('/app/login')
+			.then(res => {
+
+				if(res.username) {
+
+					resolve()
+				} else {
+
+					resolve('/login')
+				}
+			})
+		})
 }

@@ -47,7 +47,7 @@ const routes = {
 		}
 	],
 
-	dashboards: [
+	visualize: [
 		{
 
 			path: 'test',
@@ -56,9 +56,9 @@ const routes = {
 				//dep,文件路径
 				//cb,执行
 				//name,包名，确保同一个app的内容打包成一个文件
-				require.ensure(['apps/dashboard/test'], () => {
+				require.ensure(['apps/visualize/test'], () => {
 
-					resolve(require('apps/dashboard/test'))	
+					resolve(require('apps/visualize/test'))	
 				}, 'dtest')
 			},
 		}

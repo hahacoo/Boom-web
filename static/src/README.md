@@ -7,17 +7,17 @@
 app存放目录
 
 ```
-|-error 错误处理app（平台维护app）
+|-error 错误页面app（平台维护app）
 |-login 登录app（平台维护app）
-|-main 平台入口（平台维护app）
 |-public 门户app（平台维护app）
-|-... 业务app
+|-app 业务app
+|-visualize 大屏app
 ```
 
 app的创建一定要通过平台的创建函数生成
 
 ```
-import { createApp } from 'utils/StiBuilder'
+import { createApp } from 'utils/stiBuilder'
 
 export default createApp({
 
@@ -50,7 +50,9 @@ export default createApp({
 
 国际化配置文件
 
-### mixins
+### lib
+
+平台库文件
 
 ### plugins
 

@@ -12,16 +12,15 @@ import appHeader from './header'
 let template = `
 <div class="sti-container" :class="theme">
 	
-	<md-theme :md-name="theme">
+	<!--头部区域-->
+	<app-header></app-header>
+	<!--主视图区域-->
+	<transition name="sti-fade" mode="out-in" appear>
 		
-		<!--头部区域-->
-		<app-header></app-header>
-		<!--主视图区域-->
-		<transition name="sti-fade" mode="out-in" appear>
-			
-			<router-view></router-view>
-		</transition>
-	</md-theme>
+		<router-view></router-view>
+	</transition>
+
+	<sti-notice></sti-notice>
 
 	<footer class="sti-footer">
 		
@@ -38,25 +37,12 @@ export default {
 
 		...mapState({
 
-			theme: state => state.theme.curTheme
+			theme: state => state.theme
 		})
 	},
 
 	components: {
 
 		appHeader
-	},
-
-	methods: {
-
-		...mapActions({
-
-			updateTheme: 'updateTheme'
-		})
-	},
-
-	// created() {
-
-	// 	this.updateTheme(STI_THEME_DEFAULT)
-	// }
+	}
 }

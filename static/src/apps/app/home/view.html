@@ -1,13 +1,29 @@
 <div class="sti-home">
 	
-	<div class="home-banner">
+	<div class="home-banner" @click="click">
 		
 	</div>
 	<div class="home-content row">
 		
-		<div class="col-md-3 content-card" v-for="app in apps">
+		<div class="col-md-3 content-card" >
 
-			<sti-card :title="app.c_name" :desc="app.desc" :path="app.path">
+			<sti-card :title="$t('commons.safety')" path="/test">
+
+				<md-button class="md-icon-button" @click.native.stop>
+					
+					<sti-icon icon="heart"></sti-icon>
+			    </md-button>
+
+			    <md-button class="md-icon-button" @click.native.stop>
+					
+					<sti-icon icon="bookmark"></sti-icon>
+			    </md-button>
+			</sti-card>
+		</div>
+
+		<div class="col-md-3 content-card" >
+
+			<sti-card :title="$t('commons.situation')" path="/visualize/test">
 
 				<md-button class="md-icon-button" @click.native.stop>
 					

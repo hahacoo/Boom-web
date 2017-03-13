@@ -6,18 +6,23 @@
  */
 import StiIcon from 'components/icon' 
 import StiCard from 'components/card'
-
-import $ from 'jquery'
+import StiNotice from 'components/notice'
+import http from 'utils/http'
+import { subscibe, publish } from 'event'
 
 let Sti = {
 
 	install: (Vue, option) => {
 
+		//注册系统服务
+		Vue.prototype.$http = http
+		Vue.prototype.$subscibe = subscibe
+		Vue.prototype.$publish = publish
+
 		//注册全局组件
 		Vue.component('sti-icon', StiIcon)
 		Vue.component('sti-card', StiCard)
-
-		//注册系统服务
+		Vue.component('sti-notice', StiNotice)
 	}
 }
 

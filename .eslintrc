@@ -31,7 +31,7 @@ rules:
  # 禁止与null不进行类型比较(===)
  no-eq-null: 2
  # 建议将经常出现的数字提取为变量
- no-magic-numbers: [1, {ignoreArrayIndexes: true}]
+ no-magic-numbers: [0, {ignoreArrayIndexes: true}]
  # 禁止对变量重复命名
  no-redeclare: [2, {builtinGlobals: true}]
  # 建议不必要的字符串拼接

@@ -7,7 +7,6 @@ import { mapState, mapActions } from 'vuex'
 import _ from 'lodash'
 
 import appMenu from 'components/menu'
-import rootTemplate from './templates/rootTemplate'
 import appTemplate from './templates/appTemplate'
 import dashboardTemplate from './templates/dashboardTemplate'
 
@@ -22,36 +21,6 @@ let commons = {
 			user: state => state.user
 		})
 	}
-}
-
-/**
- * root创建函数
- * @param  {[type]} options [description]
- * @return {[type]}         [description]
- */
-export const createRoot = options => {
-
-	let basic = {
-
-		...commons,
-		
-		template: rootTemplate,
-
-		computed: {
-
-			...mapState({
-
-				theme: state => state.theme.curTheme,
-				locale: state => state.locale
-			})
-		}
-	}
-
-	return _.merge(
-
-		basic, 
-		options 
-	)
 }
 
 /**

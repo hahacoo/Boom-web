@@ -27,6 +27,7 @@ export default {
 		primary: 'black',
 		accent: 'pink',
 		warn: 'red',
+		notice: 'yellow',
 		background: {
 
 			color: 'grey',
