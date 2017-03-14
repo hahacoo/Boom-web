@@ -86,7 +86,7 @@ input {
 .sti-web .sti-container .sti-content {
   padding-left: 200px;
 }
-.sti-web .sti-container .sti-content .sti-aside {
+.sti-web .sti-container .sti-content .content-aside {
   height: 100%;
   width: 200px;
   position: fixed;
@@ -94,7 +94,7 @@ input {
   overflow: auto;
   z-index: 9;
 }
-.sti-web .sti-container .sti-content .sti-main {
+.sti-web .sti-container .sti-content .content-main {
   padding: 15px;
 }
 .sti-web .sti-container .sti-visualize {
@@ -102,6 +102,10 @@ input {
   width: 100%;
   padding-top: 50px;
   background-color: #131A1F;
+}
+.sti-web .sti-container .sti-visualize .visualize-main {
+  height: 100%;
+  width: 100%;
 }
 .sti-web .sti-footer {
   text-align: center;
