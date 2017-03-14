@@ -23,7 +23,7 @@ port: 8080
  # 匹配规则
  # rules:
  #  支持对象
- #  - 
+ #  -
  #    url: /test1
  #    enable: false
  #  支持字符串
@@ -86,6 +86,7 @@ src:
   - jquery
   - lodash
   - crypto-js
+  - three
 
 # 开发模式下发布路径
 dev:
@@ -103,7 +104,7 @@ sftp:
  port:
  user:
  pass:
- remotePath: 
+ remotePath:
 
 ##########################
 # end gulp
