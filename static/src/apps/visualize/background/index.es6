@@ -4,8 +4,8 @@ import * as THREE from "three"
 
 let template = `
 <div class="sti-visualize-background">
-	<div id="pic-bg"></div>
     <div id="back-common"></div>
+    <div id="pic-bg"></div>
 </div>
 `
 
@@ -73,8 +73,8 @@ export default {
 
             function animate() {
                 requestAnimationFrame(animate)
-                // mesh.rotation.x += 0.005
-                mesh.rotation.y += 0.0002
+                // mesh.rotation.x += 0.0008
+                mesh.rotation.y += 0.001
                 renderer.render(scene, camera)
             }
         }

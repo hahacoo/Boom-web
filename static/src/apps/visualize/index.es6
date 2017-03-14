@@ -10,7 +10,7 @@ let template = `
 <div class="sti-container dashboard">
 
 	<md-theme :md-name="theme">
-
+		<db-background></db-background>
 		<!--头部区域-->
 		<db-header></db-header>
 		<!--主视图区域-->
@@ -19,8 +19,9 @@ let template = `
 				<router-view></router-view>
 			</div>
 		</transition>
-		<db-background></db-background>
+
 	</md-theme>
+
 </div>
 `
 
