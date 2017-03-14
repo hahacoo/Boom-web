@@ -5,16 +5,15 @@
  * 
  * by zhangdi 03/01/17
  */
-
 //第三方依赖
 import store from 'store'//vuex
 import theme from 'theme'//vue-material
 import i18n from 'i18n'//vue-i18n
 import router from 'router'//vue-router
-import $ from 'jquery'
 //平台依赖
 import StiApp from 'lib/StiApp'
 import Sti from 'plugins/Sti'
+
 //初始化国际化插件
 i18n.init(store, 'locale')
 //初始化主题插件

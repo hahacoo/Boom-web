@@ -65,7 +65,7 @@ function generator(config, options) {
 					},	{
 						test: /\.es6$/,
 						exclude: /(node_modules|libs)/,
-						loaders: ["react-hot-loader/webpack", "babel-loader?cacheDirectory", "eslint-loader"]
+						loaders: ["babel-loader?cacheDirectory=false", "eslint-loader"]
 					}, {
 		                //文件加载器，处理文件静态资源
 		                //name: 打包后文件名称
