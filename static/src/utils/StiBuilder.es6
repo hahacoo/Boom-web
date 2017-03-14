@@ -7,6 +7,7 @@ import { mapState, mapActions } from 'vuex'
 import _ from 'lodash'
 
 import appMenu from 'components/menu'
+import visHeader from 'apps/visualize/header'
 import appTemplate from './templates/appTemplate'
 import dashboardTemplate from './templates/dashboardTemplate'
 
@@ -39,7 +40,7 @@ export const createApp = options => {
 
 		components: {
 			
-			appMenu,
+			appMenu
 		}
 	}
 
@@ -63,7 +64,12 @@ export const createDashBoard = options => {
 
 		...commons,
 
-		template:dashboardTemplate
+		template:dashboardTemplate,
+
+		components: {
+			
+			visHeader
+		}
 	}
 
 	return	_.merge(

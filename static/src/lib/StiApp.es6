@@ -2,7 +2,7 @@ import Vue from 'vue'
 import { mapState } from 'vuex'
 
 let defaultTemp = `
-<div class="sti-app" :class="theme">
+<div class="sti-web" :class="theme">
 	
 	<router-view></router-view>
 </div>
@@ -12,7 +12,7 @@ export default class StiApp {
 
 	constructor({
 
-		el = '#sti-app',
+		el = '#sti-web',
 		template = defaultTemp,
 		plugins = []
 	} = {}, store, router) {

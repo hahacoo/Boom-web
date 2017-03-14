@@ -4,7 +4,7 @@
 @import '../base/variables.less';
 @import '../base/mixins.less';
 
-.sti-app {
+.sti-web {
 	
 	height: 100%;
 	overflow-x: hidden;
@@ -17,6 +17,7 @@
 		&.dashboard {
 
 			height: 100%;
+			padding-top: 0;
 			overflow: hidden;
 
 			>.md-theme {
@@ -34,14 +35,6 @@
 			top: 0;
 			z-index: @zindex-header;
 			.transition(background-color);
-
-			.header-nav {
-				
-				height: 100%;
-				padding: 0 @base-padding;
-				display: flex;
-				align-items: center;
-			}
 		}
 
 		.sti-content {
@@ -69,7 +62,13 @@
 
 			height: 100%;
 			width: 100%;
+			padding-top: @header-height;
 			background-color: @dashboard-app-color;
+
+			.visualize-container {
+
+
+			}
 		}
 	}
 
