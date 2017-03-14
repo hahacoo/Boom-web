@@ -91,7 +91,7 @@ function generator(config, options) {
 		    	new webpack.ResolverPlugin([
 		    		new DirectoryNameAsMain()
 		    	]),
-		    	//将jquery作为全局导出，使模块可以任意调用
+		    	//将jquery作为全局导出，使所有模块可以任意调用，不需要import(require)
 		    	new webpack.ProvidePlugin({
 					$: "jquery",
 					jQuery: "jquery",

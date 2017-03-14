@@ -58,22 +58,23 @@ input {
 /**
  * layout
  */
-.sti-app {
+.sti-web {
   height: 100%;
   overflow-x: hidden;
   overflow-y: auto;
 }
-.sti-app .sti-container {
+.sti-web .sti-container {
   padding-top: 50px;
 }
-.sti-app .sti-container.dashboard {
+.sti-web .sti-container.dashboard {
   height: 100%;
+  padding-top: 0;
   overflow: hidden;
 }
-.sti-app .sti-container.dashboard > .md-theme {
+.sti-web .sti-container.dashboard > .md-theme {
   height: 100%;
 }
-.sti-app .sti-container .sti-header {
+.sti-web .sti-container .sti-header {
   height: 50px;
   line-height: 50px;
   width: 100%;
@@ -82,18 +83,10 @@ input {
   z-index: 10;
   transition: background-color 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
 }
-.sti-app .sti-container .sti-header .header-nav {
-  height: 100%;
-  padding: 0 15px;
-  display: -ms-flexbox;
-  display: flex;
-  -ms-flex-align: center;
-      align-items: center;
-}
-.sti-app .sti-container .sti-content {
+.sti-web .sti-container .sti-content {
   padding-left: 200px;
 }
-.sti-app .sti-container .sti-content .sti-aside {
+.sti-web .sti-container .sti-content .sti-aside {
   height: 100%;
   width: 200px;
   position: fixed;
@@ -101,15 +94,16 @@ input {
   overflow: auto;
   z-index: 9;
 }
-.sti-app .sti-container .sti-content .sti-main {
+.sti-web .sti-container .sti-content .sti-main {
   padding: 15px;
 }
-.sti-app .sti-container .sti-visualize {
+.sti-web .sti-container .sti-visualize {
   height: 100%;
   width: 100%;
+  padding-top: 50px;
   background-color: #131A1F;
 }
-.sti-app .sti-footer {
+.sti-web .sti-footer {
   text-align: center;
 }
 ::-webkit-scrollbar {
@@ -175,13 +169,13 @@ input {
 /**
  * layout
  */
-.sti-app.default {
+.sti-web.default {
   background-color: #F5F5F5;
 }
-.sti-app.default .sti-header {
+.sti-web.default .sti-header {
   background-color: #00BFA5;
 }
-.sti-app.default .sti-aside {
+.sti-web.default .sti-aside {
   background-color: #F5F5F5;
 }
 .md-theme-default .md-snackbar.notice .md-snackbar-container {
@@ -193,10 +187,10 @@ input {
 /**
  * layout
  */
-.sti-app.dark {
+.sti-web.dark {
   background-color: #EEEEEE;
 }
-.sti-app.dark .sti-header {
+.sti-web.dark .sti-header {
   background-color: #000;
 }
 .md-theme-dark .md-snackbar.notice .md-snackbar-container {

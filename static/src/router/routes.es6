@@ -18,7 +18,7 @@ const routes = {
 				require.ensure(['apps/app/test'], () => {
 
 					resolve(require('apps/app/test'))	
-				}, 'test')
+				}, 'app')
 			},
 			children: [
 
@@ -29,7 +29,7 @@ const routes = {
 						require.ensure(['apps/app/test/sec'], () => {
 
 							resolve(require('apps/app/test/sec'))	
-						}, 'test')
+						}, 'app')
 					}
 				},
 
@@ -40,7 +40,7 @@ const routes = {
 						require.ensure(['apps/app/test/sec'], () => {
 
 							resolve(require('apps/app/test/sec'))	
-						}, 'test')
+						}, 'app')
 					}
 				}
 			]
@@ -59,8 +59,22 @@ const routes = {
 				require.ensure(['apps/visualize/test'], () => {
 
 					resolve(require('apps/visualize/test'))	
-				}, 'dtest')
+				}, 'visualize')
 			},
+
+			children: [
+
+				{
+					path: '',
+					component: resolve => {
+
+						require.ensure(['apps/visualize/test/comp'], () => {
+
+							resolve(require('apps/visualize/test/comp'))	
+						}, 'visualize')
+					}
+				},
+			]
 		}
 	]
 }

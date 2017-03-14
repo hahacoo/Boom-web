@@ -10,14 +10,7 @@ let template = `
 
 	<md-theme :md-name="theme">
 
-		<!--头部区域-->
-		<db-header></db-header>
-		<!--主视图区域-->
-		<transition name="sti-zoom" mode="out-in" appear>
-			<div class="sti-visualize">
-				<router-view></router-view>
-			</div>
-		</transition>
+		<router-view></router-view>
 	</md-theme>
 </div>
 `
