@@ -20,6 +20,7 @@ function template(port) {
 </head>
 <body>
 	<div id="sti-app" class="sti-main" :class="theme"></div>
+	<script type="text/javascript" src="/static/stiError.js"></script>
 	<script type="text/javascript" src="http://localhost:${port}/vendor.js"></script>
 	<script type="text/javascript" src="http://localhost:${port}/commons.js"></script>
 	<script type="text/javascript" src="http://localhost:${port}/main.js"></script>

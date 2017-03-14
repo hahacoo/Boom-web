@@ -33,8 +33,6 @@ proxyAjax({
 	errorHandler: (xhr, state, errorThrown) => {
 
 		let logger = new Logger()
-
-		console.log(xhr)
 	}
 })
 

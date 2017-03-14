@@ -14,8 +14,9 @@ let template = `
 		<db-header></db-header>
 		<!--主视图区域-->
 		<transition name="sti-zoom" mode="out-in" appear>
-
-			<router-view></router-view>
+			<div class="sti-visualize">
+				<router-view></router-view>
+			</div>
 		</transition>
 	</md-theme>
 </div>

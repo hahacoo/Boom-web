@@ -5,6 +5,7 @@ import store from 'store/index'
 import App from 'apps/app'
 import HomePage from 'apps/app/home'
 import Visualize from 'apps/visualize'
+import VisHomePage from 'apps/visualize/home'
 import LoginPage from 'apps/login'
 import ErrorPage from 'apps/error'
 import filter from './filter'
@@ -29,7 +30,13 @@ let router = new Router()
 .register('/visualize', Visualize, {
 			
 	children: [
-
+		{
+			path: '',
+			component: VisHomePage,
+			meta: {
+				requestAuth: true
+			}
+		},
 		...Router.setMetas(routes.visualize, {requestAuth: true})
 	]
 })
