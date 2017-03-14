@@ -63,6 +63,19 @@ const routes = {
 					resolve(require('apps/visualize/test'))
 				}, 'visualize')
 			},
+			children: [
+
+				{
+					path: '',
+					component: resolve => {
+
+						require.ensure(['apps/visualize/test/comp'], () => {
+
+							resolve(require('apps/visualize/test/comp'))
+						}, 'visualize')
+					}
+				},
+			]
 		},
 		{
 
@@ -78,20 +91,6 @@ const routes = {
 
 				}, 'visualize')
 			},
-
-			children: [
-
-				{
-					path: '',
-					component: resolve => {
-
-						require.ensure(['apps/visualize/test/comp'], () => {
-
-							resolve(require('apps/visualize/test/comp'))
-						}, 'visualize')
-					}
-				},
-			]
 		}
 	]
 }

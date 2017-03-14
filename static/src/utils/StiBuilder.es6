@@ -8,6 +8,7 @@ import _ from 'lodash'
 
 import appMenu from 'components/menu'
 import visHeader from 'apps/visualize/header'
+import visBackground from 'apps/visualize/background'
 import appTemplate from './templates/appTemplate'
 import dashboardTemplate from './templates/dashboardTemplate'
 
@@ -18,7 +19,7 @@ let commons = {
 		...mapState({
 
 			//为每个app注入登录信息、用户信息
-			isLogin: state => state.isLogin, 
+			isLogin: state => state.isLogin,
 			user: state => state.user
 		})
 	}
@@ -39,22 +40,22 @@ export const createApp = options => {
 		template: appTemplate,
 
 		components: {
-			
+
 			appMenu
 		}
 	}
 
 	return	_.merge(
 
-		basic, 
-		options 
+		basic,
+		options
 	)
 }
 
 /**
  * 大屏创建函数
  * TODO 未完成
- * 
+ *
  * @return {[type]} [description]
  */
 export const createDashBoard = options => {
@@ -67,15 +68,16 @@ export const createDashBoard = options => {
 		template:dashboardTemplate,
 
 		components: {
-			
-			visHeader
+
+			visHeader,
+			visBackground
 		}
 	}
 
 	return	_.merge(
 
-		basic, 
-		options 
+		basic,
+		options
 	)
 }
 
@@ -94,8 +96,7 @@ export const createComp = options => {
 
 	return	_.merge(
 
-		basic, 
-		options 
+		basic,
+		options
 	)
 }
-
