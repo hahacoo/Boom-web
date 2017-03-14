@@ -1,9 +1,17 @@
 import './style'
 import { createDashBoard } from 'utils/stiBuilder'
 import * as THREE from "three"
+
+let template = `
+<div class="sti-visualize-background">
+	<div id="pic-bg"></div>
+    <div id="back-common"></div>
+</div>
+`
+
 export default {
 
-    template: '<div id="back-common"></div>',
+    template,
     created() {
 		this.initAnimation()
     },
@@ -20,7 +28,6 @@ export default {
             })
 
             function init() {
-                // console.log(THREE)
                 // TODO
                 // CAMERA
                 camera = new THREE.PerspectiveCamera(
@@ -33,7 +40,7 @@ export default {
                 // SCENE
                 scene = new THREE.Scene()
 
-                let texture = THREE.ImageUtils.loadTexture("../images/bg-2.png")
+                let texture = THREE.ImageUtils.loadTexture("/static/img/bg-2.png")
                 let geometry = new THREE.SphereGeometry(1600, 100, 100)
                 let material = new THREE.MeshBasicMaterial({
                     // color: 0xf000ff,
