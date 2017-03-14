@@ -1,9 +1,10 @@
 /**
  * 大屏入口
- * 
+ *
  */
 import { STI_THEME_DASHBORD } from 'constant'
 import dbHeader from './header'
+import dbBackground from './background'
 
 let template = `
 <div class="sti-container dashboard">
@@ -17,6 +18,7 @@ let template = `
 
 			<router-view></router-view>
 		</transition>
+		<db-background></db-background>
 	</md-theme>
 </div>
 `
@@ -26,7 +28,7 @@ export default {
 	template,
 
 	components: {
-
+		dbBackground,
 		dbHeader
 	},
 

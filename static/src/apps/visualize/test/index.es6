@@ -1,4 +1,6 @@
 import './style'
 import { createDashBoard } from 'utils/stiBuilder'
+export default {
 
-export default createDashBoard()
+    template: '<h1 style="color: white">xxxx</h1>'
+}

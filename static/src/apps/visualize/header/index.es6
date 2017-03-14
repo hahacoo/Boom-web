@@ -5,13 +5,13 @@
  */
 import { mapState, mapActions } from 'vuex'
 
-import { 
+import {
 
-	STI_THEME_DEFAULT, 
-	STI_THEME_DARK, 
-	STI_THEME_LIGHT, 
-	STI_LOCALE_ZH, 
-	STI_LOCALE_EN 
+	STI_THEME_DEFAULT,
+	STI_THEME_DARK,
+	STI_THEME_LIGHT,
+	STI_LOCALE_ZH,
+	STI_LOCALE_EN
 } from 'constant'
 import './style'
 import template from './view'
@@ -44,9 +44,9 @@ export default {
 		}),
 
 		toggleTheme() {
-			
+
 			let themes = [ STI_THEME_DEFAULT, STI_THEME_DARK ]
-			
+
 			this.updateTheme(themes.filter(item => item !== this.theme)[0])
 		},
 
