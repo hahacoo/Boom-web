@@ -1,9 +1,3 @@
-import './style'
-import template from './view'
+import { createDashBoard } from 'utils/stiBuilder'
 
-export default {
-
-	template,
-
-
-}
+export default createDashBoard()
