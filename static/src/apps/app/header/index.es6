@@ -64,11 +64,6 @@ export default {
 				path: '/'
 			})
 		}
-	},
-
-	mounted() {
-
-		console.log('xx')
 	}
 }
 

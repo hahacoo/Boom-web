@@ -42,6 +42,7 @@ const skip = function (path, state) {
 
 		var name = getFunctionName(path)
 
+		//排除webpack生成代码
 		if(name.slice(0, 8) === '_interop') {
 
 			return true
