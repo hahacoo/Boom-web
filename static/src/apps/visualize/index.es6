@@ -9,7 +9,10 @@ let template = `
 
 	<md-theme :md-name="theme">
 
-		<router-view></router-view>
+		<transition name="sti-fade" mode="out-in" appear>
+		
+			<router-view></router-view>
+		</transition>
 	</md-theme>
 </div>
 `
