@@ -23,7 +23,7 @@ let template = `
 export default {
 
 	template,
-	
+
 	data() {
 
 		return {
