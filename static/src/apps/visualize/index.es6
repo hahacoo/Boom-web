@@ -3,11 +3,9 @@
  *
  */
 import { STI_THEME_DASHBORD } from 'constant'
-import dbHeader from './header'
-import dbBackground from './background'
 
 let template = `
-<div class="sti-container dashboard">
+<div class="sti-container ${STI_THEME_DASHBORD}">
 
 	<md-theme :md-name="theme">
 
@@ -19,12 +17,7 @@ let template = `
 export default {
 
 	template,
-
-	components: {
-		dbBackground,
-		dbHeader
-	},
-
+	
 	data() {
 
 		return {

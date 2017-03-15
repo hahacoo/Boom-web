@@ -62,26 +62,20 @@ input {
   height: 100%;
   overflow-x: hidden;
   overflow-y: auto;
+  /*版权信息*/
 }
 .sti-web .sti-container {
   padding-top: 50px;
+  /*小屏app*/
+  /*大屏显示*/
 }
-.sti-web .sti-container.dashboard {
+.sti-web .sti-container.visualize {
   height: 100%;
   padding-top: 0;
   overflow: hidden;
 }
-.sti-web .sti-container.dashboard > .md-theme {
+.sti-web .sti-container.visualize > .md-theme {
   height: 100%;
-}
-.sti-web .sti-container .sti-header {
-  height: 50px;
-  line-height: 50px;
-  width: 100%;
-  position: fixed;
-  top: 0;
-  z-index: 10;
-  transition: background-color 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
 }
 .sti-web .sti-container .sti-content {
   padding-left: 200px;
@@ -102,6 +96,8 @@ input {
   width: 100%;
   padding-top: 50px;
   background-color: #131A1F;
+  position: relative;
+  z-index: 0;
 }
 .sti-web .sti-container .sti-visualize .visualize-main {
   height: 100%;

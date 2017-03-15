@@ -3,7 +3,7 @@ import { createDashBoard } from 'utils/stiBuilder'
 import * as THREE from "three"
 
 let template = `
-<div class="sti-visualize-background">
+<div class="visualize-background">
     <div id="back-common"></div>
     <div id="pic-bg"></div>
 </div>

@@ -10,7 +10,7 @@ import appMenu from 'components/menu'
 import visHeader from 'apps/visualize/header'
 import visBackground from 'apps/visualize/background'
 import appTemplate from './templates/appTemplate'
-import dashboardTemplate from './templates/dashboardTemplate'
+import generateVisTemp from './templates/generateVisTemp'
 
 let commons = {
 
@@ -58,14 +58,14 @@ export const createApp = options => {
  *
  * @return {[type]} [description]
  */
-export const createDashBoard = options => {
+export const createVisualize = (template, options) => {
 
 	//通用属性
 	let basic = {
 
 		...commons,
 
-		template:dashboardTemplate,
+		template: generateVisTemp(template),
 
 		components: {
 
@@ -81,22 +81,4 @@ export const createDashBoard = options => {
 	)
 }
 
-/**
- * comp创建函数
- * @param  {[type]} options [description]
- * @return {[type]}         [description]
- */
-export const createComp = options => {
 
-	//通用属性
-	let basic = {
-
-		...commons
-	}
-
-	return	_.merge(
-
-		basic,
-		options
-	)
-}
