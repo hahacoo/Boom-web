@@ -78,6 +78,19 @@ const routes = {
 
 				}, 'visualize')
 			},
+			children: [
+
+				{
+					path: '',
+					component: resolve => {
+
+						require.ensure(['apps/visualize/equalProtection/comp'], () => {
+
+							resolve(require('apps/visualize/equalProtection/comp'))
+						}, 'visualize')
+					}
+				},
+			]
 		}
 	]
 }
