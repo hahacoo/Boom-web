@@ -1,3 +1,10 @@
+/**
+ * 背景组件
+ * by zhangxuemei
+ * CreateTime 2017/03/14
+ * E-mail zhangxuemei@b.360.cn
+ * version 0.1 2017/03/14 16:23:30
+ */
 import './style'
 import { createDashBoard } from 'utils/stiBuilder'
 import * as THREE from "three"

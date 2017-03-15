@@ -1,4 +1,51 @@
+/**
+ * 等级保护态势感知大屏 样式文件
+ * by zhangxuemei
+ * CreateTime 2017/03/14
+ * E-mail zhangxuemei@b.360.cn
+ * version 0.1 2017/03/14 16:23:30
+ */
 .visualize-equalProtection {
+	width: 100%;
+	height: 100%;
+	color: #fff;
+	display: flex;
+	flex-direction: column;
 
-	color: #fff
+	// 搜索
+	.equalProtection-search{
+		padding: 5px 10px;
+        background-color: rgba(26, 62, 82, 0.4);
+	}
+
+	// 内容区域
+	.equalProtection-container {
+		flex-grow: 1;
+
+		display: flex;
+		flex-direction: row;
+
+		.equalProtection-container-left,
+		.equalProtection-container-right {
+			min-width: 20%;
+			border: 1px solid rgba(133, 133, 133, 0.5);
+		}
+
+		.equalProtection-container-middle {
+			flex-grow: 1;
+
+			display: flex;
+			flex-direction: column;
+
+			.middle-up, .middle-down {
+				min-height: 20%;
+				border: 1px solid rgba(133, 133, 133, 0.5);
+			}
+
+			.middle-content {
+				flex-grow: 1;
+				border: 1px solid rgba(133, 133, 133, 0.5);
+			}
+		}
+	}
 }

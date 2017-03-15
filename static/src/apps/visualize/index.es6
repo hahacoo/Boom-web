@@ -8,7 +8,6 @@ let template = `
 <div class="sti-container ${STI_THEME_DASHBORD}">
 
 	<md-theme :md-name="theme">
-
 		<router-view></router-view>
 	</md-theme>
 </div>
@@ -17,7 +16,7 @@ let template = `
 export default {
 
 	template,
-	
+
 	data() {
 
 		return {
