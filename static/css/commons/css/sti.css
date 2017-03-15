@@ -166,6 +166,15 @@ input {
 .sti-fadeInUp-leave-active {
   animation: fadeOutDown 0.5s;
 }
+/*
+ * 大屏切换效果
+ */
+.sti-bounce-enter-active {
+  animation: bounceInDown 0.5s;
+}
+.sti-bounce-leave-active {
+  animation: bounceOutUp 0.5s;
+}
 /**
  * layout
  */
