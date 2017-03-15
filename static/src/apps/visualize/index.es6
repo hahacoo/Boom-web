@@ -12,8 +12,9 @@ let template = `
 	<vis-header v-if="visualize"></vis-header>
 	<!--主视图区域-->
 	<md-theme :md-name="theme">
-
-		<router-view></router-view>
+		<transition :name="transitionName" mode="out-in" appear>
+			<router-view></router-view>
+		</transition>
 	</md-theme>
 	<!--背景区域-->
 	<vis-background v-if="visualize"></vis-background>
@@ -29,6 +30,7 @@ export default {
 		return {
 
 			visualize: false,
+			transitionName: 'sti-fade',
 			theme: STI_THEME_DASHBORD
 		}
 	},
@@ -43,7 +45,15 @@ export default {
 
 		next(vm => {
 
-			vm.visualize = to.name !== 'home'
+			if(to.name !== 'home') {
+
+				vm.visualize = true
+				vm.transitionName = 'sti-zoom'
+			} else {
+
+				vm.visualize = false
+				vm.transitionName = 'sti-fade'
+			}
 		})
 	}
 }

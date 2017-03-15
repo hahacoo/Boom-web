@@ -58,20 +58,14 @@ export const createApp = function(options) {
  *
  * @return {[type]} [description]
  */
-export const createVisualize = function(template, animate, options) {
-
-	if(arguments.length === 2 && typeof animate === 'object') {
-
-		options = animate
-		animate = undefined
-	}
+export const createVisualize = function(template, options) {
 
 	//通用属性
 	let basic = {
 
 		...commons,
 
-		template: generateVisTemp(template, animate),
+		template: generateVisTemp(template),
 
 		components: {
 

@@ -4,15 +4,12 @@
  * @param  {[type]} animate  [description]
  * @return {[type]}          [description]
  */
-function generateVisTemp(compTemp = '', animate = 'zoom') {
+function generateVisTemp(compTemp = '') {
 
 	return `
-	<transition name="sti-${animate}" mode="out-in" appear>
-
-		<div class="visualize-main">
-			${compTemp}
-		</div>
-	</transition>
+	<div class="visualize-main">
+		${compTemp}
+	</div>
 	
 	`
 }

@@ -9,7 +9,7 @@ import StiCard from 'components/card'
 import StiNotice from 'components/notice'
 import StiAssist from 'components/assist'
 import http from 'utils/http'
-import { subscibe, publish } from 'event'
+import { subscibe, publish, listen, trigger } from 'event'
 
 let Sti = {
 
@@ -19,6 +19,8 @@ let Sti = {
 		Vue.prototype.$http = http
 		Vue.prototype.$subscibe = subscibe
 		Vue.prototype.$publish = publish
+		Vue.prototype.$listen = listen
+		Vue.prototype.$trigger = trigger
 
 		//注册全局组件
 		Vue.component('sti-icon', StiIcon)
