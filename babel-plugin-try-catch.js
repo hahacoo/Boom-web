@@ -91,14 +91,21 @@ module.exports = function (babel) {
 
 	                let functionName = getFunctionName(path)
 
-	                const loc = path.node.loc || path.node.body.loc
+	                const loc = path.node.loc || path.node.body.loc || {
+
+	                		start: {
+
+	                			line: 0,
+	                			column: 0
+	                		}
+	                	}
 
 	                path.get('body').replaceWith(wrapFunction({
 	                    BODY: body,
 	                    FILENAME: t.StringLiteral(filename),
 	                    FUNCTION_NAME: t.StringLiteral(functionName),
-	                    LINE: t.NumericLiteral(1),
-	                    COLUMN: t.NumericLiteral(2),
+	                    LINE: t.NumericLiteral(loc.start.line),
+	                    COLUMN: t.NumericLiteral(loc.start.column),
 	                    ERROR_HANDLER: t.identifier(errorHandler)
 	                }))
 				}
