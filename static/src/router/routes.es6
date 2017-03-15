@@ -53,6 +53,7 @@ const routes = {
 		{
 
 			path: 'test',
+			name: 'test',
 			component: resolve => {
 				//require.ensure(dep, cb, name)
 				//dep,文件路径

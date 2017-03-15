@@ -71,7 +71,8 @@ input {
 }
 .sti-web .sti-container.visualize {
   height: 100%;
-  padding-top: 0;
+  position: relative;
+  z-index: 0;
   overflow: hidden;
 }
 .sti-web .sti-container.visualize > .md-theme {
@@ -91,13 +92,14 @@ input {
 .sti-web .sti-container .sti-content .content-main {
   padding: 15px;
 }
+.sti-web .sti-container .visualize-main {
+  height: 100%;
+  width: 100%;
+}
 .sti-web .sti-container .sti-visualize {
   height: 100%;
   width: 100%;
-  padding-top: 50px;
   background-color: #131A1F;
-  position: relative;
-  z-index: 0;
 }
 .sti-web .sti-container .sti-visualize .visualize-main {
   height: 100%;

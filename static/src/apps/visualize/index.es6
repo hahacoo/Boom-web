@@ -3,17 +3,20 @@
  *
  */
 import { STI_THEME_DASHBORD } from 'constant'
+import visHeader from './header'
+import visBackground from './background'
 
 let template = `
 <div class="sti-container ${STI_THEME_DASHBORD}">
-
+	<!--头部区域-->
+	<vis-header v-if="visualize"></vis-header>
+	<!--主视图区域-->
 	<md-theme :md-name="theme">
 
-		<transition name="sti-fade" mode="out-in" appear>
-		
-			<router-view></router-view>
-		</transition>
+		<router-view></router-view>
 	</md-theme>
+	<!--背景区域-->
+	<vis-background v-if="visualize"></vis-background>
 </div>
 `
 
@@ -25,7 +28,22 @@ export default {
 
 		return {
 
+			visualize: false,
 			theme: STI_THEME_DASHBORD
 		}
+	},
+
+	components: {
+
+		visHeader,
+		visBackground
+	},
+
+	beforeRouteEnter(to, from, next) {
+
+		next(vm => {
+
+			vm.visualize = to.name !== 'home'
+		})
 	}
 }

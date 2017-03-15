@@ -9,7 +9,7 @@ import _ from 'lodash'
 import appMenu from 'components/menu'
 import visHeader from 'apps/visualize/header'
 import visBackground from 'apps/visualize/background'
-import appTemplate from './templates/appTemplate'
+import generateAppTemp from './templates/generateAppTemp'
 import generateVisTemp from './templates/generateVisTemp'
 
 let commons = {
@@ -30,14 +30,14 @@ let commons = {
  * @param  {[type]} options 自定义参数，请勿覆盖template
  * @return {[type]}         [description]
  */
-export const createApp = options => {
+export const createApp = function(options) {
 
 	//通用属性
 	let basic = {
 
 		...commons,
 
-		template: appTemplate,
+		template: generateAppTemp(),
 
 		components: {
 
@@ -58,14 +58,20 @@ export const createApp = options => {
  *
  * @return {[type]} [description]
  */
-export const createVisualize = (template, options) => {
+export const createVisualize = function(template, animate, options) {
+
+	if(arguments.length === 2 && typeof animate === 'object') {
+
+		options = animate
+		animate = undefined
+	}
 
 	//通用属性
 	let basic = {
 
 		...commons,
 
-		template: generateVisTemp(template),
+		template: generateVisTemp(template, animate),
 
 		components: {
 

@@ -19,6 +19,7 @@ let router = new Router()
 
 		{
 			path: '',
+			name: 'home',
 			component: HomePage,
 			meta: {
 				requestAuth: true
@@ -32,6 +33,7 @@ let router = new Router()
 	children: [
 		{
 			path: '',
+			name: 'home',
 			component: VisHomePage,
 			meta: {
 				requestAuth: true

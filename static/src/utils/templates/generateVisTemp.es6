@@ -1,19 +1,20 @@
-function generateVisTemp(compTemp = '') {
+/**
+ * 大屏模板生成函数
+ * @param  {String} compTemp [description]
+ * @param  {[type]} animate  [description]
+ * @return {[type]}          [description]
+ */
+function generateVisTemp(compTemp = '', animate = 'zoom') {
 
 	return `
-	<div class="sti-visualize">
-
-		<vis-header></vis-header>
+	<transition name="sti-${animate}" mode="out-in" appear>
 
 		<div class="visualize-main">
-
 			${compTemp}
 		</div>
-
-		<vis-background></vis-background>
-	</div>
+	</transition>
+	
 	`
-
 }
 
 export default generateVisTemp

@@ -11,21 +11,17 @@ import appHeader from './header'
 
 let template = `
 <div class="sti-container" :class="theme">
-	
 	<!--头部区域-->
 	<app-header></app-header>
 	<!--主视图区域-->
 	<transition name="sti-fade" mode="out-in" appear>
-		
 		<router-view></router-view>
 	</transition>
-
+    
+	<!--提示区域-->
 	<sti-notice></sti-notice>
-
-	<footer class="sti-footer">
-		
-		{{$t('commons.footer')}}
-	</footer>	
+	<!--版权区域-->
+	<footer class="sti-footer">{{$t('commons.footer')}}</footer>	
 </div>
 `
 

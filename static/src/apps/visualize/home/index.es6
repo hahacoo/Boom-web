@@ -1,10 +1,13 @@
 import './style'
 import template from './view'
 
-export default {
+import { createVisualize } from 'utils/stiBuilder'
 
-	template,
+export default createVisualize(template, 'fade', {
 
-	
-}
+	mounted() {
+
+		console.log(1)
+	}
+})
 
