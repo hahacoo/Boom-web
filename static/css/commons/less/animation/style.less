@@ -8,18 +8,7 @@
 
   	opacity: 0
 }
-/*
- * 大屏切换
- */
-.sti-zoom-enter-active {
 
-	animation: zoomIn .5s
-}
-
-.sti-zoom-leave-active {
-
-	animation: zoomOut .5s
-}
 
 .sti-flip-enter-active {
 
@@ -32,7 +21,7 @@
 }
 
 /*
- * 菜单切换效果
+ * 自下往上切换效果
  */
 .sti-fadeInUp-enter-active {
 
@@ -42,5 +31,44 @@
 .sti-fadeInUp-leave-active {
 
 	animation: fadeOutDown .5s
+}
+
+/*
+ * 自下往上切换效果
+ */
+.sti-fadeInDown-enter-active {
+
+	animation: fadeInDown .5s
+}
+
+.sti-fadeInDown-leave-active {
+
+	animation: fadeOutUp .5s
+}
+
+/*
+ * 弹跳切换效果
+ */
+.sti-bounce-enter-active {
+
+	animation: bounceInDown .5s
+}
+
+.sti-bounce-leave-active {
+
+	animation: bounceOutUp .5s
+}
+
+/*
+ * 缩放切换
+ */
+.sti-zoom-enter-active {
+
+	animation: zoomIn .5s
+}
+
+.sti-zoom-leave-active {
+
+	animation: zoomOut .5s
 }
 

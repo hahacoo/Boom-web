@@ -142,15 +142,6 @@ input {
 .sti-fade-leave-active {
   opacity: 0;
 }
-/*
- * 大屏切换
- */
-.sti-zoom-enter-active {
-  animation: zoomIn 0.5s;
-}
-.sti-zoom-leave-active {
-  animation: zoomOut 0.5s;
-}
 .sti-flip-enter-active {
   animation: flipInX 0.5s;
 }
@@ -158,13 +149,40 @@ input {
   animation: flipOutX 0.5s;
 }
 /*
- * 菜单切换效果
+ * 自下往上切换效果
  */
 .sti-fadeInUp-enter-active {
   animation: fadeInUp 0.5s;
 }
 .sti-fadeInUp-leave-active {
   animation: fadeOutDown 0.5s;
+}
+/*
+ * 自下往上切换效果
+ */
+.sti-fadeInDown-enter-active {
+  animation: fadeInDown 0.5s;
+}
+.sti-fadeInDown-leave-active {
+  animation: fadeOutUp 0.5s;
+}
+/*
+ * 弹跳切换效果
+ */
+.sti-bounce-enter-active {
+  animation: bounceInDown 0.5s;
+}
+.sti-bounce-leave-active {
+  animation: bounceOutUp 0.5s;
+}
+/*
+ * 缩放切换
+ */
+.sti-zoom-enter-active {
+  animation: zoomIn 0.5s;
+}
+.sti-zoom-leave-active {
+  animation: zoomOut 0.5s;
 }
 /**
  * layout
