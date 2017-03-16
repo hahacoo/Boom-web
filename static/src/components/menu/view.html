@@ -1,1 +1,14 @@
-<nav></nav>
+<md-whiteframe class="content-aside" :class="{ fold: !unfold }" md-tag="aside" md-elevation="2">
+
+	<nav></nav>
+	<div class="aside-bottom">
+
+		<md-button class="bottom-icon md-icon-button md-raised md-mini md-clean md-primary"  @click.native="toggle">
+			
+			<sti-icon :icon="icon"></sti-icon>
+		</md-button>
+		<div class="bottom-content">
+			{{unfold ? $t('commons.footer') : ''}}
+		</div>
+ 	</div>
+</md-whiteframe>

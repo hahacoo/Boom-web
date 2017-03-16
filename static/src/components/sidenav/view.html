@@ -1,6 +1,11 @@
 <div class="sti-sidenav">
 
-	<md-sidenav class="md-right" ref="sidenav">
-		<slot></slot>
+	<md-sidenav class="md-right md-transparent md-primary" ref="sidenav">
+		
+		<slot>
+
+			<h3 @click="nav('/visualize/test')">一</h3>
+			<h3 @click="nav('/visualize/equalProtection')">二</h3>
+		</slot>
 	</md-sidenav>
 </div>

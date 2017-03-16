@@ -45,14 +45,15 @@ export default {
 
 		next(vm => {
 
-			if(to.name !== 'home') {
-
-				vm.visualize = true
-				vm.transitionName = 'sti-zoom'
-			} else {
+			if(to.name === 'vhome') {
 
 				vm.visualize = false
 				vm.transitionName = 'sti-fade'
+				
+			} else {
+
+				vm.visualize = true
+				vm.transitionName = 'sti-zoom'
 			}
 		})
 	}

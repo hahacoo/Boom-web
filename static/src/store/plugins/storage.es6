@@ -30,10 +30,10 @@ export default function storagePlugin({
 
 		for(; i < len; i++) {
 
-			let key = keys[i]
+			let key = keys[i],
+				value = deserialize(storage.getItem(namespace + key))
 
-			data[key] = deserialize(storage.getItem(namespace + key)) 
-					|| state[key]
+			data[key] = value === null ? state[key] : value
 		}
 
 		return data

@@ -9,7 +9,7 @@ import Vue from 'vue'
 import Vuex from 'vuex'
 
 import { 
-
+	
 	STI_LOCALE_ZH, 
 	STI_LOCALE_EN, 
 	STI_THEME_DEFAULT, 
@@ -31,8 +31,10 @@ const state = {
 		roles: [],
 		org: 'STI-WEB'
 	}, //用户信息
+	menu: true, //菜单状态
 	locale: STI_LOCALE_ZH, //国际化信息
 	theme: STI_THEME_DEFAULT //主题信息
+
 }
 
 const mutations = {
@@ -44,6 +46,10 @@ const mutations = {
 	[types.USER_UPDATE](state, user) {
 
 		state.user = user
+	},
+	[types.MENU_UPDATE](state, unfold) {
+
+		state.menu = unfold
 	},
 	[types.LOCALE_UPDATE](state, locale) {
 
@@ -66,6 +72,10 @@ const actions = {
 	updateUser: ({commit}, user) => {
 
 		commit(types.USER_UPDATE, user)
+	},
+	updateMenu: ({commit}, unfold) => {
+
+		commit(types.MENU_UPDATE, unfold)
 	},
 	updateLocale: ({commit}, locale) => {
 
@@ -97,7 +107,7 @@ export default new Vuex.Store({
 	actions,
 	plugins: [storage({
 
-		persistence: [ 'theme', 'locale' ]
+		persistence: [ 'menu', 'theme', 'locale' ]
 	})],
 	strict: process.env.NODE_ENV !== 'production'
 })

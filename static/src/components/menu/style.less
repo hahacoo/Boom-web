@@ -1,0 +1,59 @@
+.content-aside {
+
+	position: relative;
+	padding-bottom: 100px;
+
+	.aside-bottom {
+
+		color: rgba(255, 255, 255, 0.87);
+		height: 100px;
+		line-height: 100px;
+		width: 100%;
+		text-align: center;
+		transition: all .5s cubic-bezier(.25,.8,.25,1);
+		position: absolute;	
+		bottom: 0;
+
+		.bottom-icon {
+
+			margin: 0 auto;
+			position: absolute;
+			top: -20px;
+			left: 0;
+			right: 0;
+			z-index: 1
+		}
+
+		.bottom-content {
+
+			white-space: nowrap;
+			overflow: hidden;
+		}
+	}
+}
+
+.sti-web.default {
+
+	.content-aside {
+
+		background-color: #455A64;
+
+		.aside-bottom {
+
+			background-color: #00BFA5
+		}
+	}
+}
+
+.sti-web.dark {
+
+	.content-aside {
+
+		background-color: #9E9E9E;
+
+		.aside-bottom {
+
+			background-color: #000
+		}
+	}
+}

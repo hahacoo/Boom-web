@@ -10,7 +10,7 @@ import StiNotice from 'components/notice'
 import StiAssist from 'components/assist'
 import StiSidenav from 'components/sidenav'
 import http from 'utils/http'
-import { subscibe, publish, listen, trigger } from 'event'
+import { subscribe, publish, listen, trigger } from 'event'
 
 let Sti = {
 
@@ -18,7 +18,7 @@ let Sti = {
 
 		//注册系统服务
 		Vue.prototype.$http = http
-		Vue.prototype.$subscibe = subscibe
+		Vue.prototype.$subscribe = subscribe
 		Vue.prototype.$publish = publish
 		Vue.prototype.$listen = listen
 		Vue.prototype.$trigger = trigger

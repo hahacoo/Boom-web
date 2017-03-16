@@ -1,3 +1,4 @@
+import { mapState, mapActions } from 'vuex'
 import './style'
 import template from './view'
 
@@ -5,14 +6,29 @@ export default {
 
 	template,
 
+	computed: {
+
+		...mapState({
+
+			unfold: 'menu'
+		}),
+
+		icon() {
+
+			return this.unfold ? 'angle-left' : 'angle-right'
+		}
+	},
+
 	methods: {
 
-		click() {
+		...mapActions({
 
-			this.$router.push({
+			updateMenu: 'updateMenu'
+		}),
 
-				path: '/test/ace'
-			})
+		toggle() {
+
+			this.updateMenu(!this.unfold)
 		}
 	}
 }

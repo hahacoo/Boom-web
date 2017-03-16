@@ -44,7 +44,7 @@ export default {
 		bus.$emit(key, ...args)
 	},
 
-	subscibe(key, ...args) {
+	subscribe(key, ...args) {
 
 		bus.$on(key, ...args)
 	},

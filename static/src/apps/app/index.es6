@@ -17,11 +17,8 @@ let template = `
 	<transition name="sti-fade" mode="out-in" appear>
 		<router-view></router-view>
 	</transition>
-    
 	<!--提示区域-->
-	<sti-notice></sti-notice>
-	<!--版权区域-->
-	<footer class="sti-footer">{{$t('commons.footer')}}</footer>	
+	<sti-notice></sti-notice>	
 </div>
 `
 

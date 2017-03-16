@@ -1,4 +1,20 @@
 <md-speed-dial md-mode="scale" class="md-fab-bottom-right">
 
-	<slot></slot>
+	<md-button class="md-fab md-primary" md-fab-trigger>
+
+		<sti-icon icon="close" md-icon-morph></sti-icon>
+		<sti-icon icon="plus"></sti-icon>
+	</md-button>
+
+	<slot>
+			
+		<md-button class="md-fab md-mini md-clean md-primary" @click.native="showSide">
+
+			<sti-icon icon="desktop"></sti-icon>
+		</md-button>
+		<md-button class="md-fab md-mini md-clean md-primary" @click.native="backTop">
+
+			<sti-icon icon="arrow-up"></sti-icon>
+		</md-button>
+	</slot>
 </md-speed-dial>
