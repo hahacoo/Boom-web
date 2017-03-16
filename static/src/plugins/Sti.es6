@@ -8,6 +8,7 @@ import StiIcon from 'components/icon'
 import StiCard from 'components/card'
 import StiNotice from 'components/notice'
 import StiAssist from 'components/assist'
+import StiSidenav from 'components/sidenav'
 import http from 'utils/http'
 import { subscibe, publish, listen, trigger } from 'event'
 
@@ -27,6 +28,7 @@ let Sti = {
 		Vue.component('sti-card', StiCard)
 		Vue.component('sti-notice', StiNotice)
 		Vue.component('sti-assist', StiAssist)
+		Vue.component('sti-sidenav', StiSidenav)
 	}
 }
 

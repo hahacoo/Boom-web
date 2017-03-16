@@ -42,6 +42,25 @@ export const createApp = function(options) {
 		components: {
 
 			appMenu
+		},
+
+		methods: {
+
+			showSide() {
+
+				this.$refs.rightSidenav.toggle()
+			},
+
+			go(path) {
+
+				if(path === 'equal') {
+
+					this.$router.push('visualize/equalProtection')
+				} else {
+
+					this.$router.push('visualize/test')
+				}
+			}
 		}
 	}
 
