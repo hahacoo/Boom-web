@@ -44,7 +44,19 @@ const routes = {
 						}, 'app')
 
 					}
-				}
+				},
+
+				{
+					path: 'vali',
+					component: resolve => {
+
+						require.ensure(['apps/app/test/vali'], () => {
+
+							resolve(require('apps/app/test/vali'))
+						}, 'app')
+
+					}
+				},
 			]
 		}
 	],

@@ -76,6 +76,7 @@ src:
 # 模块alias
  moduleAlias:
   vue$: vue/dist/vue.common.js
+  validation: jquery-validation
  # 第三方库，单独打包
  vendor:
   - vue
@@ -87,6 +88,7 @@ src:
   - lodash
   - crypto-js
   - three
+  - jquery-validation
 
 # 开发模式下发布路径
 dev:
