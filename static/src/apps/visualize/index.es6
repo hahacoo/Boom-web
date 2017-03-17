@@ -3,8 +3,8 @@
  *
  */
 import { STI_THEME_DASHBORD } from 'constant'
-import visHeader from './header'
-import visBackground from './background'
+import visHeader from './visualizeComponents/header'
+import visBackground from './visualizeComponents/background'
 
 let template = `
 <div class="sti-container ${STI_THEME_DASHBORD}">
@@ -48,12 +48,12 @@ export default {
 			if(to.name === 'vhome') {
 
 				vm.visualize = false
-				vm.transitionName = 'sti-flippers'
+				vm.transitionName = 'sti-fade'
 
 			} else {
 
 				vm.visualize = true
-				vm.transitionName = 'sti-zoom'
+				vm.transitionName = 'sti-rotating'
 			}
 		})
 	}
