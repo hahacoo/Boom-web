@@ -48,7 +48,7 @@ export default {
 			if(to.name === 'vhome') {
 
 				vm.visualize = false
-				vm.transitionName = 'sti-fade'
+				vm.transitionName = 'sti-flippers'
 
 			} else {
 
