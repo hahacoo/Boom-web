@@ -10,8 +10,8 @@ app存放目录
 |-error 错误页面app（平台维护app）
 |-login 登录app（平台维护app）
 |-public 门户app（平台维护app）
-|-app 业务app
-|-visualize 大屏app
+|-app 业务app **所有新建的app一律放到此文件夹下面**
+|-visualize 大屏app **所有新建的大屏组件一律放到此文件夹下面**
 ```
 
 app的创建一定要通过平台的创建函数生成
@@ -34,9 +34,6 @@ export default createApp({
 	}
 })
 ```
-### bases
-
-基础文件(如主题配置文件)
 
 ### components
 
@@ -67,6 +64,56 @@ export default createApp({
 平台服务
 
 ### store
+
+状态管理(vuex)
+
+### theme
+
+主题包括两部分，一部分为通用样式，在`static/css/commons`，一部分为组件样式（vue-material、平台组件）。目前组件样式没有实现统一管理，此目录下存放为vue-material的样式配置，平台组件的配置在组件的css文件中，未来希望能找到一个合并的方式，实现统一管理。
+
+强烈建议将颜色和其他样式分开设置，如下
+
+`
+.content-aside {
+
+	position: relative;
+	padding-bottom: 100px;
+
+	.aside-bottom {
+
+		height: 100px;
+		line-height: 100px;
+		width: 100%;
+		...
+	}
+}
+
+.sti-web.default {
+
+	.content-aside {
+
+		background-color: #455A64;
+
+		.aside-bottom {
+
+			background-color: #00BFA5
+		}
+	}
+}
+
+.sti-web.dark {
+
+	.content-aside {
+
+		background-color: #424242;
+
+		.aside-bottom {
+
+			background-color: #000
+		}
+	}
+}
+`
 
 状态管理(vuex)
 

@@ -21,13 +21,5 @@ export default {
 				path: '/visualize/test'
 			}]
 		}
-	},
-
-	methods: {
-
-		click() {
-
-			this.$publish('notice.open', 'test')
-		}
 	}
 }

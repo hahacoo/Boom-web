@@ -65,13 +65,7 @@ export const createVisualize = function(template, options) {
 
 		...commons,
 
-		template: generateVisTemp(template),
-
-		components: {
-
-			visHeader,
-			visBackground
-		}
+		template: generateVisTemp(template)
 	}
 
 	return	_.merge(
