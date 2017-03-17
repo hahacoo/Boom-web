@@ -44,7 +44,9 @@ export default {
 		bus.$emit(key, ...args)
 	},
 
-	subscibe(key, ...args) {
+	subscribe(key, ...args) {
+
+		console.log(this)
 
 		bus.$on(key, ...args)
 	},

@@ -43,9 +43,9 @@ export default {
 		}
 	},
 
-	created() {
+	mounted() {
 
-		this.$subscibe('notice.open', (message, type = 'notice') => {
+		this.$subscribe('notice.open', (message, type = 'notice') => {
 
 			this.message = message
 			this.type = type

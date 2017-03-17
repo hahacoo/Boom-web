@@ -16,7 +16,7 @@ function proxyAjax({
 
 	let handler = {
 
-		apply(target, thieBinding, args) {
+		apply(target, thisBinding, args) {
 
 			if(args === undefined || args.length === 0) {
 
@@ -37,7 +37,7 @@ function proxyAjax({
 				timeout: STI_AJAX_TIMEOUT
 			})
 
-			let deferred = Reflect.apply(target, thieBinding, [ url, settings ])
+			let deferred = Reflect.apply(target, thisBinding, [ url, settings ])
 						.always(alwaysHandler)
 						.done(successHandler)
 						.catch(errorHandler)

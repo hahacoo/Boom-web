@@ -41,10 +41,7 @@ textarea {
 html,
 body {
   height: 100%;
-}
-body {
-  overflow-y: auto;
-  overflow-x: hidden;
+  overflow: hidden;
 }
 li {
   list-style: none;
@@ -61,17 +58,18 @@ input {
  */
 .sti-web {
   height: 100%;
+  position: relative;
   overflow-x: hidden;
   overflow-y: auto;
   /*版权信息*/
 }
 .sti-web .sti-container {
+  height: 100%;
   padding-top: 50px;
   /*小屏app*/
   /*大屏显示*/
 }
 .sti-web .sti-container.visualize {
-  height: 100%;
   position: relative;
   z-index: 0;
   overflow: hidden;
@@ -80,18 +78,25 @@ input {
   height: 100%;
 }
 .sti-web .sti-container .sti-content {
-  padding-left: 200px;
+  height: 100%;
+  transition: padding 0.5s cubic-bezier(0.25, 0.8, 0.25, 1);
 }
 .sti-web .sti-container .sti-content .content-aside {
   height: 100%;
   width: 200px;
-  position: fixed;
-  left: 0;
-  overflow: auto;
+  position: relative;
   z-index: 9;
+  float: left;
+  overflow: auto;
+  transition: all 0.5s cubic-bezier(0.25, 0.8, 0.25, 1);
+}
+.sti-web .sti-container .sti-content .content-aside.fold {
+  width: 50px;
 }
 .sti-web .sti-container .sti-content .content-main {
+  height: 100%;
   padding: 15px;
+  overflow: auto;
 }
 .sti-web .sti-container .visualize-main {
   height: 100%;

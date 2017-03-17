@@ -12,6 +12,7 @@ const wrapFunction = template(`{
 		BODY
 	} catch(e) {
 	    ERROR_HANDLER(e, FILENAME, FUNCTION_NAME, LINE, COLUMN)
+	    throw e
 	}
 }`)
 
