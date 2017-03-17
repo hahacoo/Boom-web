@@ -31,7 +31,7 @@ export default {
 			let container = document.querySelector('.content-main'),
 				minTop = 0, //距离顶部的最小距离
 				interval = 10, //时间间隔
-				distance = 100 //每次滚动的距离
+				distance = 50 //每次滚动的距离
 
 			let _backTop = () => {
 

@@ -49,7 +49,7 @@ export default {
 
 			this.message = message
 			this.type = type
-			this.$refs.snackbar.open()
+			this.$refs.snackbar && this.$refs.snackbar.open()
 		})
 	},
 
