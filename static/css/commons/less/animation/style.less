@@ -76,8 +76,20 @@
  * 翻转效果，由右向左
  */
 .sti-flippers-enter-active{
-    animation: rotateInDownLeft 2s
+    animation: flipOutY 1s
 }
-// .sti-flippers-leave-active{
-//     animation: flipInY .5s
-// }
+.sti-flippers-leave-active{
+
+    animation: flipOutY 1s
+}
+
+/**
+ * 以左上角为中心旋转切换动画
+ */
+.sti-rotating-enter-active{
+    animation: rotateInDownLeft 1s
+}
+.sti-rotating-leave-active{
+
+    animation: rotateOutUpLeft 1s
+}

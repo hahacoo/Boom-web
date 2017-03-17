@@ -48,12 +48,12 @@ export default {
 			if(to.name === 'vhome') {
 
 				vm.visualize = false
-				vm.transitionName = 'sti-flippers'
+				vm.transitionName = 'sti-fade'
 
 			} else {
 
 				vm.visualize = true
-				vm.transitionName = 'sti-zoom'
+				vm.transitionName = 'sti-rotating'
 			}
 		})
 	}
