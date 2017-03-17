@@ -49,7 +49,7 @@ export default {
 
 				vm.visualize = false
 				vm.transitionName = 'sti-fade'
-				
+
 			} else {
 
 				vm.visualize = true

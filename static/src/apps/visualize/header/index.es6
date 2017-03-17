@@ -61,8 +61,9 @@ export default {
 
 			this.$router.push({
 
-				path: '/'
+				path: 'test'
 			})
-		}
+		},
+
 	}
 }
