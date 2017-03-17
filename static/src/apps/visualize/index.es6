@@ -48,7 +48,7 @@ export default {
 			if(to.name !== 'home') {
 
 				vm.visualize = true
-				vm.transitionName = 'sti-zoom'
+				vm.transitionName = 'sti-flippers'
 			} else {
 
 				vm.visualize = false
