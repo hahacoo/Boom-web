@@ -13,7 +13,8 @@
  		"transform-async-to-generator",
  		"transform-object-rest-spread",
  		["./babel-plugin-try-catch", {
- 			"errorHandler": 'stiError'
+ 			"errorHandler": "stiError",
+ 			"throwError": false
  		}]
 	]
 }

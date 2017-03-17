@@ -7,7 +7,15 @@
 let template = require('babel-template'),
 	functionNameHelper = require('babel-helper-function-name')
 
-const wrapFunction = template(`{
+const noThrowFunction = template(`{
+	try {
+		BODY
+	} catch(e) {
+	    ERROR_HANDLER(e, FILENAME, FUNCTION_NAME, LINE, COLUMN)
+	}
+}`)
+
+const ThrowErrorFunction = template(`{
 	try {
 		BODY
 	} catch(e) {
@@ -15,6 +23,8 @@ const wrapFunction = template(`{
 	    throw e
 	}
 }`)
+
+let wrapFunction
 
 const getFunctionName = function(path) {
 
@@ -65,6 +75,8 @@ module.exports = function (babel) {
 		pre(file) {
 
 			errorHandler = this.opts.errorHandler
+
+			wrapFunction = this.opts.throwError ? ThrowErrorFunction : noThrowFunction
 
 			filename = file.opts.filename
 		},
