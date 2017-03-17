@@ -3,4 +3,10 @@
  */
 import { createApp } from 'utils/stiBuilder'
 
-export default createApp()
+export default createApp({
+
+	created() {
+
+		console.log('test')
+	}
+})

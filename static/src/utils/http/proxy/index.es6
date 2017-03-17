@@ -5,6 +5,7 @@
  */
 import $ from 'jquery'
 import { STI_AJAX_TIMEOUT } from 'constant'
+import { HttpLogger } from 'utils/Logger'
 
 function proxyAjax({
 
@@ -25,6 +26,10 @@ function proxyAjax({
 
 			let [ url, settings = {} ] = args
 
+			let _beforeSend = settings.beforeSend
+
+			let logger
+
 			//设置通用参数
 			Object.assign(settings, {
 
@@ -34,13 +39,33 @@ function proxyAjax({
 					...param
 				},
 
+				beforeSend: function() {
+
+					_beforeSend && _beforeSend()
+					logger = new HttpLogger()
+				},
+
 				timeout: STI_AJAX_TIMEOUT
 			})
 
+			
 			let deferred = Reflect.apply(target, thisBinding, [ url, settings ])
-						.always(alwaysHandler)
-						.done(successHandler)
-						.catch(errorHandler)
+						.always(function(data, state, xhr) {
+							logger.request(url)
+							logger.elapse()
+							alwaysHandler()
+						})
+						.done(function(data, state, xhr) {
+
+							logger.state(state)
+							logger.response(data)
+							successHandler()
+						})
+						.catch(function(xhr, state, errorThrown) {
+
+							logger.state(state)
+							errorHandler()
+						})
 
 			return deferred
 		}

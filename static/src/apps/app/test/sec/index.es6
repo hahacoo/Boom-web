@@ -3,5 +3,10 @@ import template from './template'
 
 export default {
 
-	template
+	template,
+
+	created() {
+
+		console.log('xxx')
+	}
 }

@@ -103,11 +103,8 @@ export default class Router {
 
 			let app = routes[i],
 				children = app.children
-
-			if(raw_toString.call(children) === '[object Array]') {
-
-				setMeta(app, meta)
-			}
+				
+			setMeta(app, meta)
 		}
 
 		/**
@@ -117,8 +114,16 @@ export default class Router {
 		 */
 		function setMeta(app, data) {
 
+			assign(app, meta)
+
+			let children = app.children
+
+			if(raw_toString.call(children) !== '[object Array]') {
+
+				return 
+			}
+
 			let j = 0,
-				children = app.children,
 				len = children.length
 
 			for(; j < len; j++) {
@@ -126,18 +131,24 @@ export default class Router {
 				let child = children[j]
 
 				//设置元信息
-				if(!child.meta) {
-
-					child.meta = {}
-				}
-
-				Object.assign(child.meta, data)
+				assign(child, data)
 
 				if(raw_toString.call(child.children) === '[object Array]') {
 
 					setMeta(child, data)
 				}
 			} 
+		}
+
+		function assign(comp, data) {
+
+			//设置元信息
+			if(!comp.meta) {
+
+				comp.meta = {}
+			}
+
+			Object.assign(comp.meta, data)
 		}
 
 		return routes

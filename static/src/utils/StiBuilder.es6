@@ -7,8 +7,8 @@ import { mapState, mapActions } from 'vuex'
 import _ from 'lodash'
 
 import appMenu from 'components/menu'
-import visHeader from 'apps/visualize/header'
-import visBackground from 'apps/visualize/background'
+import visHeader from 'apps/visualize/visualizeComponents/header'
+import visBackground from 'apps/visualize/visualizeComponents/background'
 import generateAppTemp from './templates/generateAppTemp'
 import generateVisTemp from './templates/generateVisTemp'
 
@@ -74,5 +74,3 @@ export const createVisualize = function(template, options) {
 		options
 	)
 }
-
-
