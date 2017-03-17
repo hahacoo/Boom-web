@@ -10,30 +10,30 @@ app存放目录
 |-error 错误页面app（平台维护app）
 |-login 登录app（平台维护app）
 |-public 门户app（平台维护app）
-|-app 业务app **所有新建的app一律放到此文件夹下面**
-|-visualize 大屏app **所有新建的大屏组件一律放到此文件夹下面**
+|-app 业务app 所有新建的app一律放到此文件夹下面
+|-visualize 大屏app 所有新建的大屏组件一律放到此文件夹下面
 ```
 
 app的创建一定要通过平台的创建函数生成
 
-```
-import { createApp } from 'utils/stiBuilder'
 
-export default createApp({
-
-	template,
-
-	data() {
-
-		return {
-		
+	import { createApp } from 'utils/stiBuilder'
+	
+	export default createApp({
+	
+		template,
+	
+		data() {
+	
+			return {
+			
+			}
+	    },
+	
+		mounted() {
 		}
-    },
+	})
 
-	mounted() {
-	}
-})
-```
 
 ### components
 
@@ -73,47 +73,49 @@ export default createApp({
 
 强烈建议将颜色和其他样式分开设置，如下
 
-`
-.content-aside {
-
-	position: relative;
-	padding-bottom: 100px;
-
-	.aside-bottom {
-
-		height: 100px;
-		line-height: 100px;
-		width: 100%;
-		...
-	}
-}
-
-.sti-web.default {
 
 	.content-aside {
-
-		background-color: #455A64;
-
+	
+		position: relative;
+		padding-bottom: 100px;
+	
 		.aside-bottom {
-
-			background-color: #00BFA5
+	
+			height: 100px;
+			line-height: 100px;
+			width: 100%;
+			...
 		}
 	}
-}
-
-.sti-web.dark {
-
-	.content-aside {
-
-		background-color: #424242;
-
-		.aside-bottom {
-
-			background-color: #000
+	
+	.sti-web.default {
+	
+		.content-aside {
+	
+			background-color: #455A64;
+	
+			.aside-bottom {
+	
+				background-color: #00BFA5
+			}
 		}
 	}
-}
-`
+	
+	.sti-web.dark {
+	
+		.content-aside {
+	
+			background-color: #424242;
+	
+			.aside-bottom {
+	
+				background-color: #000
+			}
+		}
+	}
+
+
+### store
 
 状态管理(vuex)
 

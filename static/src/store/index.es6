@@ -18,6 +18,7 @@ import {
 } from 'constant'
 import * as types from './types'
 import storage from './plugins/storage'
+import logs from './modules/console' 
 
 Vue.use(Vuex)
 
@@ -105,6 +106,10 @@ export default new Vuex.Store({
 	mutations,
 	getters,
 	actions,
+	modules: {
+
+		logs
+	},
 	plugins: [storage({
 
 		persistence: [ 'menu', 'theme', 'locale' ]

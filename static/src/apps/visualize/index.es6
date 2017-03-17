@@ -10,14 +10,14 @@ let template = `
 <div class="sti-container ${STI_THEME_DASHBORD}">
 	<!--头部区域-->
 	<vis-header v-if="visualize"></vis-header>
+	<!--背景区域-->
+	<vis-background v-if="visualize"></vis-background>
 	<!--主视图区域-->
 	<md-theme :md-name="theme">
 		<transition :name="transitionName" mode="out-in" appear>
 			<router-view></router-view>
 		</transition>
 	</md-theme>
-	<!--背景区域-->
-	<vis-background v-if="visualize"></vis-background>
 </div>
 `
 
