@@ -6,11 +6,13 @@
  */
 import Vue from 'vue'
 
+import { STI_EVENT_PREFIX } from 'constant'
+
 //用于跨组件通信
-let bus = new Vue()
+let eventHub = new Vue()
 //用于跨屏通信
 let eventList = {},
-	prefix = 'sti-event',
+	prefix = STI_EVENT_PREFIX,
 	serialize = JSON.stringify,
 	deserialize = JSON.parse
 
@@ -37,39 +39,45 @@ window.addEventListener('storage', e => {
 	}	
 })
 
-export default {
+function publish(key, ...args) {
 
-	publish(key, ...args) {
+	eventHub.$emit(key, ...args)
+}
 
-		bus.$emit(key, ...args)
-	},
+function subscribe(key, callback) {
 
-	subscribe(key, ...args) {
+	eventHub.$on(key, callback.bind(this))
+}
 
-		console.log(this)
+function trigger(key, ...args) {
 
-		bus.$on(key, ...args)
-	},
+	let data = {
 
-	trigger(key, ...args) {
-
-		let data = {
-
-			key,
-			args: args,
-			time: +new Date()
-		}
-
-		localStorage.setItem(prefix, serialize(data))
-	},
-
-	listen(key, callback) {
-
-		if(!eventList[key]) {
-
-			eventList[key] = []
-		}
-
-		eventList[key].push(callback)
+		key,
+		args: args,
+		time: +new Date()
 	}
+
+	localStorage.setItem(prefix, serialize(data))
+}
+
+function listen(key, callback) {
+
+	if(!eventList[key]) {
+
+		eventList[key] = []
+	}
+
+	eventList[key].push(callback)
+}
+
+export {
+
+	publish,
+
+	subscribe,
+
+	trigger,
+
+	listen
 }

@@ -21,9 +21,9 @@ export default {
 
 	mounted() {
 
-		this.$subscribe('sidenav.open', () => {
+		this.$subscribe('sidenav.open', function() {
 
-			this.$refs.sidenav.toggle()
+			this.$refs.sidenav && this.$refs.sidenav.toggle()
 		})
 	}
 }
