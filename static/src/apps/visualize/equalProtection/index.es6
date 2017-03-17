@@ -8,7 +8,16 @@
 import './style'
 import template from './view'
 import { createVisualize } from 'utils/stiBuilder'
+import putAway from '../visualizeComponents/putAway'    // 展开收起容器
 
 export default createVisualize(
-    template
+
+    template,
+
+    {
+        components: {
+            putAway
+        }
+    }
+
 )

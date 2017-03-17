@@ -3,8 +3,8 @@
  *
  */
 import { STI_THEME_DASHBORD } from 'constant'
-import visHeader from './header'
-import visBackground from './background'
+import visHeader from './visualizeComponents/header'
+import visBackground from './visualizeComponents/background'
 
 let template = `
 <div class="sti-container ${STI_THEME_DASHBORD}">
