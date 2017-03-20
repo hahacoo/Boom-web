@@ -58,12 +58,6 @@ export const createApp = function(options) {
  */
 export const createVisualize = function(template, options) {
 
-	// if(arguments.length === 2 && typeof transformName === 'object') {
-
-	// 	options = transformName
-	// 	transformName = undefined
-	// }
-
 	//通用属性
 	let basic = {
 

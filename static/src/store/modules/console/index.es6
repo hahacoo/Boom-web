@@ -4,19 +4,54 @@ import * as types from 'store/types'
 
 const state = {
 
-	logs: []
+	logs: {
+
+		route: [],
+		http: []
+	}
 }
 
 const mutations = {
 
-	[types.CONSOLE_UPDATE](state, log) {
+	[types.CONSOLE_UPDATE](state, {
 
-		state.logs.push(log)
+		log,
+		type
+	}) {
+
+		switch(type) {
+
+			case 'route':
+
+				state.logs.route.push(log)
+				break
+			case 'http':
+
+				state.logs.http.push(log)
+				break
+			default:
+
+				state.logs.route.push(log)
+		}
+		
 	},
 
-	[types.CONSOLE_EMPTY](state) {
+	[types.CONSOLE_EMPTY](state, type) {
 
-		state.logs = []
+		switch(type) {
+
+			case 'route':
+
+				state.logs.route = []
+				break
+			case 'http':
+
+				state.logs.http = []
+				break
+			default:
+
+				state.logs.route = []
+		}
 	}
 }
 

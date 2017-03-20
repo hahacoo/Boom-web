@@ -5,6 +5,7 @@ let defaultTemp = `
 <div class="sti-web" :class="theme">
 	
 	<router-view></router-view>
+	<sti-console></sti-console>
 </div>
 `
 

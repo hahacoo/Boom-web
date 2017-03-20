@@ -148,6 +148,15 @@ input {
 .sti-fade-leave-active {
   opacity: 0;
 }
+.sti-list-enter-active,
+.sti-list-leave-active {
+  transition: all 1s;
+}
+.stilist-enter,
+.sti-list-leave-active {
+  opacity: 0;
+  transform: translateY(10px);
+}
 .sti-flip-enter-active {
   animation: flipInX 0.5s;
 }

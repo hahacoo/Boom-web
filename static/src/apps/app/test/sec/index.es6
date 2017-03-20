@@ -3,5 +3,13 @@ import template from './template'
 
 export default {
 
-	template
+	template,
+
+	methods: {
+
+		test() {
+
+			this.$http('/app/login')
+		}
+	}
 }

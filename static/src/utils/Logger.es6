@@ -15,7 +15,8 @@ import {
 	STI_LOG_REQ_PREFIX,
 	STI_LOG_RES_PREFIX,
 	STI_LOG_ELA_PREFIX,
-	STI_LOG_STA_PREFIX
+	STI_LOG_STA_PREFIX,
+	STI_LOG_DTA_PREFIX
 } from 'constant'
 
 class Logger {
@@ -60,7 +61,7 @@ class Logger {
 			//开发模式下输出操作信息
 			this.output.log(
 
-				this.prefix, 
+				this.prefix + STI_LOG_DTA_PREFIX, 
 				this.labelStyle, 
 				this.normalStyle
 			)
@@ -92,14 +93,16 @@ class RouterLogger extends Logger {
 				`,
 		normalStyle = `
 				color: #000;
-				`
+				`,
+		output = console
 	} = {}) {
 
 		super({
 
 			prefix,
 			labelStyle,
-			normalStyle
+			normalStyle,
+			output
 		})
 
 		this.appPrefix = STI_LOG_APP_PREFIX
@@ -141,14 +144,16 @@ class HttpLogger extends Logger {
 				`,
 		normalStyle = `
 				color: #000;
-				`
+				`,
+		output = console
 	} = {}) {
 
 		super({
 
 			prefix,
 			labelStyle,
-			normalStyle
+			normalStyle,
+			output
 		})
 
 		this.reqPrefix = STI_LOG_REQ_PREFIX
