@@ -18,7 +18,7 @@ let template = `
 		<router-view></router-view>
 	</transition>
 	<!--提示区域-->
-	<sti-notice></sti-notice>	
+	<sti-notice></sti-notice>
 </div>
 `
 
