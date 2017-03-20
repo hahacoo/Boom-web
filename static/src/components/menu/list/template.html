@@ -1,0 +1,29 @@
+<li :class="{selected: selected}">
+  <a
+    :href="urlModify"
+    @click="toggle">
+      {{model.text}}
+    <span v-if="isFolder">[{{open ? '-' : '+'}}]</span>
+  </a>
+  <ul v-show="open" v-if="isFolder">
+  <item
+    class="item"
+    v-for="model in model.children"
+    :model="model">
+  </item>
+  </ul>
+</li>
+
+  <!-- <div>
+  <ul id="sti-menu-list">
+    <li v-for="item in menu">
+      <a :href="item.url|urlfilter" v-if="item.children.length==0">{{item.text}}</a>
+      <a href="javascript:void(0)" v-if="item.children.length!=0" @click="toggle">{{item.text}}</a>
+      <ul v-if="item.children.length!=0">
+        <li v-if="item.children.length!=0" v-for="sec in item.children">
+          <a :href="sec.url|urlfilter">{{sec.text}}</a>
+        </li>
+      </ul>
+    </li>
+  </ul>
+</div> -->
