@@ -76,7 +76,6 @@ class Logger {
 		}
 	}
 
-	
 }
 
 /**
@@ -127,7 +126,6 @@ class RouterLogger extends Logger {
 		this.log(this.pathPrefix + STI_BASEURL + path)
 	}
 }
-
 
 /**
  * 请求日志

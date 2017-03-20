@@ -48,7 +48,6 @@ function proxyAjax({
 				timeout: STI_AJAX_TIMEOUT
 			})
 
-			
 			let deferred = Reflect.apply(target, thisBinding, [ url, settings ])
 						.always(function(data, state, xhr) {
 							logger.request(url)
