@@ -19,19 +19,29 @@ export default createVisualize(
         components: {
             putAway
         },
-
-        computed: {
-            width: state => $('.visualize-equalProtection').width() * 0.2,
-            height: state => $('.visualize-equalProtection').height()
+        data() {
+            return {
+                width: null,
+                height: null
+            }
         },
 
         methods: {
+            /**
+             * 计算宽高
+             */
+            computSize() {
+                let container = document.getElementById("equalProtection-container")
 
+                this.width = container.offsetWidth * 0.2
+                this.height = container.offsetHeight
+
+            }
         },
 
         mounted() {
-
-            console.log(this.width, this.height)
+            this.computSize()
+            console.log("height:", $('.equalProtection-container').height(), $('.equalProtection-container'))
         }
     }
 

@@ -11,7 +11,8 @@ import $ from 'jquery'
 // import * as THREE from "three"
 
 let template = `
-<div class="visualize-put-away" @click="putAway()">
+<div class="visualize-put-away">
+    <div class="put-away-btn" @click="putAway(direction)"></div>
 </div>
 `
 
@@ -21,20 +22,12 @@ export default {
     props: {
         width: {
             type: Number,
-            default: 900,
-            required: true,
-            validator: function(value) {
-                return value >= 0
-            }
+            default: 900
         },
 
         height: {
             type: Number,
-            default: 900,
-            required: true,
-            validator: function(value) {
-                return value >= 0
-            }
+            default: 900
         },
 
         direction: {
@@ -42,40 +35,81 @@ export default {
             default: 'left'
         },
     },
+    watch: {
+        width: function(val, oldVal) {
+
+            // let self1 = this
+
+            // console.log(this.direction)
+            if (!isNaN(val)) {
+                this.container.css({
+                    "width": val,
+                    "height": this.height
+                })
+
+            }
+
+            // this.btn = $('.put-away-btn', this.el)
+
+            switch (this.direction) {
+                case 'left':
+                    this.direction_data.leftWidth = this.width
+                    this.direction_data.leftHeight = this.height
+                    this.btn.css({
+                        top: $('body', this.el).height() / 2,
+                        left: this.width
+                    })
+                    break
+                default:
+
+            }
+
+            // setTimeout(function(){
+                this.btn.addClass('btn-animation')
+            // }, 2000)
+        }
+    },
     data: function() {
-        let container = $('.visualize-put-away')
+        // let container = $('.visualize-put-away')
 
         return {
-
+            direction_data: {
+                leftWidth: null,
+                leftHeight: null,
+                leftFlag: false
+            }
         }
     },
     methods: {
-        putAway() {
-            this.container.transitionName = "sti-fading"
+        putAway( direction ) {
+
             let container_width = 0
 
-            switch ( this.direction ) {
-                case 'right':
+            switch (direction) {
+                case 'left':
+                    // this.direction_data.leftWidth
+                    if( this.direction_data.leftFlag ){
+                        // 展开
+                        container_width = this.direction_data.leftWidth
+                    }
+                    this.container.animate({
+                        width: container_width
+                    }, 300)
 
+                    this.btn.animate({
+                        left: container_width
+                    }, 300)
+                    this.direction_data.leftFlag = !this.direction_data.leftFlag
                     break
                 default:
                     container_width = 0
                     break
             }
-            this.container.css({
-                "width": container_width,
-                "height": this.height
-            })
         }
     },
     mounted() {
-        this.container = $('.visualize-put-away')
-        if( !isNaN(this.width) ) {
-            this.container.css({
-                "width": this.width,
-                "height": this.height
-            })
+        this.container = $('.visualize-put-away', this.el)
+        this.btn = $('.put-away-btn', this.el)
 
-        }
     }
 }
