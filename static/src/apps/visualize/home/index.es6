@@ -3,11 +3,5 @@ import template from './view'
 
 import { createVisualize } from 'utils/stiBuilder'
 
-export default createVisualize(template, {
-
-	created() {
-
-		console.log('xxx')
-	}
-})
+export default createVisualize(template, 'sti-fade')
 

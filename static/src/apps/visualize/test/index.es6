@@ -6,7 +6,12 @@ export default createVisualize(template, {
 
 	created() {
 
-		console.log('xxx')
+		console.log('test')
+	},
+
+	destroy() {
+
+		console.log('destroy')
 	}
 })
 

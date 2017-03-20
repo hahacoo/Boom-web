@@ -7,8 +7,6 @@ import { mapState, mapActions } from 'vuex'
 import _ from 'lodash'
 
 import appMenu from 'components/menu'
-import visHeader from 'apps/visualize/visualizeComponents/header'
-import visBackground from 'apps/visualize/visualizeComponents/background'
 import generateAppTemp from './templates/generateAppTemp'
 import generateVisTemp from './templates/generateVisTemp'
 
@@ -59,6 +57,12 @@ export const createApp = function(options) {
  * @return {[type]} [description]
  */
 export const createVisualize = function(template, options) {
+
+	// if(arguments.length === 2 && typeof transformName === 'object') {
+
+	// 	options = transformName
+	// 	transformName = undefined
+	// }
 
 	//通用属性
 	let basic = {
