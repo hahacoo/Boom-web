@@ -27,7 +27,7 @@ let privilege = [{
 	cn_name: '三级菜单222'
 }]
 
-let currentApp = null, 
+let currentApp = null,
 	appList = null,
 	currentPage = null
 
@@ -59,7 +59,7 @@ Vue.component('item', {
 				result = 'javascript:void(0)'
 			} else{
 				result = STI_BASEURL + '/' + currentApp + '/' + this.model.url
-			}	
+			}
 
 			return result
 		},
@@ -85,7 +85,7 @@ Vue.component('item', {
 	methods: {
 		//当children是当前的page时，该二级菜单要展开
 		isOpen(array){
-			
+
 			if(this.isFolder){
 				for(let i = 0; i < array.children.length; i++){
 					if(array.children && array.children.length > 0){
@@ -109,7 +109,6 @@ Vue.component('item', {
 		}
 	}
 })
-
 
 export default {
 

@@ -101,7 +101,6 @@ const routes = {
 					}
 				},
 
-
 				{
 					path: 'important',
 					component: resolve => {
@@ -173,7 +172,6 @@ const routes = {
 					menu_parent: 'expand',
 					menu_text: '三级菜单1',
 				},
-
 
 				{
 					path: 'third222',
