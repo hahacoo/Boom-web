@@ -1,6 +1,8 @@
 <md-whiteframe class="content-aside" :class="{ fold: !unfold }" md-tag="aside" md-elevation="8">
 
-	<nav></nav>
+	<nav>
+		<menu-list :menu-data='menuData'></menu-list>
+	</nav>
 	<div class="aside-bottom">
 
 		<md-button class="bottom-icon md-icon-button md-raised md-mini md-clean md-primary"  @click.native="toggle">
