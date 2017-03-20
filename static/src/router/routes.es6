@@ -76,7 +76,7 @@ const routes = {
 
 	visualize: [
 		{
-
+			name: 'page1',
 			path: 'test',
 			component: resolve => {
 				//require.ensure(dep, cb, name)
@@ -90,7 +90,7 @@ const routes = {
 			}
 		},
 		{
-
+			name: 'page',
 			path: 'equalProtection',
 			component: resolve => {
 				//require.ensure(dep, cb, name)
