@@ -51,7 +51,6 @@ export default {
 			this.type = type
 			this.$refs.snackbar && this.$refs.snackbar.open()
 		})
-	},
+	}
 
-	
 }

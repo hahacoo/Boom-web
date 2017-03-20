@@ -74,9 +74,6 @@ input {
   z-index: 0;
   overflow: hidden;
 }
-.sti-web .sti-container.visualize > .md-theme {
-  height: 100%;
-}
 .sti-web .sti-container .sti-content {
   height: 100%;
   transition: padding 0.5s cubic-bezier(0.25, 0.8, 0.25, 1);

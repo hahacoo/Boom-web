@@ -20,6 +20,10 @@ const routes = {
 					resolve(require('apps/app/test'))
 				}, 'app')
 			},
+			meta: {
+
+				appName: '测试app'
+			},
 			children: [
 
 				{
@@ -31,7 +35,12 @@ const routes = {
 							resolve(require('apps/app/test/sec'))
 						}, 'app')
 
+					},
+					meta: {
+
+						appName: '测试菜单'
 					}
+
 				},
 
 				{
@@ -43,8 +52,24 @@ const routes = {
 							resolve(require('apps/app/test/sec'))
 						}, 'app')
 
+					},
+					meta: {
+
+						appName: '测试菜单'
 					}
-				}
+				},
+
+				{
+					path: 'vali',
+					component: resolve => {
+
+						require.ensure(['apps/app/test/vali'], () => {
+
+							resolve(require('apps/app/test/vali'))
+						}, 'app')
+
+					}
+				},
 			]
 		}
 	],

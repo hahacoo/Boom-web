@@ -3,7 +3,7 @@
  */
 import './style'
 import template from './view'
-import header from 'apps/app/header'
+import header from 'apps/app/components/header'
 
 export default {
 

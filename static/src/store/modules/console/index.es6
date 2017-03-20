@@ -4,14 +4,19 @@ import * as types from 'store/types'
 
 const state = {
 
-	curTheme: 'default'
+	logs: []
 }
 
 const mutations = {
 
-	[types.THEME_UPDATE](state, theme) {
+	[types.CONSOLE_UPDATE](state, log) {
 
-		state.curTheme = theme
+		state.logs.push(log)
+	},
+
+	[types.CONSOLE_EMPTY](state) {
+
+		state.logs = []
 	}
 }
 

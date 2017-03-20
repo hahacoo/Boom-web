@@ -7,7 +7,7 @@
 import { mapState, mapActions } from 'vuex'
 
 import { STI_THEME_DEFAULT } from 'constant'
-import appHeader from './header'
+import appHeader from './components/header'
 
 let template = `
 <div class="sti-container" :class="theme">

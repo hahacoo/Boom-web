@@ -22,7 +22,8 @@ let router = new Router()
 			name: 'ahome',
 			component: HomePage,
 			meta: {
-				requestAuth: true
+				requestAuth: true,
+				appName: '首页',
 			}
 		},
 		...Router.setMetas(routes.apps, {requestAuth: true})
