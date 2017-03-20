@@ -6,6 +6,7 @@
 import $ from 'jquery'
 import { STI_AJAX_TIMEOUT } from 'constant'
 import { HttpLogger } from 'utils/Logger'
+import Console from 'utils/Console'
 
 function proxyAjax({
 
@@ -42,7 +43,10 @@ function proxyAjax({
 				beforeSend: function() {
 
 					_beforeSend && _beforeSend()
-					logger = new HttpLogger()
+					logger = new HttpLogger({
+
+						output: new Console('http')
+					})
 				},
 
 				timeout: STI_AJAX_TIMEOUT

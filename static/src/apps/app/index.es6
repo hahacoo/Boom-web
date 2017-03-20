@@ -9,6 +9,8 @@ import { mapState, mapActions } from 'vuex'
 import { STI_THEME_DEFAULT } from 'constant'
 import appHeader from './components/header'
 
+let a = 1
+
 let template = `
 <div class="sti-container" :class="theme">
 	<!--头部区域-->

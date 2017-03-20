@@ -1,0 +1,16 @@
+<md-whiteframe class="sti-draggable" md-tag="div" md-elevation="8" :style="initStyle">
+
+	<div class="draggable-header" @mousedown="drag($event)">
+		
+		<slot name="header"></slot>
+	</div>
+	<div class="draggable-body">
+		
+		<slot name="body"></slot>
+	</div>
+	<div class="draggable-resize resize-top" @mousedown="pull($event, 'top')" ref="pullTop"></div>
+    <div class="draggable-resize resize-right" @mousedown="pull($event, 'right')" ref="pullRight"></div>
+    <div class="draggable-resize resize-bottom" @mousedown="pull($event, 'bottom')" ref="pullBottom"></div>
+    <div class="draggable-resize resize-left" @mousedown="pull($event, 'left')" ref="pullLeft"></div>
+    <div class="draggable-resize resize-corner" @mousedown="pull($event, 'corner')" ref="pullCorner"></div>
+</md-whiteframe>

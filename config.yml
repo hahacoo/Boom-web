@@ -64,6 +64,7 @@ src:
   components: ./static/src/components
   constant: ./static/src/constant
   event: ./static/src/event
+  filters: ./static/src/filters
   mixins: ./static/src/mixins
   i18n: ./static/src/i18n
   lib: ./static/src/lib
