@@ -7,8 +7,32 @@
  */
 import './style'
 import template from './view'
+import $ from 'jquery'
 import { createVisualize } from 'utils/stiBuilder'
+import putAway from '../components/putAway'    // 展开收起容器
 
 export default createVisualize(
-    template
+
+    template,
+
+    {
+        components: {
+            putAway
+        },
+
+        computed: {
+            width: state => $('.visualize-equalProtection').width() * 0.2,
+            height: state => $('.visualize-equalProtection').height()
+        },
+
+        methods: {
+
+        },
+
+        mounted() {
+
+            console.log(this.width, this.height)
+        }
+    }
+
 )

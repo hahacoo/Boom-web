@@ -64,6 +64,7 @@ src:
   components: ./static/src/components
   constant: ./static/src/constant
   event: ./static/src/event
+  filters: ./static/src/filters
   mixins: ./static/src/mixins
   i18n: ./static/src/i18n
   lib: ./static/src/lib
@@ -76,6 +77,7 @@ src:
 # 模块alias
  moduleAlias:
   vue$: vue/dist/vue.common.js
+  validation: jquery-validation
  # 第三方库，单独打包
  vendor:
   - vue
@@ -87,6 +89,7 @@ src:
   - lodash
   - crypto-js
   - three
+  - jquery-validation
 
 # 开发模式下发布路径
 dev:

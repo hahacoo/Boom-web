@@ -3,19 +3,17 @@
  *
  */
 import { STI_THEME_DASHBORD } from 'constant'
-import visHeader from './header'
-import visBackground from './background'
+import visHeader from './components/header'
+import visBackground from './components/background'
 
 let template = `
 <div class="sti-container ${STI_THEME_DASHBORD}">
 	<!--头部区域-->
 	<vis-header v-if="visualize"></vis-header>
 	<!--主视图区域-->
-	<md-theme :md-name="theme">
-		<transition :name="transitionName" mode="out-in" appear>
-			<router-view></router-view>
-		</transition>
-	</md-theme>
+	<transition :name="transitionName" mode="out-in" appear>
+		<router-view></router-view>
+	</transition>
 	<!--背景区域-->
 	<vis-background v-if="visualize"></vis-background>
 </div>
@@ -30,8 +28,7 @@ export default {
 		return {
 
 			visualize: false,
-			transitionName: 'sti-fade',
-			theme: STI_THEME_DASHBORD
+			transitionName: 'sti-fade'
 		}
 	},
 
@@ -41,20 +38,39 @@ export default {
 		visBackground
 	},
 
-	beforeRouteEnter(to, from, next) {
+	watch: {
 
-		next(vm => {
+		'$route' (to, from) {
 
-			if(to.name === 'vhome') {
+			this.beforeRouter(to)
+		}
+	},
 
-				vm.visualize = false
-				vm.transitionName = 'sti-flippers'
+	methods: {
+
+		/**
+		 * 动态设置动画效果
+		 * 使用beforeRouteEnter会出现异常情况
+		 * @param  {[type]} route [description]
+		 * @return {[type]}       [description]
+		 */
+		beforeRouter(route) {
+
+			if(route.name === 'vhome') {
+
+				this.visualize = false
+				this.transitionName = 'sti-fade'
 
 			} else {
 
-				vm.visualize = true
-				vm.transitionName = 'sti-zoom'
+				this.visualize = true
+				this.transitionName = 'sti-rotating'
 			}
-		})
+		}
+	},
+
+	created() {
+
+		this.beforeRouter(this.$route)
 	}
 }

@@ -1,7 +1,6 @@
 import $ from 'jquery'
 
 import proxyAjax from './proxy'
-import Logger from 'utils/Logger'
 
 let _csrfToken
 
@@ -10,7 +9,7 @@ function getToken() {
 	return _csrfToken
 }
 
-//代理ajax操作，配置公共参数、注册回调函数
+//代理ajax操作，配置公共参数、注册公共回调函数
 proxyAjax({
 
 	param: {
@@ -18,34 +17,26 @@ proxyAjax({
 		csrfToken: getToken()
 	},
 
-	alwaysHandler: res => {
+	alwaysHandler: function(data, state, xhr) {
 
-		let logger = new Logger()
-
-		logger.say('zhang')
 	},
-	successHandler: res => {
+	successHandler: function(data, state, xhr) {
 
-		let logger = new Logger()
-
-		logger.say('success')
 	},
-	errorHandler: (xhr, state, errorThrown) => {
+	errorHandler: function(xhr, state, errorThrown) {
 
-		let logger = new Logger()
 	}
 })
 
-let request = function(...args) {
+let request = function(url, ...args) {
 
 	let promise = new Promise((resolve, reject) => {
 
-		$.ajax(...args)
-		.done(res => {
+		$.ajax(url, ...args)
+		.done(function(res) {
 
 			//TODO 平台数据处理逻辑
 			resolve(res)
-
 		})
 	})
 

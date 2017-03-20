@@ -7,7 +7,9 @@
 import { mapState, mapActions } from 'vuex'
 
 import { STI_THEME_DEFAULT } from 'constant'
-import appHeader from './header'
+import appHeader from './components/header'
+
+let a = 1
 
 let template = `
 <div class="sti-container" :class="theme">
@@ -18,7 +20,7 @@ let template = `
 		<router-view></router-view>
 	</transition>
 	<!--提示区域-->
-	<sti-notice></sti-notice>	
+	<sti-notice></sti-notice>
 </div>
 `
 

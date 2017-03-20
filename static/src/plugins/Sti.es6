@@ -4,13 +4,20 @@
  * 
  * by zhangdi 
  */
+/*组件*/
 import StiIcon from 'components/icon' 
 import StiCard from 'components/card'
 import StiNotice from 'components/notice'
 import StiAssist from 'components/assist'
 import StiSidenav from 'components/sidenav'
+import StiDrag from 'components/drag'
+import StiConsole from 'components/console'
+import { validator, validRule } from 'components/validator'
+/*服务*/
 import http from 'utils/http'
 import { subscribe, publish, listen, trigger } from 'event'
+/*过滤器*/
+import toPixel from 'filters/toPixel'
 
 let Sti = {
 
@@ -29,6 +36,13 @@ let Sti = {
 		Vue.component('sti-notice', StiNotice)
 		Vue.component('sti-assist', StiAssist)
 		Vue.component('sti-sidenav', StiSidenav)
+		Vue.component('sti-drag', StiDrag)
+		Vue.component('sti-console', StiConsole)
+		Vue.component('validator', validator)
+		Vue.component('validRule', validRule)
+
+		//注册全局过滤器
+		Vue.filter('toPixel', toPixel)
 	}
 }
 

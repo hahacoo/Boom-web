@@ -1,10 +1,13 @@
-import Logger from 'utils/Logger'
+import { RouterLogger } from 'utils/Logger'
+import Console from 'utils/Console'
 
 export default function log(to, from, store) {
 
-	let logger = new Logger()
+	let logger = new RouterLogger({
+
+		output: new Console('route')
+	})
 	
-	logger.time()
-	logger.from(from.fullPath)
-	logger.to(to.fullPath)
+	logger.path(to.fullPath)
+	logger.app(to.meta.appName || '匿名组件')
 }
