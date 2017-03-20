@@ -11,6 +11,7 @@ import StiAssist from 'components/assist'
 import StiSidenav from 'components/sidenav'
 import http from 'utils/http'
 import { subscribe, publish, listen, trigger } from 'event'
+import { validator, validRule } from 'components/validator'
 
 let Sti = {
 
@@ -29,6 +30,8 @@ let Sti = {
 		Vue.component('sti-notice', StiNotice)
 		Vue.component('sti-assist', StiAssist)
 		Vue.component('sti-sidenav', StiSidenav)
+		Vue.component('validator', validator)
+		Vue.component('validRule', validRule)
 	}
 }
 

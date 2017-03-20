@@ -57,7 +57,19 @@ const routes = {
 
 						appName: '测试菜单'
 					}
-				}
+				},
+
+				{
+					path: 'vali',
+					component: resolve => {
+
+						require.ensure(['apps/app/test/vali'], () => {
+
+							resolve(require('apps/app/test/vali'))
+						}, 'app')
+
+					}
+				},
 			]
 		}
 	],
