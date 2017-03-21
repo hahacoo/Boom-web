@@ -1,5 +1,11 @@
 <ul id="sti-menu-list" v-if='show'>
-  <item v-for="data in datas"
-    :model="data">
-  </item>
+	<item v-for="data in datas" v-if="unfold"
+	:model="data">
+	</item>
+
+  	<li v-if="!unfold" v-for="data in datas">
+	  <a :href="data|urlFilter" :class="data|selectedFilter">
+	      <i :class="data.menu_icon"></i>
+	  </a>
+	</li>
 </ul>

@@ -8,15 +8,18 @@
 		<!-- <div class="equalProtection-container-left">left</div> -->
 		<put-away :width="width" :height="height" :direction="'left'"></put-away>
 		<!-- middle -->
-		<div class="equalProtection-container-middle">
+		<div id="equalProtection-content" class="equalProtection-container-middle">
 			<!-- middle-up -->
-			<div class="middle-up">middle-up</div>
+			<put-away :top-width="topWidth" :top-height="topHeight" :direction="'top'"></put-away>
+			<!-- <div class="middle-up">middle-up</div> -->
 			<!-- middle-content -->
 			<div class="middle-content">middle-content</div>
 			<!-- middle-down -->
-			<div class="middle-down">middle-down</div>
+			<put-away :top-width="topWidth" :down-height="downHeight" :direction="'down'"></put-away>
+			<!-- <div class="middle-down">middle-down</div> -->
 		</div>
 		<!-- right -->
-		<div class="equalProtection-container-right">right</div>
+		<put-away :width="width" :height="height" :direction="'right'"></put-away>
+		<!-- <div class="equalProtection-container-right">right</div> -->
 	</div>
 </div>

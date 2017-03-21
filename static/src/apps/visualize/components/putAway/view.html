@@ -1,0 +1,16 @@
+<div class="visualize-put-away"
+	 v-bind:class="{
+		 'content-left': direction == 'left',
+		 'content-right': direction == 'right',
+		 'content-top': direction == 'top'
+	 }">
+    <div
+		class="put-away-btn"
+		v-bind:class="{
+			'put-btn-left': direction == 'left',
+			'put-btn-right': direction == 'right',
+			'put-btn-top': direction == 'top'
+		}"
+		@click="putAway(direction)">
+    </div>
+</div>

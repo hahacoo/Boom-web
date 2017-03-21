@@ -1,9 +1,10 @@
 <li :class="{selected: selected}">
-  <a
-    :href="urlModify"
+  <a :style="{paddingLeft:model.level*1+'em'}"
+    href="javascript:void(0)"
     @click="toggle">
-      {{model.menu_text}}
-    <span v-if="isFolder">[{{open ? '-' : '+'}}]</span>
+      <sti-icon :class="[firstLine?'':'noIcon',model.menu_icon]"></sti-icon>
+      <span>{{model.menu_text}}</span>
+      <span class="fa sti-menu-arrow" :class="[open?'fa-angle-down':'fa-angle-left']" v-if="isFolder"></span>
   </a>
   <ul v-show="open" v-if="isFolder">
   <item
