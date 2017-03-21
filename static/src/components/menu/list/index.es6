@@ -70,6 +70,10 @@ Vue.component('item', {
 			}
 
 			return result
+		},
+
+		firstLine(){
+			return this.model.menu_parent == undefined ? true : false
 		}
 	},
 
@@ -105,7 +109,9 @@ Vue.component('item', {
 	}
 })
 
+//menu组件入口
 export default {
+	props: ['unfold'],
 
 	template: view,
 
@@ -114,6 +120,40 @@ export default {
 			datas: [],
 			show: false
 		}
+	},
+
+	watch:{
+		unfold(val){
+			console.log(val)
+		}
+	},
+
+	filters:{
+		urlFilter(val){
+			let result = null
+
+			//如果有下一级，那么本身就没有href
+			if(val.children.length != 0){
+				result = 'javascript:void(0)'
+			} else{
+				result = STI_BASEURL + '/' + currentApp + '/' + val.path
+			}
+
+			return result
+		},
+
+		//选中的样式
+		selectedFilter(val){
+			let result = ''
+
+			if(val.path == currentPage){
+				result = 'selected'
+			} else{
+				result = ''
+			}
+
+			return result
+		},
 	},
 
 	created(){
@@ -179,7 +219,9 @@ export default {
 			let result = {},
 				visitedMAP = new Map(),
 				obj = {
-					children: []}
+					children: [],
+					level: 0}
+			//level这个字段用来标识是第几层，方便左缩进
 
 			//深度优先
 			function array2Object(node){
@@ -188,6 +230,7 @@ export default {
 					//判断是否访问过以及是不是需要找的点
 					if(list[i].menu_parent == node.path 
 						&& !visitedMAP[list[i]]){
+						list[i].level = node.level + 1
 						visitedMAP.set(list[i], true)
 						node.children.push(list[i])
 						array2Object(list[i])
