@@ -183,8 +183,26 @@ const routes = {
 						}, 'app')
 
 					},
+					menu_parent: 'third444',
+					menu_text: '某级菜单',
+				},
+
+				{
+					path: 'third333',
 					menu_parent: 'expand',
 					menu_text: '三级菜单2',
+				},
+
+				{
+					path: 'third444',
+					menu_parent: 'third333',
+					menu_text: '四级菜单',
+				},
+
+				{
+					path: 'thir_naked',
+					menu_parent: 'expand',
+					menu_text: '没有子的二级菜单',
 				},
 			]
 		}

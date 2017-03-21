@@ -1,3 +1,8 @@
+/**
+ * 配置二级菜单：不设置component
+ * 三级菜单：通过menu_parent来指定二级菜单的path
+ * app首页：path为空
+ */
 import './style'
 import view from './view'
 import template from './template'
@@ -58,7 +63,7 @@ Vue.component('item', {
 			if(this.isFolder){
 				result = 'javascript:void(0)'
 			} else{
-				result = STI_BASEURL + '/' + currentApp + '/' + this.model.url
+				result = STI_BASEURL + '/' + currentApp + '/' + this.model.path
 			}
 
 			return result
@@ -68,7 +73,7 @@ Vue.component('item', {
 		selected(){
 			let result = false
 
-			if(this.model.url == currentPage){
+			if(this.model.path == currentPage){
 				result = true
 			} else{
 				result = false
@@ -94,7 +99,7 @@ Vue.component('item', {
 						}
 					}
 
-					if(array.children[i].url == currentPage){
+					if(array.children[i].path == currentPage){
 						this.open = true
 						break
 					}
@@ -114,44 +119,99 @@ export default {
 
 	template: view,
 
-	props:['menuData'],
-
 	data(){
 		return{
-			datas: this.menuData
+			datas: [],
+			show: false
 		}
 	},
 
 	created(){
 		currentApp = this.$router.currentRoute.path.split('/')[1]
 		currentPage = this.$router.currentRoute.path.split('/')[2]
+
+		this.findAppList()
+		let menuList = this.menuFilters()
+
+		this.list2Tree(menuList)
 	},
 
 	methods: {
-		menuFilters(){
+		findAppList(){
 			//找出当前app对应的router的list
 			app.apps.forEach(function(val){
 				if(val.path == currentApp){
 					appList = val
 				}
 			})
+		},
 
+		menuFilters(){
 			//过滤router list和权限对应的菜单
-			//不停遍历privilege,同时构造菜单的数据结构，没有，就splice掉
-			//主要是二级菜单和三级菜单的区别
-			// appList.children.forEach(function(routerVal){
-			// 	console.log(routerVal)
-			// })
+			//不停遍历privilege
 
-			// this.menu = privilege.map(function(val){
-			// 	return {
-			// 		url: val.menu_path,
-			// 		text: val.cn_name,
-			// 		children: val.menu
-			// 	}
-			// })
-			// console.log('app:' + currentApp)
-			// console.log(this.menu)
+			let arr = [],
+				tmpList = appList.children
+
+			for(let i = 0; i < tmpList.length; i++){
+				//对应app的首页或者二级菜单都不用过滤
+				if(tmpList[i].path == '') {
+					continue
+				}else if(tmpList[i].component == undefined){
+					arr.push(tmpList[i])
+				} else{
+					for(let j = 0; j < privilege.length; j++){
+						if(privilege[j].menu_path == tmpList[i].path){
+							arr.push(tmpList[i])
+							continue
+						}
+					}
+				}
+			}
+
+			return arr
+		},
+
+		list2Tree(list){
+			let result = {},
+				visitedMAP = new Map(),
+				obj = {
+					children: []}
+
+			//深度优先
+			function array2Object(node){
+				node.children = []
+				for(let i = 0; i < list.length; i++){
+					//判断是否访问过以及是不是需要找的点
+					if(list[i].menu_parent == node.path 
+						&& !visitedMAP[list[i]]){
+						visitedMAP.set(list[i], true)
+						node.children.push(list[i])
+						array2Object(list[i])
+					}
+				}
+			}
+			array2Object(obj)
+
+			//这个函数还需要修改
+			function deleteEmptyMenu(node){
+				for (let i = 0; i < node.children.length; i++) {
+					if(node.children[i].component==undefined 
+						&& (node.children[i].children 
+							&& node.children[i].length==0)){
+						node.children.splice(i, 1)
+					} else{
+						deleteEmptyMenu(node.children[i])
+					}
+				}
+			}
+
+			console.log(obj)
+
+			deleteEmptyMenu(obj)
+			this.datas = obj.children
+			//this.$set('datas', obj.children)
+			this.show = true
 		}
 	}
 }
