@@ -1,5 +1,5 @@
 <div class="sti-console">
-	<sti-drag init-top="200" init-left="200" v-if="active" fix-height>
+	<sti-drag :init-top="initTop" :init-left="initLeft" :init-width="initWidth" :init-height="initHeight" v-if="active" @resize="resize" @move="move">
 	
 		<div class="console-header" slot="header">
 
@@ -8,16 +8,16 @@
 		<md-layout md-gutter slot="body">
 			
 			<md-layout>
-				<md-tabs md-fixed >
+				<md-tabs md-fixed @change="change">
 
-					<md-tab md-label="路由">
+					<md-tab md-label="路由" :md-active="activeLable == 0">
 
 						<transition-group name="list" tag="div">
 
 							<p v-for="(route, index) in routes" v-html="route" :key="index"></p>
 						</transition-group>
 					</md-tab>
-					<md-tab md-label="请求">
+					<md-tab md-label="请求" :md-active="activeLable == 1">
 
 						<transition-group name="list" tag="div">
 

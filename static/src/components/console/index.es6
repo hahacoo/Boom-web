@@ -17,7 +17,11 @@ export default {
 
 		return {
 
-			active: false
+			active: false,
+			initWidth: null,
+			initHeight: null,
+			initTop: null,
+			initLeft: null 
 		}
 	},
 
@@ -38,11 +42,41 @@ export default {
 		})
 	},
 
+	methods: {
+
+		change(label) {
+
+			this.$http.setItem('console-label', label)
+		},
+
+		resize(w, h) {
+
+			this.$http.setItem('console-width', w)
+			this.$http.setItem('console-height', h)
+		},
+
+		move(t, l) {
+
+			this.$http.setItem('console-top', t)
+			this.$http.setItem('console-left', l)
+		},
+
+		init() {
+
+			this.active = this.$http.getItem('console-active')
+			this.activeLable = this.$http.getItem('console-label')
+			this.initWidth = this.$http.getItem('console-width') || 400
+			this.initHeight = this.$http.getItem('console-height') || 400
+			this.initTop = this.$http.getItem('console-top') || 200
+			this.initLeft = this.$http.getItem('console-left') || 200
+		}
+	},
+
 	mounted() {
 
 		let that = this
 
-		this.active = JSON.parse(localStorage.getItem('sti-dev-console'))
+		this.init()
 
 		document.body.addEventListener('keydown', function(e) {
 
@@ -50,7 +84,12 @@ export default {
 
 				that.active = !that.active
 
-				localStorage.setItem('sti-dev-console', that.active)
+				that.$http.setItem('console-active', that.active)
+
+				if(that.active) {
+
+					that.init()
+				}
 			}
 		})
 	}

@@ -1,6 +1,11 @@
 import $ from 'jquery'
 
 import proxyAjax from './proxy'
+import { STI_STORAGE } from 'constant'
+
+let serialize = JSON.stringify,
+	deserialize = JSON.parse,
+	separator = '-'
 
 let _csrfToken
 
@@ -111,6 +116,36 @@ http.postJson = function(...args) {
 				contentType: 'application/json; charset=utf-8',
 				dataType: 'json'
 			})
+}
+
+/**
+ * 本地存储
+ * @param {[type]} key   [description]
+ * @param {[type]} value [description]
+ */
+http.setItem = function(key, value) {
+
+	localStorage.setItem(STI_STORAGE + separator + key, serialize(value))
+}
+
+/**
+ * [getItem description]
+ * @param  {[type]} key [description]
+ * @return {[type]}     [description]
+ */
+http.getItem = function(key) {
+
+	return deserialize(localStorage.getItem(STI_STORAGE + separator + key))
+}
+
+/**
+ * [remove description]
+ * @param  {[type]} key [description]
+ * @return {[type]}     [description]
+ */
+http.remove = function(key) {
+
+	localStorage.removeItem(STI_STORAGE + separator + key)
 }
 
 export default http

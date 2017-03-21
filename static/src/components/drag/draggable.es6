@@ -105,7 +105,14 @@ export default function drag(elementToDrag, event, moveHandler, upHandler) {
 	*/
 	function upFn(e) {
 
-		upHandler && upHandler(e)
+		let posTop = +elementToDrag.style.top.slice(0, -2),
+			posLeft = +elementToDrag.style.left.slice(0, -2)
+
+		upHandler && upHandler(
+			e, 
+			posTop, 
+			posLeft
+		)
 
 		if (document.removeEventListener) {
 
