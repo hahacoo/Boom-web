@@ -21,11 +21,16 @@ export default createVisualize(
         },
         data() {
             return {
-                width: null,
-                height: null,
+                leftWidth: null,
+                leftHeight: null,
                 topWidth: null,
                 topHeight: null,
-                downHeight: null
+                downHeight: null,
+                rightWidth: null,
+                rightHeight: null,
+                full_screen: false,
+                shown_btn: true,
+                information: "全屏"
             }
         },
 
@@ -37,21 +42,43 @@ export default createVisualize(
                 let container = document.getElementById("equalProtection-container"),
                     middle_content = document.getElementById("equalProtection-content")
 
-                this.width = container.offsetWidth * 0.2
-                this.height = container.offsetHeight
+                this.leftWidth = container.offsetWidth * 0.2
+                this.leftHeight = container.offsetHeight
+                this.rightWidth = container.offsetWidth * 0.3
+                this.rightHeight = container.offsetHeight
                 this.topWidth = middle_content.offsetWidth
                 this.topHeight = middle_content.offsetHeight * 0.2
                 this.downHeight = middle_content.offsetHeight * 0.3
 
-                console.log(this.topWidth, this.topHeight, document.getElementById("equalProtection-content"))
+            },
+            fullScreen() {
 
+                if( !this.full_screen ){
+                    // 全屏
+                    this.leftWidth = 0
+                    this.topHeight = 0
+                    this.downHeight = 0
+                    this.rightWidth = 0
+
+                    this.shown_btn = false
+
+                    $('i').removeClass('fa-expand')
+                    $('i').addClass('fa-compress')
+                    this.information = "取消全屏"
+                }else{
+                    this.computSize()
+                    this.shown_btn = true
+                    $('i').removeClass('fa-compress')
+                    $('i').addClass('fa-expand')
+                    this.information = "全屏"
+                }
+
+                this.full_screen = !this.full_screen
             }
         },
 
         mounted() {
             this.computSize()
-            
-            // console.log("height:", $('.equalProtection-container').height(), $('.equalProtection-container'))
         }
     }
 
