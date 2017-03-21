@@ -62,12 +62,26 @@ export default createVisualize(
 
                     this.shown_btn = false
 
+                    // $('.equalProtection-search', this.$el).css({
+                    //     'display': 'none'
+                    // })
+                    //
+                    // $('.visualize-header').css({
+                    //     'display': 'none'
+                    // })
+
                     $('i').removeClass('fa-expand')
                     $('i').addClass('fa-compress')
                     this.information = "取消全屏"
                 }else{
                     this.computSize()
                     this.shown_btn = true
+                    // $('.equalProtection-search', this.$el).css({
+                    //     'display': 'block'
+                    // })
+                    // $('.visualize-header').css({
+                    //     'display': 'block'
+                    // })
                     $('i').removeClass('fa-compress')
                     $('i').addClass('fa-expand')
                     this.information = "全屏"
