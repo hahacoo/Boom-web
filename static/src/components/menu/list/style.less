@@ -2,16 +2,46 @@
 	cursor: pointer;
 	li {
 		margin-top: 1px;
-		background-color: lightblue;
-	 	padding-left: 1em;
+		background-color: inherit;
 	 	line-height: 1.5em;
-	 	list-style-type: dot;
 	}
 	a{
-		color: black
+		overflow: hidden;
+		height: 35px;
+		display: block;
+		text-decoration: none;
+		&:hover{
+			color: #fff;
+		}
+
+		.md-button{
+			display: block;
+			font-size: 17px;
+			color: #a7b1c2;
+			padding: 0;
+			width: 100%;
+			margin: 0;
+			text-align: left;
+		}
+
+		.sti-menu-arrow{
+			position: absolute;
+			top: 25%;
+			right: 0;
+			margin-right: 10px;
+		}
+
+		.unfold-btn{
+			padding-left: 17px
+		}
 	}
 
 	.selected{
-		background-color: yellow
+		color: #fff;
+		button span{
+			color: #fff;
+		}
 	}
+
+
 }

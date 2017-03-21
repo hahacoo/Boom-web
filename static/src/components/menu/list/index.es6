@@ -70,6 +70,20 @@ Vue.component('item', {
 			}
 
 			return result
+		},
+
+		firstLine(){
+			return this.model.menu_parent == undefined ? true : false
+		},
+
+		iconShow(){
+			return this.firstLine?this.model.menu_icon:''
+		}
+	},
+
+	filters:{
+		arrowFilter(val){
+			return val?'fa-angle-down':'fa-angle-left'
 		}
 	},
 
@@ -100,12 +114,16 @@ Vue.component('item', {
 		toggle() {
 			if (this.isFolder) {
 				this.open = !this.open
+			} else{
+				this.$router.push(this.model.path)
 			}
 		}
 	}
 })
 
+//menu组件入口
 export default {
+	props: ['unfold'],
 
 	template: view,
 
@@ -113,6 +131,12 @@ export default {
 		return{
 			datas: [],
 			show: false
+		}
+	},
+
+	watch:{
+		unfold(val){
+			console.log(val)
 		}
 	},
 
@@ -179,7 +203,9 @@ export default {
 			let result = {},
 				visitedMAP = new Map(),
 				obj = {
-					children: []}
+					children: [],
+					level: 0}
+			//level这个字段用来标识是第几层，方便左缩进
 
 			//深度优先
 			function array2Object(node){
@@ -188,6 +214,7 @@ export default {
 					//判断是否访问过以及是不是需要找的点
 					if(list[i].menu_parent == node.path 
 						&& !visitedMAP[list[i]]){
+						list[i].level = node.level + 1
 						visitedMAP.set(list[i], true)
 						node.children.push(list[i])
 						array2Object(list[i])
@@ -232,6 +259,13 @@ export default {
 			deleteEmptyMenu(obj)
 
 			return obj.children
+		},
+
+		clickBtn(item) {
+			if (item.children.length == 0) {
+				this.$router.push(item.path)
+			}
+			//else要弹窗
 		}
 	}
 }

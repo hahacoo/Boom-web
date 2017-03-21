@@ -99,7 +99,8 @@ const routes = {
 							resolve(require('apps/app/config/important'))
 						}, 'app')
 
-					}
+					},
+					menu_icon: 'snowflake-o'
 				},
 
 				{
@@ -139,7 +140,8 @@ const routes = {
 							},
 							menu_text: '编辑',
 						}
-					]
+					],
+					menu_icon: 'snowflake-o'
 				},
 
 				{
@@ -153,11 +155,13 @@ const routes = {
 
 					},
 					menu_text: '用户管理',
+					menu_icon: 'snowflake-o'
 				},
 
 				{
 					path: 'expand',
 					menu_text: '二级菜单',
+					menu_icon: 'snowflake-o'
 				},
 
 				{
@@ -172,6 +176,7 @@ const routes = {
 					},
 					menu_parent: 'expand',
 					menu_text: '三级菜单1',
+					menu_icon: 'snowflake-o'
 				},
 
 				{
@@ -186,24 +191,28 @@ const routes = {
 					},
 					menu_parent: 'third444',
 					menu_text: '某级菜单',
+					menu_icon: 'snowflake-o'
 				},
 
 				{
 					path: 'third333',
 					menu_parent: 'expand',
 					menu_text: '三级菜单2',
+					menu_icon: 'snowflake-o'
 				},
 
 				{
 					path: 'third444',
 					menu_parent: 'third333',
 					menu_text: '四级菜单',
+					menu_icon: 'snowflake-o'
 				},
 
 				{
 					path: 'thir_naked',
 					menu_parent: 'expand',
 					menu_text: '没有子的二级菜单',
+					menu_icon: 'snowflake-o'
 				},
 
 				{
@@ -217,6 +226,7 @@ const routes = {
 
 					},
 					menu_text: 'vali',
+					menu_icon: 'snowflake-o'
 				}
 			]
 		}

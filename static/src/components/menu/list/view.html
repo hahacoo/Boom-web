@@ -1,5 +1,15 @@
 <ul id="sti-menu-list" v-if='show'>
-  <item v-for="data in datas"
-    :model="data">
-  </item>
+	<item v-for="data in datas" v-if="unfold"
+	:model="data">
+	</item>
+
+  	<li v-if="!unfold" v-for="data in datas">
+	  <a href="javascript:void(0)"
+    @click="clickBtn(data)">
+	    <md-button class="unfold-btn">
+	          <sti-icon :icon="data.menu_icon"></sti-icon>
+	      </md-button>
+	  	
+	  </a>
+	</li>
 </ul>

@@ -1,9 +1,11 @@
 <li :class="{selected: selected}">
-  <a
-    :href="urlModify"
+  <a href="javascript:void(0)"
     @click="toggle">
-      {{model.menu_text}}
-    <span v-if="isFolder">[{{open ? '-' : '+'}}]</span>
+      <md-button :style="{paddingLeft:model.level*1+'em'}">
+          <sti-icon :icon="iconShow"></sti-icon>
+          <span>{{model.menu_text}}</span>
+          <sti-icon class="sti-menu-arrow" :icon="open|arrowFilter" v-if="isFolder"></sti-icon>
+      </md-button>
   </a>
   <ul v-show="open" v-if="isFolder">
   <item
@@ -13,17 +15,3 @@
   </item>
   </ul>
 </li>
-
-  <!-- <div>
-  <ul id="sti-menu-list">
-    <li v-for="item in menu">
-      <a :href="item.url|urlfilter" v-if="item.children.length==0">{{item.text}}</a>
-      <a href="javascript:void(0)" v-if="item.children.length!=0" @click="toggle">{{item.text}}</a>
-      <ul v-if="item.children.length!=0">
-        <li v-if="item.children.length!=0" v-for="sec in item.children">
-          <a :href="sec.url|urlfilter">{{sec.text}}</a>
-        </li>
-      </ul>
-    </li>
-  </ul>
-</div> -->

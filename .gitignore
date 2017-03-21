@@ -7,5 +7,7 @@ static/js/dev
 static/js/pro
 static/dist
 
-static/css/commons/css
+static/css/commons/css/map
+static/css/commons/css/sti.min.css
 static/dist
+views/ejs/index.ejs

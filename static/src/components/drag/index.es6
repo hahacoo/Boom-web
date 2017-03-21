@@ -32,6 +32,12 @@ export default {
 			default: 400
 		},
 
+		initHeight: {
+
+			type: [ Number, String ],
+			default: 400
+		},
+
 		minWidth: {
 
 			type: Number,
@@ -64,7 +70,7 @@ export default {
 
 			return {
 
-				height: this.height + 'px',
+				height: this.initHeight + 'px',
 				width: width.slice(-1) == '%' ? width :  width + suffix,
 				top: top.slice(-1) == '%' ? top :  top + suffix,
 				left: left.slice(-1) == '%' ? left :  left + suffix
@@ -98,7 +104,10 @@ export default {
                 let elementToDrag = this.$el
 
                 //注册拖动事件
-                draggable(elementToDrag, event)
+                draggable(elementToDrag, event, null, (e, top, left) => {
+
+					this.$emit('move', top, left)
+                })
             }
 		},
 
@@ -106,83 +115,91 @@ export default {
 
 			if(event.which === 1) {
 
-			let elementToPull = null,
-				dialog = this.$el
+				let elementToPull = null,
+					dialog = this.$el
 
-			let height = dialog.offsetHeight,
-				width = dialog.offsetWidth,
-				top = dialog.offsetTop,
-				left = dialog.offsetLeft
+				let height = dialog.offsetHeight,
+					width = dialog.offsetWidth,
+					top = dialog.offsetTop,
+					left = dialog.offsetLeft
 
-			let minHeight = 30,
-				minWidth = this.minWidth
+				let minHeight = 30,
+					minWidth = this.minWidth
 
-			switch(direction) {
+				let noty = () => {
 
-				case 'top':
+					let reWidth = +dialog.style.width.slice(0, -2),
+						reHeight = +dialog.style.height.slice(0, -2)
 
-					elementToPull = this.$refs.pulltop
-					pullable(elementToPull, event, function(moveX, moveY) {
+					this.$emit('resize', reWidth, reHeight)
+				}
 
-						//获取位置数值
-						let cssHeight = height - moveY
+				switch(direction) {
 
-						if(cssHeight >= minHeight) {
-							dialog.style.top =  top + moveY + 'px'
-							dialog.style.height =  cssHeight + 'px'
-						}
+					case 'top':
 
-					})
-					break
-				case 'right':
+						elementToPull = this.$refs.pulltop
+						pullable(elementToPull, event, function(moveX, moveY) {
 
-					elementToPull = this.$refs.pullright
-					pullable(elementToPull, event, function(moveX, moveY) {
+							//获取位置数值
+							let cssHeight = height - moveY
 
-						//获取位置数值
-						let cssWidth = width + moveX
+							if(cssHeight >= minHeight) {
+								dialog.style.top =  top + moveY + 'px'
+								dialog.style.height =  cssHeight + 'px'
+							}
 
-						dialog.style.width =  (cssWidth < minWidth ? minWidth : cssWidth) + 'px'
-					})
-					break
-				case 'bottom':
+						}, noty)
+						break
+					case 'right':
 
-					elementToPull = this.$refs.pullbottom
-					pullable(elementToPull, event, function(moveX, moveY) {
+						elementToPull = this.$refs.pullright
+						pullable(elementToPull, event, function(moveX, moveY) {
 
-						//获取位置数值
-						let cssHeight = height + moveY
+							//获取位置数值
+							let cssWidth = width + moveX
 
-						dialog.style.height =  (cssHeight < minHeight ? minHeight : cssHeight) + 'px'
-					})
-					break
-				case 'left':
+							dialog.style.width =  (cssWidth < minWidth ? minWidth : cssWidth) + 'px'
+						}, noty)
+						break
+					case 'bottom':
 
-					elementToPull = this.$refs.pullleft
-					pullable(elementToPull, event, function(moveX, moveY) {
+						elementToPull = this.$refs.pullbottom
+						pullable(elementToPull, event, function(moveX, moveY) {
 
-						//获取位置数值
-						let cssWidth = width - moveX
+							//获取位置数值
+							let cssHeight = height + moveY
 
-						if(cssWidth >= minWidth) {
-							dialog.style.left =  left + moveX + 'px'
-							dialog.style.width =  cssWidth + 'px'
-						}
-					})
-					break
-				case 'corner':
+							dialog.style.height =  (cssHeight < minHeight ? minHeight : cssHeight) + 'px'
+						}, noty)
+						break
+					case 'left':
 
-					elementToPull = this.$refs.pullcorner
-					pullable(elementToPull, event, function(moveX, moveY) {
-						//获取位置数值
-						let cssHeight = height + moveY,
-							cssWidth = width + moveX
+						elementToPull = this.$refs.pullleft
+						pullable(elementToPull, event, function(moveX, moveY) {
 
-						dialog.style.width =  (cssWidth < minWidth ? minWidth : cssWidth) + 'px'
-						dialog.style.height =  (cssHeight < minHeight ? minHeight : cssHeight) + 'px'
-					})
-					break
-			}
+							//获取位置数值
+							let cssWidth = width - moveX
+
+							if(cssWidth >= minWidth) {
+								dialog.style.left =  left + moveX + 'px'
+								dialog.style.width =  cssWidth + 'px'
+							}
+						}, noty)
+						break
+					case 'corner':
+
+						elementToPull = this.$refs.pullcorner
+						pullable(elementToPull, event, function(moveX, moveY) {
+							//获取位置数值
+							let cssHeight = height + moveY,
+								cssWidth = width + moveX
+
+							dialog.style.width =  (cssWidth < minWidth ? minWidth : cssWidth) + 'px'
+							dialog.style.height =  (cssHeight < minHeight ? minHeight : cssHeight) + 'px'
+						}, noty)
+						break
+				}
 
 			}
 		}

@@ -34,8 +34,6 @@ function proxyAjax({
 			//设置url
 			url = pathJoin(STI_AJAX_BASEURL, url)
 
-			console.log(url)
-
 			//设置通用参数
 			Object.assign(settings, {
 
