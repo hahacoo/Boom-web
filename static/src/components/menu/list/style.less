@@ -8,30 +8,40 @@
 	a{
 		overflow: hidden;
 		height: 35px;
-		font-size: 17px;
-		color: #a7b1c2;
 		display: block;
 		text-decoration: none;
-		padding: 5px 0 5px 10px;
 		&:hover{
 			color: #fff;
-			background-color: #293846
 		}
 
-		.noIcon{
-			visibility: hidden
+		.md-button{
+			display: block;
+			font-size: 17px;
+			color: #a7b1c2;
+			padding: 0;
+			width: 100%;
+			margin: 0;
+			text-align: left;
 		}
 
 		.sti-menu-arrow{
-			float: right;
+			position: absolute;
+			top: 25%;
+			right: 0;
 			margin-right: 10px;
+		}
+
+		.unfold-btn{
+			padding-left: 15px
 		}
 	}
 
 	.selected{
 		color: #fff;
-		a{
+		button span{
 			color: #fff;
 		}
 	}
+
+
 }
