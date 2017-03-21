@@ -104,6 +104,8 @@ Vue.component('item', {
 		toggle() {
 			if (this.isFolder) {
 				this.open = !this.open
+			} else{
+				this.$router.push(this.model.path)
 			}
 		}
 	}
