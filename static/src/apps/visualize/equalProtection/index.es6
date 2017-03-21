@@ -41,7 +41,8 @@ export default createVisualize(
 
         mounted() {
             this.computSize()
-            console.log("height:", $('.equalProtection-container')[0].clientHeight, $('.equalProtection-container'))
+            
+            // console.log("height:", $('.equalProtection-container').height(), $('.equalProtection-container'))
         }
     }
 

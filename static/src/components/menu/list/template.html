@@ -2,7 +2,7 @@
   <a
     :href="urlModify"
     @click="toggle">
-      {{model.text}}
+      {{model.menu_text}}
     <span v-if="isFolder">[{{open ? '-' : '+'}}]</span>
   </a>
   <ul v-show="open" v-if="isFolder">
