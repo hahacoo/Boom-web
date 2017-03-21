@@ -44,7 +44,7 @@ const getFunctionName = function(path) {
 
 const skip = function (path, state) {
 
-	if(!errorHandler || state.end) {
+	if(state.opts.enable === false || !errorHandler || state.end) {
 
 		return true	
 	}

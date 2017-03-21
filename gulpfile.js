@@ -172,17 +172,9 @@ function webpackBundle(done) {
 
 			watch: false,
 
-			devtool: '#source-map', //sourcemap生成方式
+			devtool: false, //webpack打包前源文件sourcemap生成方式
 
 	        module: {
-
-	        	preLoaders: [
-		        	{
-						test: /\.es6$/,
-						exclude: /(node_modules|libs)/,
-						loader: "eslint-loader",
-					}
-		        ],
 
 	        	loaders: [
 	        		{
@@ -198,9 +190,7 @@ function webpackBundle(done) {
 						exclude: /(node_modules|libs)/,
 						loader: "babel-loader",
 						query: {
-							presets: ['es2015'],
 							plugins: [
-								'add-module-exports',
 								['transform-runtime', {
 
 									"helpers": true, // defaults to true
@@ -208,8 +198,9 @@ function webpackBundle(done) {
 								    "regenerator": true, // defaults to true
 								    "moduleName": "babel-runtime" // defaults to "babel-runtime"
 								}],
-								"transform-async-to-generator",
-								"transform-object-rest-spread"
+								[path.resolve('./babel-plugin-try-catch'), {
+						 			"enable": false
+						 		}],
 							]
 						}
 					}, 
@@ -259,6 +250,7 @@ function webpackBundle(done) {
 		        }),
 		        //文件压缩
 	            new UglifyJsParallelPlugin({
+	            	sourceMap: false, //针对打包后的bundle的源文件
 	            	workers: os.cpus().length,
 				    compress: {
 				        warnings: false
@@ -289,14 +281,6 @@ function webpackBundle(done) {
 
 	        module: {
 
-	        	preLoaders: [
-		        	{
-						test: /\.es6$/,
-						exclude: /(node_modules|libs)/,
-						loader: "eslint-loader",
-					}
-		        ],
-
 	        	loaders: [
 	        		{
 						test: /\.css$/,
@@ -312,9 +296,7 @@ function webpackBundle(done) {
 						exclude: /(node_modules|libs)/,
 						loader: "babel-loader",
 						query: {
-							presets: ['es2015'],
 							plugins: [
-								'add-module-exports',
 								['transform-runtime', {
 
 									"helpers": true, // defaults to true
@@ -322,8 +304,9 @@ function webpackBundle(done) {
 								    "regenerator": true, // defaults to true
 								    "moduleName": "babel-runtime" // defaults to "babel-runtime"
 								}],
-								"transform-async-to-generator",
-								"transform-object-rest-spread"
+								[path.resolve('./babel-plugin-try-catch'), {
+						 			"enable": false
+						 		}]
 							]
 						}
 					}, {

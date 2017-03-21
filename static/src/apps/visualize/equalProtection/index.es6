@@ -8,7 +8,7 @@
 import './style'
 import template from './view'
 import $ from 'jquery'
-import { createVisualize } from 'utils/stiBuilder'
+import { createVisualize } from 'utils'
 import putAway from '../components/putAway'    // 展开收起容器
 
 export default createVisualize(
@@ -50,6 +50,7 @@ export default createVisualize(
 
         mounted() {
             this.computSize()
+            
             // console.log("height:", $('.equalProtection-container').height(), $('.equalProtection-container'))
         }
     }

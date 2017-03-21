@@ -109,7 +109,7 @@ export default {
                     }
                     $('.put-btn-top', this.$el).css({
                         top: this.topHeight + this.random_number * 7,
-                        left: this.topWidth/2 - this.random_number,
+                        left: this.topWidth / 2 - this.random_number,
                         right: 'initial',
                         transform: 'rotate(90deg) scale(1.5)'
                     })
@@ -121,35 +121,7 @@ export default {
             // setTimeout(function(){
                 this.btn.addClass('btn-animation')
             // }, 2000)
-        },
-        // topHeight: function(val, oldVal) {
-        //     switch (this.direction) {
-        //         case 'top':
-        //             console.log(this.topWidth, this.topHeight, "top")
-        //             this.direction_data.topWidth = this.topWidth
-        //             this.direction_data.topHeight = this.topHeight
-        //
-        //             if (!isNaN(val)) {
-        //                 $('.content-top').css({
-        //                     "height": this.topHeight
-        //                 })
-        //
-        //             }
-        //             $('.put-btn-top', this.$el).css({
-        //                 top: this.topHeight + this.random_number * 7,
-        //                 left: this.topWidth/2 - this.random_number,
-        //                 right: 'initial',
-        //                 transform: 'rotate(90deg) scale(1.5)'
-        //             })
-        //             break
-        //         default:
-        //
-        //     }
-        //
-        //     // setTimeout(function(){
-        //         this.btn.addClass('btn-animation')
-        //     // }, 2000)
-        // }
+        }
     },
     data: function() {
         // let container = $('.visualize-put-away')

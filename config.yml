@@ -89,7 +89,8 @@ src:
   - lodash
   - crypto-js
   - three
-  - jquery-validation
+  - validation/dist/additional-methods
+  - validation/dist/localization/messages_zh
 
 # 开发模式下发布路径
 dev:

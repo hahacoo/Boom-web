@@ -1,10 +1,10 @@
 /**
- * 平台工具函数
+ * 工具库
  *
  * by zhangdi
  */
-import { mapState, mapActions } from 'vuex'
 import _ from 'lodash'
+import { mapState, mapActions } from 'vuex'
 
 import appMenu from 'components/menu'
 import generateAppTemp from './templates/generateAppTemp'
@@ -28,7 +28,7 @@ let commons = {
  * @param  {[type]} options 自定义参数，请勿覆盖template
  * @return {[type]}         [description]
  */
-export const createApp = function(options) {
+function createApp(options) {
 
 	//通用属性
 	let basic = {
@@ -56,7 +56,7 @@ export const createApp = function(options) {
  *
  * @return {[type]} [description]
  */
-export const createVisualize = function(template, options) {
+function createVisualize(template, options) {
 
 	//通用属性
 	let basic = {
@@ -71,4 +71,27 @@ export const createVisualize = function(template, options) {
 		basic,
 		options
 	)
+}
+
+/**
+ * 地址路径拼接函数
+ * @param  {...[type]} paths [description]
+ * @return {[type]}          [description]
+ */
+function pathJoin(...paths) {
+
+	let separator = '/',
+		regexp = /^\/|\/$/g
+
+	return paths.reduce((url, path) => {
+
+		return url + separator + path.replace(regexp, '')
+	}, '')
+}
+
+export {
+
+	createApp,
+	createVisualize,
+	pathJoin
 }

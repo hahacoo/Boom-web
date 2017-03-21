@@ -1,13 +1,26 @@
 import Vue from 'vue'
 import { mapState } from 'vuex'
 
-let defaultTemp = `
+let defaultTemp
+
+if(process.env.NODE_ENV !== 'production') {
+
+	defaultTemp = `
 <div class="sti-web" :class="theme">
 	
 	<router-view></router-view>
 	<sti-console></sti-console>
 </div>
 `
+} else {
+
+	defaultTemp = `
+<div class="sti-web" :class="theme">
+	
+	<router-view></router-view>
+</div>
+`
+}
 
 export default class StiApp {
 

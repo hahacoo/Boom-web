@@ -1,3 +1,8 @@
+/**
+ * 配置二级菜单：不设置component
+ * 三级菜单：通过menu_parent来指定二级菜单的path
+ * app首页：path为空
+ */
 import './style'
 import view from './view'
 import template from './template'
@@ -5,30 +10,20 @@ import app from 'router/routes'
 import { STI_BASEURL } from 'constant'
 import Vue from 'vue'
 
+//菜单权限同privilege格式
 let privilege = [{
-	menu_path: 'important',
-	menu: [],
-	desc: '这个是important',
-	cn_name: '重保单位'
+	menu_path: 'important'
 }, {
-	menu_path: 'user',
-	menu: [],
-	desc: '这个是user',
-	cn_name: '用户管理'
+	menu_path: 'user'
 }, {
-	menu_path: 'third111',
-	menu: [],
-	desc: '这个是三级菜单111',
-	cn_name: '三级菜单111'
+	menu_path: 'third111'
 }, {
-	menu_path: 'third222',
-	menu: [],
-	desc: '这个是三级菜单222',
-	cn_name: '三级菜单222'
+	menu_path: 'third222'
+}, {
+	menu_path: 'vali'
 }]
 
 let currentApp = null,
-	appList = null,
 	currentPage = null
 
 Vue.component('item', {
@@ -58,7 +53,7 @@ Vue.component('item', {
 			if(this.isFolder){
 				result = 'javascript:void(0)'
 			} else{
-				result = STI_BASEURL + '/' + currentApp + '/' + this.model.url
+				result = STI_BASEURL + '/' + currentApp + '/' + this.model.path
 			}
 
 			return result
@@ -68,7 +63,7 @@ Vue.component('item', {
 		selected(){
 			let result = false
 
-			if(this.model.url == currentPage){
+			if(this.model.path == currentPage){
 				result = true
 			} else{
 				result = false
@@ -94,7 +89,7 @@ Vue.component('item', {
 						}
 					}
 
-					if(array.children[i].url == currentPage){
+					if(array.children[i].path == currentPage){
 						this.open = true
 						break
 					}
@@ -114,44 +109,129 @@ export default {
 
 	template: view,
 
-	props:['menuData'],
-
 	data(){
 		return{
-			datas: this.menuData
+			datas: [],
+			show: false
 		}
 	},
 
 	created(){
+		//当前的app和菜单页面
 		currentApp = this.$router.currentRoute.path.split('/')[1]
 		currentPage = this.$router.currentRoute.path.split('/')[2]
+
+		let appList, menuList
+
+		appList = this.findAppList()
+
+		//不开启菜单过滤
+		this.datas = this.list2Tree(appList.children)
+		
+		//开启菜单过滤
+		// menuList = this.menuFilters(appList)
+		// this.datas = this.list2Tree(menuList)
+
+		//this.$set('datas', obj.children)
+		this.show = true
 	},
 
 	methods: {
-		menuFilters(){
+		findAppList(){
+			let list = null
+
 			//找出当前app对应的router的list
 			app.apps.forEach(function(val){
 				if(val.path == currentApp){
-					appList = val
+					list = val
 				}
 			})
 
-			//过滤router list和权限对应的菜单
-			//不停遍历privilege,同时构造菜单的数据结构，没有，就splice掉
-			//主要是二级菜单和三级菜单的区别
-			// appList.children.forEach(function(routerVal){
-			// 	console.log(routerVal)
-			// })
+			return list
+		},
 
-			// this.menu = privilege.map(function(val){
-			// 	return {
-			// 		url: val.menu_path,
-			// 		text: val.cn_name,
-			// 		children: val.menu
-			// 	}
-			// })
-			// console.log('app:' + currentApp)
-			// console.log(this.menu)
+		menuFilters(appList){
+			//过滤router list和权限对应的菜单
+			//不停遍历privilege
+			let arr = [],
+				tmpList = appList.children
+
+			for(let i = 0; i < tmpList.length; i++){
+				//对应app的首页或者二级菜单都不用过滤
+				if(tmpList[i].path == '') {
+					continue
+				}else if(tmpList[i].component == undefined){
+					arr.push(tmpList[i])
+				} else{
+					for(let j = 0; j < privilege.length; j++){
+						if(privilege[j].menu_path == tmpList[i].path){
+							arr.push(tmpList[i])
+							continue
+						}
+					}
+				}
+			}
+
+			return arr
+		},
+
+		list2Tree(list){
+			let result = {},
+				visitedMAP = new Map(),
+				obj = {
+					children: []}
+
+			//深度优先
+			function array2Object(node){
+				node.children = []
+				for(let i = 0; i < list.length; i++){
+					//判断是否访问过以及是不是需要找的点
+					if(list[i].menu_parent == node.path 
+						&& !visitedMAP[list[i]]){
+						visitedMAP.set(list[i], true)
+						node.children.push(list[i])
+						array2Object(list[i])
+					}
+				}
+			}
+			array2Object(obj)
+
+			//去掉没有子菜单的空二级菜单
+			function deleteEmptyMenu(node){
+				let ifDeleteChildren = true,
+					ifDeleteItself = true
+
+				for (let i = 0; i < node.children.length; i++) {
+					if(node.children[i].component == undefined){
+						//该菜单有子菜单，非页面
+						if(node.children[i].children == undefined 
+							|| (node.children[i].children 
+								&& node.children[i].children.length == 0)){
+							//子节点都是空的，同时没有component，那这个菜单就要删掉
+							ifDeleteChildren = true
+						} else{
+							//有子节点，但是还需要通过子节点来判断是不是要删
+							ifDeleteChildren = deleteEmptyMenu(node.children[i])
+						}
+					} else{
+						//有component，肯定是叶子节点
+						ifDeleteChildren = false
+					}
+
+					if(ifDeleteChildren){
+						node.children.splice(i, 1)
+						i--
+					}
+
+					ifDeleteItself = ifDeleteItself & ifDeleteChildren
+				}
+
+				return ifDeleteItself
+			}
+
+			deleteEmptyMenu(obj)
+
+			return obj.children
 		}
 	}
 }

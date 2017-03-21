@@ -4,9 +4,9 @@
  * 
  */
 import $ from 'jquery'
-import { STI_AJAX_TIMEOUT } from 'constant'
+import { STI_AJAX_TIMEOUT, STI_AJAX_BASEURL } from 'constant'
 import { HttpLogger } from 'utils/Logger'
-import Console from 'utils/Console'
+import { pathJoin } from 'utils'
 
 function proxyAjax({
 
@@ -31,6 +31,11 @@ function proxyAjax({
 
 			let logger
 
+			//设置url
+			url = pathJoin(STI_AJAX_BASEURL, url)
+
+			console.log(url)
+
 			//设置通用参数
 			Object.assign(settings, {
 
@@ -43,10 +48,7 @@ function proxyAjax({
 				beforeSend: function() {
 
 					_beforeSend && _beforeSend()
-					logger = new HttpLogger({
-
-						output: new Console('http')
-					})
+					logger = new HttpLogger()
 				},
 
 				timeout: STI_AJAX_TIMEOUT
@@ -54,6 +56,7 @@ function proxyAjax({
 
 			let deferred = Reflect.apply(target, thisBinding, [ url, settings ])
 						.always(function(data, state, xhr) {
+
 							logger.request(url)
 							logger.elapse()
 							alwaysHandler()

@@ -52,6 +52,13 @@ function generator(config, options) {
 
 		    module: {
 		        noParse: /\.doc\.html$/,
+		        preLoaders: [
+		        	{
+						test: /\.es6$/,
+						exclude: /(node_modules|libs)/,
+						loader: "eslint-loader",
+					}
+		        ],
 		        loaders: [
 		        	{
 						test: /\.css$/,
@@ -65,7 +72,23 @@ function generator(config, options) {
 					},	{
 						test: /\.es6$/,
 						exclude: /(node_modules|libs)/,
-						loaders: ["babel-loader?cacheDirectory", "eslint-loader"]
+						loader: "babel-loader",
+						query: {
+							plugins: [
+								['transform-runtime', {
+
+									"helpers": true,
+						 		    "polyfill": false,
+						 		    "regenerator": true,
+						 		    "moduleName": "babel-runtime"
+								}],
+								[path.resolve('./babel-plugin-try-catch'), {
+									
+						 			"errorHandler": "stiError",
+ 									"throwError": false
+						 		}]
+							]
+						}
 					}, {
 		                //文件加载器，处理文件静态资源
 		                //name: 打包后文件名称
