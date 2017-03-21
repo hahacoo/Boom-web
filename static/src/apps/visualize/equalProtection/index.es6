@@ -22,7 +22,10 @@ export default createVisualize(
         data() {
             return {
                 width: null,
-                height: null
+                height: null,
+                topWidth: null,
+                topHeight: null,
+                downHeight: null
             }
         },
 
@@ -31,10 +34,16 @@ export default createVisualize(
              * 计算宽高
              */
             computSize() {
-                let container = document.getElementById("equalProtection-container")
+                let container = document.getElementById("equalProtection-container"),
+                    middle_content = document.getElementById("equalProtection-content")
 
                 this.width = container.offsetWidth * 0.2
                 this.height = container.offsetHeight
+                this.topWidth = middle_content.offsetWidth
+                this.topHeight = middle_content.offsetHeight * 0.2
+                this.downHeight = middle_content.offsetHeight * 0.3
+
+                console.log(this.topWidth, this.topHeight, document.getElementById("equalProtection-content"))
 
             }
         },

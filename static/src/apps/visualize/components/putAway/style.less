@@ -9,7 +9,7 @@
     .put-away-btn {
         position: absolute;
         width: 20px;
-        height: 60px;
+        height: 40px;
         cursor: pointer;
         background-image: url(./resource/Arrow_2.png);
         background-repeat: no-repeat;
@@ -39,5 +39,17 @@
         from { opacity: 0.3; }                          /* 动画开始时的不透明度 */
         50%  { opacity:   1; }                          /* 动画50% 时的不透明度 */
         to   { opacity: 0.3; }                          /* 动画结束时的不透明度 */
+    }
+
+    .rotate-left{
+        transform:rotate(180deg) scale(1.5);
+    }
+
+    .rotate-right{
+        transform:rotate(0deg) scale(1.5) !important;
+    }
+
+    .rotate-top{
+        transform:rotate(270deg) scale(1.5) !important;
     }
 }
