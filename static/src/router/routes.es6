@@ -40,7 +40,6 @@ const routes = {
 
 						appName: '测试菜单'
 					}
-
 				},
 
 				{
@@ -56,7 +55,8 @@ const routes = {
 					meta: {
 
 						appName: '测试菜单'
-					}
+					},
+					menu_text: '测试菜单sec',
 				},
 
 				{
@@ -68,7 +68,8 @@ const routes = {
 							resolve(require('apps/app/test/vali'))
 						}, 'app')
 
-					}
+					},
+					menu_text: '测试菜单vali',
 				},
 			]
 		},
@@ -204,6 +205,19 @@ const routes = {
 					menu_parent: 'expand',
 					menu_text: '没有子的二级菜单',
 				},
+
+				{
+					path: 'vali',
+					component: resolve => {
+
+						require.ensure(['apps/app/test/vali'], () => {
+
+							resolve(require('apps/app/test/vali'))
+						}, 'app')
+
+					},
+					menu_text: 'vali',
+				}
 			]
 		}
 	],
