@@ -5,22 +5,27 @@
 
 			<span>sti-console</span>
 		</div>
-		<md-tabs md-fixed slot="body">
+		<md-layout md-gutter slot="body">
+			
+			<md-layout>
+				<md-tabs md-fixed >
 
-			<md-tab md-label="路由">
+					<md-tab md-label="路由">
 
-				<transition-group name="list" tag="div">
+						<transition-group name="list" tag="div">
 
-					<p v-for="(route, index) in routes" v-html="route" :key="index"></p>
-				</transition-group>
-			</md-tab>
-			<md-tab md-label="请求">
+							<p v-for="(route, index) in routes" v-html="route" :key="index"></p>
+						</transition-group>
+					</md-tab>
+					<md-tab md-label="请求">
 
-				<transition-group name="list" tag="div">
+						<transition-group name="list" tag="div">
 
-					<p v-for="(http, index) in https" v-html="http" :key="index"></p>
-				</transition-group>
-			</md-tab>
-		</md-tabs>
+							<p v-for="(http, index) in https" v-html="http" :key="index"></p>
+						</transition-group>
+					</md-tab>
+				</md-tabs>
+			</md-layout>	
+		</md-layout>
 	</sti-drag>
 </div>

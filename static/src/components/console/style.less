@@ -10,8 +10,52 @@
 		line-height: 40px
 	}
 
+	.console-body {
+
+		height: 100%;
+		padding-top: 40px;
+		overflow: auto;
+
+		.body-nav {
+
+			height: 40px;
+			margin-top: -40px;
+			display: flex;
+
+			.md-primary {
+
+				color: rgba(255, 255, 255, 0.87);
+				margin: 0;
+				padding: 0;
+				flex: 1
+			}
+		}
+	}
+
 	pre {
 
 		border: none
+	}
+}
+
+.sti-web.default {
+
+	.sti-console {
+
+		.body-nav {
+
+			background-color: #00BFA5
+		}
+	}
+}
+
+.sti-web.dark {
+
+	.sti-console {
+
+		.body-nav {
+
+			background-color: #000
+		}
 	}
 }

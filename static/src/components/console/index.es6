@@ -42,11 +42,15 @@ export default {
 
 		let that = this
 
+		this.active = JSON.parse(localStorage.getItem('sti-dev-console'))
+
 		document.body.addEventListener('keydown', function(e) {
 
 			if(e.ctrlKey && e.keyCode == that.keyCode) {
 
 				that.active = !that.active
+
+				localStorage.setItem('sti-dev-console', that.active)
 			}
 		})
 	}
