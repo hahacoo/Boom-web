@@ -74,6 +74,16 @@ Vue.component('item', {
 
 		firstLine(){
 			return this.model.menu_parent == undefined ? true : false
+		},
+
+		iconShow(){
+			return this.firstLine?this.model.menu_icon:''
+		}
+	},
+
+	filters:{
+		arrowFilter(val){
+			return val?'fa-angle-down':'fa-angle-left'
 		}
 	},
 
@@ -128,34 +138,6 @@ export default {
 		unfold(val){
 			console.log(val)
 		}
-	},
-
-	filters:{
-		urlFilter(val){
-			let result = null
-
-			//如果有下一级，那么本身就没有href
-			if(val.children.length != 0){
-				result = 'javascript:void(0)'
-			} else{
-				result = STI_BASEURL + '/' + currentApp + '/' + val.path
-			}
-
-			return result
-		},
-
-		//选中的样式
-		selectedFilter(val){
-			let result = ''
-
-			if(val.path == currentPage){
-				result = 'selected'
-			} else{
-				result = ''
-			}
-
-			return result
-		},
 	},
 
 	created(){
@@ -277,6 +259,13 @@ export default {
 			deleteEmptyMenu(obj)
 
 			return obj.children
+		},
+
+		clickBtn(item) {
+			if (item.children.length == 0) {
+				this.$router.push(item.path)
+			}
+			//else要弹窗
 		}
 	}
 }
