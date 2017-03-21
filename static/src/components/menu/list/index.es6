@@ -262,10 +262,10 @@ export default {
 		},
 
 		clickBtn(item) {
-
 			if (item.children.length == 0) {
 				this.$router.push(item.path)
 			}
+			//else要弹窗
 		}
 	}
 }
