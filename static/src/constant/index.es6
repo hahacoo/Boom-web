@@ -3,6 +3,7 @@
  * 
  */
 export const STI_AJAX_TIMEOUT = 4000
+export const STI_AJAX_BASEURL = '/app'
 
 export const STI_BASEURL = '/ngsoc'
 export const STI_ROUTE_MODE = 'history'

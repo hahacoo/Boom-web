@@ -6,7 +6,7 @@
  * version 0.1 2017/03/14 16:23:30
  */
 import './style'
-import { createDashBoard } from 'utils/stiBuilder'
+import { createDashBoard } from 'utils'
 import * as THREE from "three"
 
 let template = `

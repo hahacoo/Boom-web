@@ -110,7 +110,6 @@ Vue.component('item', {
 	}
 })
 
-
 export default {
 
 	template: view,

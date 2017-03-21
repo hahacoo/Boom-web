@@ -1,6 +1,6 @@
 import './style'
 import template from './view'
-import { createVisualize } from 'utils/stiBuilder'
+import { createVisualize } from 'utils'
 
 export default createVisualize(template, {
 

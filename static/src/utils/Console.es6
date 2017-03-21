@@ -26,7 +26,7 @@ class Console {
 
 	dir(data) {
 
-		let dataStr = JSON.stringify(data),
+		let dataStr = JSON.stringify(data, null, 4),
 			log = `<pre>${dataStr}</pre>`
 
 		store.dispatch('updateLogs', {

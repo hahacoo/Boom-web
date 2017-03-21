@@ -19,6 +19,8 @@ import {
 	STI_LOG_DTA_PREFIX
 } from 'constant'
 
+import Console from 'utils/Console'
+
 class Logger {
 
 	constructor({
@@ -94,7 +96,7 @@ class RouterLogger extends Logger {
 		normalStyle = `
 				color: #000;
 				`,
-		output = console
+		output = new Console('route')
 	} = {}) {
 
 		super({
@@ -145,7 +147,7 @@ class HttpLogger extends Logger {
 		normalStyle = `
 				color: #000;
 				`,
-		output = console
+		output = new Console('http')
 	} = {}) {
 
 		super({
