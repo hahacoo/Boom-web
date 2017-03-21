@@ -10,4 +10,4 @@ static/dist
 static/css/commons/css/map
 static/css/commons/css/sti.min.css
 static/dist
-views
+views/ejs/index.ejs
