@@ -11,7 +11,6 @@
  * @param {Number} [ruleSize=0] - 规则数量
  * @param {Boolean} [debug=false] - 是否为调试状态，默认false
  */
-import $ from "jquery"
 
 const template = '<div class="sti-validator"> <slot></slot> </div>'
 
@@ -155,16 +154,15 @@ export default {
                 errorPlacement : function(error, element) {
                     let field = element.parents('.sti-field'),
                         formGroup = field.parents('.form-group'),
-                        validEl = formGroup.find('.sti-validator-rule'),
-                        errorEl = $(this.form).find('#' + element.prop('name') + '-error')
-                    
-                    if(errorEl && errorEl.length == 0){
-                        //    如果存在验证容器
-                        if(validEl.length > 0) {
-                            validEl.append(error)
-                        } else {
-                            field.append(error)
-                        }   
+                        validEl = formGroup.find('.sti-validator-rule')
+
+                    //  添加错误提示样式
+                    //error.addClass('control-label')
+                    //  如果存在验证容器
+                    if(validEl.length > 0) {
+                        validEl.append(error)
+                    } else {
+                        field.append(error)
                     }
                     formGroup.addClass('sti-has-error')
                 },

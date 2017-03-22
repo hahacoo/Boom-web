@@ -27,6 +27,23 @@ const routes = {
 			children: [
 
 				{
+					path: '',
+					redirect: 'sec',
+					component: resolve => {
+
+						require.ensure(['apps/app/test/sec'], () => {
+
+							resolve(require('apps/app/test/sec'))
+						}, 'app')
+
+					},
+					meta: {
+
+						appName: '测试菜单'
+					}
+				},
+
+				{
 					path: 'sec',
 					defaultView: true,
 					component: resolve => {

@@ -38,8 +38,8 @@ let Sti = {
 		Vue.component('sti-sidenav', StiSidenav)
 		Vue.component('sti-drag', StiDrag)
 		Vue.component('sti-console', StiConsole)
-		Vue.component('validator', validator)
-		Vue.component('validRule', validRule)
+		Vue.component('sti-validator', validator)
+		Vue.component('sti-validrule', validRule)
 
 		//注册全局过滤器
 		Vue.filter('toPixel', toPixel)

@@ -1,6 +1,6 @@
 <div>
 	<h2>Validator</h2>
-	<validator form="#userForm" ref="validate" :rule-size="2">
+	<sti-validator form="#userForm" ref="validate" :rule-size="4">
 	<form id="userForm" class="form-horizontal sti-form" role="form">
 		<div class="form-group">
 			<label for="inputEmail3" class="col-sm-2 control-label">Email</label>
@@ -12,20 +12,36 @@
 			<label for="username" class="col-sm-2 control-label">用户名</label>
 			<div class="col-sm-6 sti-field">
 				<input type="text" name="username" class="form-control" required value="">
-				<!-- <valid-rule valid-for="username" name="remote" :params="{url:'checkUser.php'}" message="用户名重复"></valid-rule> -->
-				<valid-rule valid-for="username" name="pattern" :params="'[a-zA-Z0-9_]+'"  message="请输入字母数字下划线"></valid-rule>
-				<!-- <valid-rule valid-for="username" name="remote" :params="{url : '/static/data/valid.json'}"  message="不是唯一的值"></valid-rule> -->
+				<!-- <validrule valid-for="username" name="remote" :params="{url:'checkUser.php'}" message="用户名重复"></validrule> -->
+				<sti-validrule valid-for="username" name="pattern" :params="'[a-zA-Z0-9_]+'"  message="请输入字母数字下划线"></sti-validrule>
+				<!-- <validrule valid-for="username" name="remote" :params="{url : '/static/data/valid.json'}"  message="不是唯一的值"></validrule> -->
 			</div>
 		</div>
+
+		<div class="form-group">
+			<label for="username" class="col-sm-2 control-label">时间段</label>
+			<div class="col-xs-6 sti-field">
+				<div class="condition-time">
+	                <input type="text" id="start_time" name="start_time" class="sp_time form-control" v-model="start_time" />
+	                <span>-</span>
+	                <input type="text" id="end_time" name="end_time" class="sp_time form-control" v-model="end_time" />
+				</div>
+                <sti-validrule valid-for="start_time" name="timeSpan" message="请选择时间段"></sti-validrule>
+				<sti-validrule valid-for="end_time" name="timeSpan" message=" "></sti-validrule>
+            </div>
+        </div>
 
 		<div class="form-group">
 			<label for="username" class="col-sm-2 control-label">验证类型</label>
 			<div class="col-sm-6 sti-field">
 				<label class="radio-inline">
-					<input type="radio" name="ctype" id="ctype1" checked @change="changeType" value="1">手机号
+					<input type="radio" name="ctype" id="ctype1" v-model="vtype" checked @change="changeType" value="1">手机号
 				</label>
 				<label class="radio-inline">
-					<input type="radio" name="ctype" id="ctype2" @change="changeType" value="2">电话号
+					<input type="radio" name="ctype" id="ctype2" v-model="vtype" @change="changeType" value="2">电话号
+				</label>
+				<label class="radio-inline">
+					<input type="radio" name="ctype" id="ctype3" v-model="vtype" @change="changeType" value="3">IPv4
 				</label>
 			</div>
 		</div>
@@ -34,18 +50,18 @@
 			<label for="username" class="col-sm-2 control-label">号码</label>
 			<div class="col-sm-6 sti-field">
 				<input type="text" class="form-control" name="code" id="code" />
-				<valid-rule valid-for="code" name="isMobile" :params="true" message="请填写正确的手机号"></valid-rule>
+				<sti-validrule valid-for="code" name="isMobile" :params="true" message="请填写正确的手机号"></sti-validrule>
 			</div>
 		</div>
 
 		<!-- 自定义消息提示位置 -->
 		<div class="form-group">
-		  <div class="col-sm-offset-2 col-sm-6 sti-error-content">
-		  	<label id="email-error" class="sti-error" for="email"></label>
-		  	<label id="username-error" class="sti-error" for="username"></label>
-		  	<label id="code-error" class="sti-error" for="code"></label>
-
-		  </div>
+			<label class="col-sm-2 control-label">自定义错误提示位置</label>
+		  	<div class="col-sm-6 sti-error-content">
+			  	<label id="email-error" class="sti-error" for="email"></label>
+			  	<label id="username-error" class="sti-error" for="username"></label>
+			  	
+		  	</div>
 		</div>
 
 		<div class="form-group ">
@@ -54,5 +70,5 @@
 			</div>
 		</div>
 	</form>
-	</validator>
+	</sti-validator>
 </div>
