@@ -96,15 +96,14 @@ export default class Router {
 	 */
 	static setMetas(routes, meta) {
 
+		let _routes = _.cloneDeep(routes)
+
 		let i = 0,
-			appNums = routes.length
+			appNums = _routes.length
 
 		for(; i < appNums; i++) {
 
-			let app = routes[i],
-				children = app.children
-				
-			setMeta(app, meta)
+			setMeta(_routes[i], meta)
 		}
 
 		/**
@@ -124,20 +123,43 @@ export default class Router {
 			}
 
 			let j = 0,
-				len = children.length
+				len = children.length - 1,
+				defaultView
 
-			for(; j < len; j++) {
+			for(; len >= 0; len--) {
 
-				let child = children[j]
+				let child = children[len]
+
+				//设置非路由项，如空二级菜单
+				if(!child.component) {
+
+					children.splice(len, 1)
+					continue
+				}
 
 				//设置元信息
 				assign(child, data)
+
+				//设置默认视图
+				if(child.defaultView) {
+
+					defaultView = {
+
+						path: '',
+						redirect: child.path
+					}
+				}
 
 				if(raw_toString.call(child.children) === '[object Array]') {
 
 					setMeta(child, data)
 				}
-			} 
+			}
+
+			if(defaultView) {
+
+				children.push(defaultView)
+			}
 		}
 
 		function assign(comp, data) {
@@ -151,6 +173,6 @@ export default class Router {
 			Object.assign(comp.meta, data)
 		}
 
-		return routes
+		return _routes
 	}
 }

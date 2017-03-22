@@ -20,6 +20,7 @@ const routes = {
 					resolve(require('apps/app/test'))
 				}, 'app')
 			},
+			redirect: 'sec',
 			meta: {
 
 				appName: '测试app'
@@ -27,23 +28,8 @@ const routes = {
 			children: [
 
 				{
-					path: '',
-					component: resolve => {
-
-						require.ensure(['apps/app/test/sec'], () => {
-
-							resolve(require('apps/app/test/sec'))
-						}, 'app')
-
-					},
-					meta: {
-
-						appName: '测试菜单'
-					}
-				},
-
-				{
 					path: 'sec',
+					defaultView: true,
 					component: resolve => {
 
 						require.ensure(['apps/app/test/sec'], () => {
@@ -90,21 +76,8 @@ const routes = {
 			children: [
 
 				{
-					path: '',
-					redirect: 'important',
-					component: resolve => {
-
-						require.ensure(['apps/app/config/important'], () => {
-
-							resolve(require('apps/app/config/important'))
-						}, 'app')
-
-					},
-					menu_icon: 'snowflake-o'
-				},
-
-				{
 					path: 'important',
+					defaultView: true,
 					component: resolve => {
 
 						require.ensure(['apps/app/config/important'], () => {

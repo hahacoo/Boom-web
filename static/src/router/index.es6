@@ -45,7 +45,10 @@ let router = new Router()
 })
 .register('/login', LoginPage)
 .register('/public', resolve => require(['apps/public'], resolve))
-.register('*', ErrorPage)
+.register('*', ErrorPage, {
+	
+	name: 'error'
+})
 .plugins(log)
 .plugins(filter)
 
