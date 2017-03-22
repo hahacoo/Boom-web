@@ -225,7 +225,7 @@ const routes = {
 					meta: {
 						parent: 'expand',
 						icon: 'snowflake-o',
-						text: '没有子的二级菜单'
+						text: '空的二级菜单'
 					}
 				},
 
