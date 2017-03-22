@@ -20,6 +20,7 @@ const routes = {
 					resolve(require('apps/app/test'))
 				}, 'app')
 			},
+			redirect: 'sec',
 			meta: {
 				text: '测试app',
 				appName: '测试app'
@@ -44,6 +45,7 @@ const routes = {
 
 				{
 					path: 'sec',
+					defaultView: true,
 					component: resolve => {
 
 						require.ensure(['apps/app/test/sec'], () => {
@@ -114,6 +116,7 @@ const routes = {
 
 				{
 					path: 'important',
+					defaultView: true,
 					component: resolve => {
 
 						require.ensure(['apps/app/config/important'], () => {

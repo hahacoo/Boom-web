@@ -129,9 +129,11 @@ export default {
 				let noty = () => {
 
 					let reWidth = +dialog.style.width.slice(0, -2),
-						reHeight = +dialog.style.height.slice(0, -2)
+						reHeight = +dialog.style.height.slice(0, -2),
+						reLeft = +dialog.style.left.slice(0, -2),
+						reTop = +dialog.style.top.slice(0, -2)
 
-					this.$emit('resize', reWidth, reHeight)
+					this.$emit('resize', reWidth, reHeight, reLeft, reTop)
 				}
 
 				switch(direction) {
