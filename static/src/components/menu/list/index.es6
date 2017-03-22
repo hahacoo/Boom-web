@@ -37,7 +37,8 @@ Vue.component('item', {
 	data() {
 		return {
 			open: false,
-			currentPage: this.$router.currentRoute.path.split('/')[2]
+			currentPage: this.$router.currentRoute.path.split('/')[2],
+			sleChild: false
 		}
 	},
 
@@ -45,6 +46,7 @@ Vue.component('item', {
 		//切换路由的时候监听变化，之后调用watch的selected
 		'$route'(val){
 			this.currentPage = val.path.split('/')[2]
+			this.sleChild = false
 		}
 	},
 
@@ -58,8 +60,10 @@ Vue.component('item', {
 		selected(){
 			let result = false
 
-			if(this.model.path == this.currentPage){
+			if(this.model.path == this.currentPage || this.sleChild){
 				result = true
+				//通知父节点也变样式
+				this.$emit('menu-selected')
 			} else{
 				result = false
 			}
@@ -103,6 +107,7 @@ Vue.component('item', {
 	},
 
 	methods: {
+		//初始化的时候，判断要不要展开
 		//当children是当前的page时，该二级菜单要展开
 		isOpen(array){
 			if(this.isFolder){
@@ -113,7 +118,7 @@ Vue.component('item', {
 						}
 					}
 
-					if(array.children[i].path == currentPage){
+					if(array.children[i].path == this.currentPage){
 						this.open = true
 						break
 					}
@@ -135,6 +140,10 @@ Vue.component('item', {
 
 		subMenu(param){
 			this.$router.push('/' + currentApp + '/' + param.path)
+		},
+
+		childSelect(){
+			this.sleChild = true
 		}
 	}
 })

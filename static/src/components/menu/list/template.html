@@ -1,4 +1,4 @@
-<li :class="{selected: selected, 'fold-style':!unfold}">
+<li :class="[selected?'selected':'unselected', unfold?'':'fold-style']">
   <a href="javascript:void(0)"
     @click="toggle">
       <md-button :style="{paddingLeft:model.level*1+'em'}">
@@ -9,6 +9,7 @@
   </a>
   <ul v-if="isShow">
     <item 
+      v-on:menu-selected="childSelect"
       :unfold="unfold"
       class="item"
       v-for="model in model.children"
@@ -17,7 +18,7 @@
     </item>
   </ul>
 
-  <ul v-if="!unfold">
+  <ul v-if="!unfold" class="sub-menu">
     <li v-for="model in model.children">
       <a href="javascript:void(0)"  @click="subMenu(model)">
         <md-button>
