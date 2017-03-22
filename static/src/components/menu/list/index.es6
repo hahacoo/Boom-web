@@ -37,6 +37,14 @@ Vue.component('item', {
 	data() {
 		return {
 			open: false,
+			currentPage: this.$router.currentRoute.path.split('/')[2]
+		}
+	},
+
+	watch: {
+		//切换路由的时候监听变化，之后调用watch的selected
+		'$route'(val){
+			this.currentPage = val.path.split('/')[2]
 		}
 	},
 
@@ -63,7 +71,7 @@ Vue.component('item', {
 		selected(){
 			let result = false
 
-			if(this.model.path == currentPage){
+			if(this.model.path == this.currentPage){
 				result = true
 			} else{
 				result = false
@@ -72,6 +80,7 @@ Vue.component('item', {
 			return result
 		},
 
+		//判断是不是二级菜单，是的话才有icon
 		firstLine(){
 			return this.model.menu_parent == undefined ? true : false
 		},
@@ -94,7 +103,6 @@ Vue.component('item', {
 	methods: {
 		//当children是当前的page时，该二级菜单要展开
 		isOpen(array){
-
 			if(this.isFolder){
 				for(let i = 0; i < array.children.length; i++){
 					if(array.children && array.children.length > 0){
@@ -115,7 +123,7 @@ Vue.component('item', {
 			if (this.isFolder) {
 				this.open = !this.open
 			} else{
-				this.$router.push(this.model.path)
+				this.$router.push('/' + currentApp + '/' + this.model.path)
 			}
 		}
 	}
