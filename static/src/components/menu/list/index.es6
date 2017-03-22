@@ -47,6 +47,7 @@ Vue.component('item', {
 		'$route'(val){
 			this.currentPage = val.path.split('/')[2]
 			this.sleChild = false
+			this.isOpen(this.model)
 		}
 	},
 
@@ -144,6 +145,7 @@ Vue.component('item', {
 
 		childSelect(){
 			this.sleChild = true
+			console.log('change')
 		}
 	}
 })
