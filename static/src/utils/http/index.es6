@@ -1,5 +1,3 @@
-import $ from 'jquery'
-
 import proxyAjax from './proxy'
 import { STI_STORAGE } from 'constant'
 

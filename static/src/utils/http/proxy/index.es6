@@ -3,7 +3,6 @@
  * 确保平台所有请求可控（平台自身数据接口，第三方库）
  * 
  */
-import $ from 'jquery'
 import { STI_AJAX_TIMEOUT, STI_AJAX_BASEURL } from 'constant'
 import { HttpLogger } from 'utils/Logger'
 import { pathJoin } from 'utils'

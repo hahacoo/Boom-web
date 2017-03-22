@@ -118,7 +118,8 @@ function generator(config, options) {
 		    	new webpack.ProvidePlugin({
 					$: "jquery",
 					jQuery: "jquery",
-					"window.jQuery": "jquery"
+					"window.jQuery": "jquery",
+					_: 'lodash'
 				}),
 		    	// commons chunk
 		        new webpack.optimize.CommonsChunkPlugin({

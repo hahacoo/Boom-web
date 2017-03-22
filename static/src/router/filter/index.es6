@@ -4,8 +4,6 @@
  * 注册的插件必须满足
  * 过滤结束必须调用done函数，跳转到下一个过滤器，否则无法继续执行
  */
-import $ from 'jquery'
-
 import loginFilters from './login'
 
 let authfilters = [

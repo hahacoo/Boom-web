@@ -3,7 +3,6 @@
  *
  * by zhangdi
  */
-import _ from 'lodash'
 import { mapState, mapActions } from 'vuex'
 
 import appMenu from 'components/menu'

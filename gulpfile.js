@@ -237,7 +237,8 @@ function webpackBundle(done) {
 				new webpack.ProvidePlugin({
 					$: "jquery",
 					jQuery: "jquery",
-					"window.jQuery": "jquery"
+					"window.jQuery": "jquery",
+					_: 'lodash'
 				}),
 				new webpack.ResolverPlugin([
 		    		new DirectoryNameAsMain()
@@ -337,7 +338,8 @@ function webpackBundle(done) {
 		    	new webpack.ProvidePlugin({
 					$: "jquery",
 					jQuery: "jquery",
-					"window.jQuery": "jquery"
+					"window.jQuery": "jquery",
+					_: 'lodash'
 				}),
 		        new webpack.optimize.CommonsChunkPlugin({
 		            names: ['commons', 'vendor']

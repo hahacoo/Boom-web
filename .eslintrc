@@ -11,6 +11,10 @@ env:
  browser: true
  es6: true
  commonjs: true
+ jquery: true
+# 全局变量
+globals:
+  _: true
 # 引用库
 extends: 'eslint:recommended'
 
