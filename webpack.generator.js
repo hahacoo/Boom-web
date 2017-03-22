@@ -85,7 +85,7 @@ function generator(config, options) {
 								[path.resolve('./babel-plugin-try-catch'), {
 									
 						 			"errorHandler": "stiError",
- 									"throwError": false
+ 									"throwError": true
 						 		}]
 							]
 						}
