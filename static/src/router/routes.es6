@@ -28,6 +28,7 @@ const routes = {
 
 				{
 					path: '',
+					redirect: 'sec',
 					component: resolve => {
 
 						require.ensure(['apps/app/test/sec'], () => {

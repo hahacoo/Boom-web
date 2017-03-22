@@ -12,7 +12,6 @@
  * @param {Object} [params] - 参数
  * @param {String} [message] - 错误提示信息
  */
-import $ from 'jquery'
 
 const template = '<div class="sti-validator-rule"></div>'
 
@@ -42,7 +41,7 @@ export default {
 		 * @memberof ValidRule.prototype
 		 * @desc 验证所需参数
 		 */
-		params : [ String, Object, Function, Boolean ],
+		params : [ String, Object, Function, Boolean, Array ],
 		/**
 		 * @memberof ValidRule.prototype
 		 * @desc 错误提示信息
