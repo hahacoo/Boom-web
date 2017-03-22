@@ -12,7 +12,7 @@ import appHeader from './components/header'
 let a = 1
 
 let template = `
-<div class="sti-container" :class="theme">
+<div class="sti-container">
 	<!--头部区域-->
 	<app-header></app-header>
 	<!--主视图区域-->

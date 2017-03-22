@@ -23,7 +23,7 @@ let router = new Router()
 			component: HomePage,
 			meta: {
 				requestAuth: true,
-				appName: '首页',
+				text: '首页',
 			}
 		},
 		...Router.setMetas(routes.apps, {requestAuth: true})
@@ -37,7 +37,8 @@ let router = new Router()
 			name: 'vhome',
 			component: VisHomePage,
 			meta: {
-				requestAuth: true
+				requestAuth: true,
+				text: '大屏首页',
 			}
 		},
 		...Router.setMetas(routes.visualize, {requestAuth: true})

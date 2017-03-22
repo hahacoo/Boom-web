@@ -158,6 +158,8 @@ export default class Router {
 
 			if(defaultView) {
 
+				console.log(defaultView)
+
 				children.push(defaultView)
 			}
 		}
