@@ -49,10 +49,12 @@ export default {
 			this.$http.setItem('console-label', label)
 		},
 
-		resize(w, h) {
+		resize(w, h, l, t) {
 
 			this.$http.setItem('console-width', w)
 			this.$http.setItem('console-height', h)
+			this.$http.setItem('console-left', l)
+			this.$http.setItem('console-top', t)
 		},
 
 		move(t, l) {

@@ -24,7 +24,11 @@
 			text-align: left;
 
 			i{
-				margin-right: 10px;
+				margin-right: 5px;
+			}
+
+			span{
+				margin-left: 5px;
 			}
 		}
 
@@ -32,7 +36,6 @@
 			position: absolute;
 			top: 25%;
 			right: 0;
-			margin-right: 10px;
 		}
 	}
 
@@ -43,5 +46,32 @@
 		}
 	}
 
+	.unselected{
+		color: #a7b1c2;
+		button span{
+			color: #a7b1c2;
+		}
+	}
 
+	.fold-style{
+		position: relative;
+		ul{
+			top: 0px;
+			left: 50px;
+			position: absolute;
+			display: none;
+
+			.md-button{
+				text-align: center;
+			}
+		}
+
+		&:hover ul{
+			display: block;
+		}
+	}
+
+	.sub-menu{
+		background-color: #455A64
+	}
 }
