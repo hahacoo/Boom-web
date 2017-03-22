@@ -21,7 +21,7 @@ const routes = {
 				}, 'app')
 			},
 			meta: {
-
+				text: '测试app',
 				appName: '测试app'
 			},
 			children: [
@@ -37,7 +37,7 @@ const routes = {
 
 					},
 					meta: {
-
+						text: '测试菜单',
 						appName: '测试菜单'
 					}
 				},
@@ -53,10 +53,10 @@ const routes = {
 
 					},
 					meta: {
-
+						icon: 'snowflake-o',
+						text: '测试菜单sec',
 						appName: '测试菜单'
-					},
-					menu_text: '测试菜单sec',
+					}
 				},
 
 				{
@@ -69,7 +69,11 @@ const routes = {
 						}, 'app')
 
 					},
-					menu_text: '测试菜单vali',
+					meta: {
+						icon: 'snowflake-o',
+						text: '测试菜单vali',
+						appName: '测试菜单'
+					}
 				},
 			]
 		},
@@ -86,7 +90,9 @@ const routes = {
 					resolve(require('apps/app/config'))
 				}, 'app')
 			},
-			menu_text: '通用配置',
+			meta: {
+				text: '通用配置'
+			},
 			children: [
 
 				{
@@ -100,7 +106,10 @@ const routes = {
 						}, 'app')
 
 					},
-					menu_icon: 'snowflake-o'
+					meta: {
+						icon: 'snowflake-o'
+					},
+
 				},
 
 				{
@@ -113,7 +122,10 @@ const routes = {
 						}, 'app')
 
 					},
-					menu_text: '重保单位',
+					meta: {
+						icon: 'snowflake-o',
+						text: '重保单位'
+					},
 					children: [
 						{
 							path: 'new',
@@ -125,7 +137,6 @@ const routes = {
 								}, 'app')
 
 							},
-							menu_text: '新建',
 						},
 
 						{
@@ -138,10 +149,8 @@ const routes = {
 								}, 'app')
 
 							},
-							menu_text: '编辑',
 						}
 					],
-					menu_icon: 'snowflake-o'
 				},
 
 				{
@@ -154,14 +163,18 @@ const routes = {
 						}, 'app')
 
 					},
-					menu_text: '用户管理',
-					menu_icon: 'snowflake-o'
+					meta: {
+						icon: 'snowflake-o',
+						text: '用户管理'
+					}
 				},
 
 				{
-					path: 'expand',
-					menu_text: '二级菜单',
-					menu_icon: 'snowflake-o'
+					meta: {
+						icon: 'snowflake-o',
+						text: '二级菜单'
+					},
+					path: 'expand'
 				},
 
 				{
@@ -174,9 +187,11 @@ const routes = {
 						}, 'app')
 
 					},
-					menu_parent: 'expand',
-					menu_text: '三级菜单1',
-					menu_icon: 'snowflake-o'
+					meta: {
+						parent: 'expand',
+						icon: 'snowflake-o',
+						text: '三级菜单1'
+					}
 				},
 
 				{
@@ -189,23 +204,11 @@ const routes = {
 						}, 'app')
 
 					},
-					menu_parent: 'third444',
-					menu_text: '某级菜单',
-					menu_icon: 'snowflake-o'
-				},
-
-				{
-					path: 'third333',
-					menu_parent: 'expand',
-					menu_text: '三级菜单2',
-					menu_icon: 'snowflake-o'
-				},
-
-				{
-					path: 'third444',
-					menu_parent: 'third333',
-					menu_text: '四级菜单',
-					menu_icon: 'snowflake-o'
+					meta: {
+						parent: 'expand',
+						icon: 'snowflake-o',
+						text: '某级菜单'
+					}
 				},
 
 				{
@@ -225,8 +228,35 @@ const routes = {
 						}, 'app')
 
 					},
-					menu_text: 'vali',
-					menu_icon: 'snowflake-o'
+					meta: {
+						icon: 'snowflake-o',
+						text: 'vali'
+					}
+				},
+
+				{
+					meta: {
+						icon: 'snowflake-o',
+						text: '我也是二级菜单'
+					},
+					path: 'expand2'
+				},
+
+				{
+					path: 'valii',
+					component: resolve => {
+
+						require.ensure(['apps/app/test/vali'], () => {
+
+							resolve(require('apps/app/test/vali'))
+						}, 'app')
+
+					},
+					meta: {
+						parent: 'expand2',
+						icon: 'snowflake-o',
+						text: 'valiii'
+					}
 				}
 			]
 		}

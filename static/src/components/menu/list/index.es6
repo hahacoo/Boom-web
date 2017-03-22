@@ -7,7 +7,6 @@ import './style'
 import view from './view'
 import template from './template'
 import app from 'router/routes'
-import { STI_BASEURL } from 'constant'
 import Vue from 'vue'
 
 //菜单权限同privilege格式
@@ -31,7 +30,8 @@ Vue.component('item', {
 	template,
 
 	props: {
-		model: Object
+		model: Object,
+		unfold: Boolean
 	},
 
 	data() {
@@ -54,19 +54,6 @@ Vue.component('item', {
 			return this.model.children && this.model.children.length
 		},
 
-		urlModify(){
-			let result = null
-
-			//如果有下一级，那么本身就没有href
-			if(this.isFolder){
-				result = 'javascript:void(0)'
-			} else{
-				result = STI_BASEURL + '/' + currentApp + '/' + this.model.path
-			}
-
-			return result
-		},
-
 		//选中的样式
 		selected(){
 			let result = false
@@ -82,17 +69,32 @@ Vue.component('item', {
 
 		//判断是不是二级菜单，是的话才有icon
 		firstLine(){
-			return this.model.menu_parent == undefined ? true : false
+			return this.model.meta.parent == undefined ? true : false
 		},
 
 		iconShow(){
-			return this.firstLine?this.model.menu_icon:''
+			return this.firstLine ? this.model.meta.icon : ''
+		},
+
+		//根据unfold、isFolder、open来判断是否显示子菜单
+		isShow(){
+			let result = false
+
+			if(this.isFolder && this.open){
+				result = true
+			}
+
+			if(!this.unfold){
+				result = false
+			}
+
+			return result
 		}
 	},
 
 	filters:{
 		arrowFilter(val){
-			return val?'fa-angle-down':'fa-angle-left'
+			return val ? 'fa-angle-down' : 'fa-angle-left'
 		}
 	},
 
@@ -121,10 +123,18 @@ Vue.component('item', {
 
 		toggle() {
 			if (this.isFolder) {
+				//如果是收起来的状态，那么没有点击事件
+				if(!this.unfold){
+					return
+				}
 				this.open = !this.open
 			} else{
 				this.$router.push('/' + currentApp + '/' + this.model.path)
 			}
+		},
+
+		subMenu(param){
+			this.$router.push('/' + currentApp + '/' + param.path)
 		}
 	}
 })
@@ -158,13 +168,12 @@ export default {
 		appList = this.findAppList()
 
 		//不开启菜单过滤
-		this.datas = this.list2Tree(appList.children)
+		this.datas = this.noFilter(appList.children)
 		
 		//开启菜单过滤
-		// menuList = this.menuFilters(appList)
-		// this.datas = this.list2Tree(menuList)
+		//menuList = this.menuFilters(appList)
+		//this.datas = this.list2Tree(menuList)
 
-		//this.$set('datas', obj.children)
 		this.show = true
 	},
 
@@ -213,14 +222,14 @@ export default {
 				obj = {
 					children: [],
 					level: 0}
-			//level这个字段用来标识是第几层，方便左缩进
+			//level这个字段用来标识是第几层，以便左缩进
 
 			//深度优先
 			function array2Object(node){
 				node.children = []
 				for(let i = 0; i < list.length; i++){
 					//判断是否访问过以及是不是需要找的点
-					if(list[i].menu_parent == node.path 
+					if(list[i].meta.parent == node.path 
 						&& !visitedMAP[list[i]]){
 						list[i].level = node.level + 1
 						visitedMAP.set(list[i], true)
@@ -267,6 +276,20 @@ export default {
 			deleteEmptyMenu(obj)
 
 			return obj.children
+		},
+
+		//未开启过滤，走这里
+		noFilter(list){
+			for(let i = 0; i < list.length; i++){
+				if(list[i].path == '') {
+					list.splice(i, 1)
+					break
+				}
+			}
+
+			let result = this.list2Tree(list)
+
+			return result
 		}
 	}
 }

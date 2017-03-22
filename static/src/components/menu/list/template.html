@@ -1,18 +1,29 @@
-<li :class="{selected: selected}">
+<li :class="{selected: selected, 'fold-style':!unfold}">
   <a href="javascript:void(0)"
     @click="toggle">
       <md-button :style="{paddingLeft:model.level*1+'em'}">
           <sti-icon :icon="iconShow"></sti-icon>
-          <span>{{model.menu_text}}</span>
+          <span>{{model.meta.text}}</span>
           <sti-icon class="sti-menu-arrow" :icon="open|arrowFilter" v-if="isFolder"></sti-icon>
       </md-button>
   </a>
-  <ul v-show="open" v-if="isFolder">
-  <item
-    class="item"
-    v-for="model in model.children"
-    :key="model.path"
-    :model="model">
-  </item>
+  <ul v-if="isShow">
+    <item 
+      :unfold="unfold"
+      class="item"
+      v-for="model in model.children"
+      :key="model.path"
+      :model="model">
+    </item>
+  </ul>
+
+  <ul v-if="!unfold">
+    <li v-for="model in model.children">
+      <a href="javascript:void(0)"  @click="subMenu(model)">
+        <md-button>
+            <span>{{model.meta.text}}</span>
+        </md-button>
+      </a>
+    </li>
   </ul>
 </li>

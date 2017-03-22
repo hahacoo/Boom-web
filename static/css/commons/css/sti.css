@@ -84,7 +84,7 @@ input {
   position: relative;
   z-index: 9;
   float: left;
-  overflow: auto;
+  overflow: visible;
   transition: all 0.5s cubic-bezier(0.25, 0.8, 0.25, 1);
 }
 .sti-web .sti-container .sti-content .content-aside.fold {
