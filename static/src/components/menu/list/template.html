@@ -11,6 +11,7 @@
   <item
     class="item"
     v-for="model in model.children"
+    :key="model.path"
     :model="model">
   </item>
   </ul>

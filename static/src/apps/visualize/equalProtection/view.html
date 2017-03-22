@@ -1,25 +1,51 @@
 <div class="visualize-equalProtection">
-	<!-- <img src="../images/pic2.jpg" alt=""> -->
-	<!-- search -->
-	<div class="equalProtection-search">search</div>
-	<!-- content -->
-	<div id="equalProtection-container" class="equalProtection-container">
-		<!-- left -->
+
+	<div class="equalProtection-search">search</div><!-- search -->
+
+	<div id="equalProtection-container" class="equalProtection-container"><!-- content -->
+
 		<!-- <div class="equalProtection-container-left">left</div> -->
-		<put-away :width="width" :height="height" :direction="'left'"></put-away>
-		<!-- middle -->
-		<div id="equalProtection-content" class="equalProtection-container-middle">
-			<!-- middle-up -->
-			<put-away :top-width="topWidth" :top-height="topHeight" :direction="'top'"></put-away>
+		<put-away
+			:leftWidth="leftWidth"
+			:leftHeight="leftHeight"
+			:direction="'left'"
+			:shownBtn="shown_btn"><!-- left -->
+			left
+		</put-away>
+
+		<div id="equalProtection-content" class="equalProtection-container-middle"><!-- middle -->
+
+			<put-away
+				:topWidth="topWidth"
+				:topHeight="topHeight"
+				:direction="'top'"
+				:shownBtn="shown_btn"><!-- middle-up -->
+				middle-up
+			</put-away>
 			<!-- <div class="middle-up">middle-up</div> -->
-			<!-- middle-content -->
-			<div class="middle-content">middle-content</div>
-			<!-- middle-down -->
-			<put-away :top-width="topWidth" :down-height="downHeight" :direction="'down'"></put-away>
+
+			<div class="middle-content">
+				middle-content
+				<i class="fa fa-expand" aria-hidden="true" :title="information" @click="fullScreen()"></i>
+			</div><!-- middle-content -->
+
+			<put-away
+				:topWidth="topWidth"
+				:downHeight="downHeight"
+				:direction="'down'"
+				:shownBtn="shown_btn"><!-- middle-down -->
+				middle-down
+			</put-away>
 			<!-- <div class="middle-down">middle-down</div> -->
 		</div>
-		<!-- right -->
-		<put-away :width="width" :height="height" :direction="'right'"></put-away>
+
+		<put-away
+			:rightWidth="rightWidth"
+			:rightHeight="rightHeight"
+			:direction="'right'"
+			:shownBtn="shown_btn"><!-- right -->
+			right
+		</put-away>
 		<!-- <div class="equalProtection-container-right">right</div> -->
 	</div>
 </div>
