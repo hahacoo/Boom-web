@@ -140,6 +140,9 @@ const routes = {
 								}, 'app')
 
 							},
+							meta: {
+								text: '新建'
+							}
 						},
 
 						{
@@ -152,6 +155,9 @@ const routes = {
 								}, 'app')
 
 							},
+							meta: {
+								text: '编辑'
+							}
 						}
 					],
 				},
@@ -216,9 +222,11 @@ const routes = {
 
 				{
 					path: 'thir_naked',
-					menu_parent: 'expand',
-					menu_text: '没有子的二级菜单',
-					menu_icon: 'snowflake-o'
+					meta: {
+						parent: 'expand',
+						icon: 'snowflake-o',
+						text: '没有子的二级菜单'
+					}
 				},
 
 				{
