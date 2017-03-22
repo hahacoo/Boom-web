@@ -1,7 +1,7 @@
 <li :class="[selected?'selected':'unselected', unfold?'':'fold-style']">
   <a href="javascript:void(0)"
     @click="toggle">
-      <md-button :style="{paddingLeft:model.level*1+'em'}">
+      <md-button class="menu-item" :style="{paddingLeft: (model.level - 1) * 1 + 'em'}">
           <sti-icon :icon="iconShow"></sti-icon>
           <span>{{model.meta.text}}</span>
           <sti-icon class="sti-menu-arrow" :icon="open|arrowFilter" v-if="isFolder"></sti-icon>

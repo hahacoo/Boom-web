@@ -81,6 +81,7 @@ input {
 .sti-web .sti-container .sti-content .content-aside {
   height: 100%;
   width: 200px;
+  padding-top: 5px;
   position: relative;
   z-index: 9;
   float: left;
