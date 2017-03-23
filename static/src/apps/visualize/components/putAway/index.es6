@@ -7,7 +7,6 @@
  */
 import template from './view'
 import './style'
-import $ from 'jquery'
 
 export default {
 

@@ -7,7 +7,6 @@
  */
 import './style'
 import template from './view'
-import $ from 'jquery'
 import { createVisualize } from 'utils'
 import putAway from '../components/putAway'    // 展开收起容器
 
