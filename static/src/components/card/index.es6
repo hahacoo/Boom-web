@@ -23,7 +23,9 @@ export default {
 
 		desc: String,
 
-		path: String
+		path: String,
+
+		withHover: [ Boolean, String ]
 	},
 
 	methods: {
