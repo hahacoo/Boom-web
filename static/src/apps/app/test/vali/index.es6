@@ -41,7 +41,7 @@ export default{
             }, "请填写正确的电话号码")
             /*时间段*/
             $.validator.addMethod("timeSpan", function(value, element, param){
-                return $('#start_time').val() && $('#end_time').val()
+                return ($('#start_time').val() && $('#end_time').val()) || (!$('#start_time').val() && !$('#end_time').val())
             }, '请输入开始时间和结束时间')
         }
     },
