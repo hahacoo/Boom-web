@@ -59,6 +59,7 @@ Vue.component('item', {
 
 		//选中的样式
 		selected(){
+
 			let result = false
 
 			if(this.model.path == this.currentPage || this.sleChild){

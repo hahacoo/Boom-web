@@ -8,7 +8,7 @@
           <sti-icon class="sti-menu-arrow" :icon="open|arrowFilter" v-if="isFolder"></sti-icon>
       </md-button>
   </a>
-  <ul v-if="isShow">
+  <ul :style="{height: isShow ? 35 * model.children.length + 'px' : null}">
     <item 
       v-on:menu-selected="childSelect"
       :unfold="unfold"
@@ -18,11 +18,11 @@
       :model="model">
     </item>
   </ul>
-
   <ul v-if="!unfold" class="sub-menu">
     <li v-for="model in model.children">
-      <a href="javascript:void(0)"  @click="subMenu(model)">
-        <md-button>
+      <a href="javascript:void(0)"  
+        @click="subMenu(model)" >
+        <md-button class="menu-item">
             <span>{{model.meta.text}}</span>
         </md-button>
       </a>
