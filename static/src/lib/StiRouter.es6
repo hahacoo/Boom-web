@@ -63,11 +63,37 @@ export default class Router {
 	 * @param  {[type]} plugin [description]
 	 * @return {[type]}        [description]
 	 */
-	plugins(plugin) {
+	before(plugin) {
 
 		this.router.beforeEach((to, from, next) => {
 
 			let result = plugin(to, from, this.store)
+
+			if(result instanceof Promise) {
+
+				//返回promise对象
+				result.then(res => {
+
+					next(res)
+				}).catch(error => {
+
+					//TODO 错误处理
+				})
+			} else {
+
+				//同步执行
+				next(result)
+			}
+		})
+
+		return this
+	}
+
+	after(plugin) {
+
+		this.router.afterEach((to, from, next) => {
+
+			let result = plugin(to, from)
 
 			if(result instanceof Promise) {
 
@@ -157,8 +183,6 @@ export default class Router {
 			}
 
 			if(defaultView) {
-
-				console.log(defaultView)
 
 				children.push(defaultView)
 			}

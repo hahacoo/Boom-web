@@ -31,11 +31,11 @@ proxyAjax({
 	}
 })
 
-let request = function(url, ...args) {
+let request = function(url, settings) {
 
 	let promise = new Promise((resolve, reject) => {
 
-		$.ajax(url, ...args)
+		$.ajax(url, settings)
 		.done(function(res) {
 
 			//TODO 平台数据处理逻辑
@@ -51,9 +51,13 @@ let request = function(url, ...args) {
  * @param  {...[type]} args [description]
  * @return {[type]}         [description]
  */
-let http = function (...args) {
+let http = function (url, settings) {
 
-	return request(...args)
+	let { data } = settings
+
+	this.$setParam(url, data)
+
+	return request(url, settings)
 }
 
 Object.defineProperty(http, 'csrfToken', {

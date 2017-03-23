@@ -8,9 +8,11 @@ import Visualize from 'apps/visualize'
 import VisHomePage from 'apps/visualize/home'
 import LoginPage from 'apps/login'
 import ErrorPage from 'apps/error'
-import filter from './filter'
-import log from './log'
 import routes from './routes'
+
+import log from './log'
+import filter from './filter'
+import { before as paramBefore } from './param'
 
 let router = new Router()
 .register('', App, {
@@ -50,8 +52,9 @@ let router = new Router()
 	
 	name: 'error'
 })
-.plugins(log)
-.plugins(filter)
+.before(log)
+.before(filter)
+.before(paramBefore)
 
 export default router.router
 

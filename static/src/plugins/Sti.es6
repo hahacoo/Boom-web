@@ -12,10 +12,15 @@ import StiAssist from 'components/assist'
 import StiSidenav from 'components/sidenav'
 import StiDrag from 'components/drag'
 import StiConsole from 'components/console'
-import { validator, validRule } from 'components/validator'
+import { 
+	
+	validator as StiValidator, 
+	validRule as StiValidRule 
+} from 'components/validator'
 /*服务*/
 import http from 'utils/http'
 import { subscribe, publish, listen, trigger } from 'event'
+import { setParam, getParam } from 'router/param'
 /*过滤器*/
 import toPixel from 'filters/toPixel'
 
@@ -29,6 +34,8 @@ let Sti = {
 		Vue.prototype.$publish = publish
 		Vue.prototype.$listen = listen
 		Vue.prototype.$trigger = trigger
+		Vue.prototype.$setParam = setParam
+		Vue.prototype.$getParam = getParam
 
 		//注册全局组件
 		Vue.component('sti-icon', StiIcon)
@@ -38,8 +45,8 @@ let Sti = {
 		Vue.component('sti-sidenav', StiSidenav)
 		Vue.component('sti-drag', StiDrag)
 		Vue.component('sti-console', StiConsole)
-		Vue.component('sti-validator', validator)
-		Vue.component('sti-validrule', validRule)
+		Vue.component('sti-validator', StiValidator)
+		Vue.component('sti-validrule', StiValidRule)
 
 		//注册全局过滤器
 		Vue.filter('toPixel', toPixel)

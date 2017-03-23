@@ -9,6 +9,7 @@ export const STI_STORAGE = 'sti-storage'
 
 export const STI_BASEURL = '/ngsoc'
 export const STI_ROUTE_MODE = 'history'
+export const STI_ROUTE_SEC = 'sti-router'
 
 export const STI_THEME_DEFAULT = 'default'
 export const STI_THEME_DARK = 'dark'
