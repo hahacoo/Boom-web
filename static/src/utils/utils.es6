@@ -5,7 +5,7 @@
  */
 import { mapState, mapActions } from 'vuex'
 
-import appMenu from 'components/menu'
+import appMenu from 'apps/app/components/menu'
 import generateAppTemp from './templates/generateAppTemp'
 import generateVisTemp from './templates/generateVisTemp'
 

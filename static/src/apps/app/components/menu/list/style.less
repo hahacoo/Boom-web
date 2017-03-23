@@ -1,50 +1,71 @@
 #sti-menu-list{
+
 	cursor: pointer;
+
 	li {
-		margin-top: 1px;
+
+		margin-top: 0;
 		background-color: inherit;
 	 	line-height: 1.5em;
 	}
+
 	a{
 		overflow: hidden;
 		height: 35px;
 		display: block;
 		text-decoration: none;
+
 		&:hover{
 			color: #fff;
 		}
 
-		.md-button{
-			display: block;
-			font-size: 17px;
+		.menu-item {
+
+			display: flex;
+			font-size: 14px;
 			color: #a7b1c2;
 			padding: 0;
 			width: 100%;
+			min-width: 200px;
 			margin: 0;
 			text-align: left;
 
 			i{
-				margin-right: 5px;
+
+				width: 50px;
+				justify-content: center
 			}
 
 			span{
-				margin-left: 5px;
+
+				flex: 1;
+				vertical-align: middle;
 			}
 		}
 
-		.sti-menu-arrow{
-			position: absolute;
-			top: 25%;
-			right: 0;
+		&.selected {
+
+			button span, {
+
+				color: #fff;
+			}
+
+			button i:first-of-type {
+
+				color: #00B8D4;
+			}
 		}
 	}
 
-	.selected{
-		color: #fff;
-		button span{
-			color: #fff;
-		}
-	}
+	// .selected{
+	// 	color: #fff;
+
+	// 	li {
+
+	// 		background-color: #607D8B;
+	// 	}
+		
+	// }
 
 	.unselected{
 		color: #a7b1c2;
@@ -73,5 +94,36 @@
 
 	.sub-menu{
 		background-color: #455A64
+	}
+}
+
+.sti-web.default {
+
+	#sti-menu-list{
+
+
+		li {
+
+		 	&.active {
+
+		 		background-color: #37474F;
+		 	}
+
+		 	a {
+
+		 		&.selected {
+
+					button span, {
+
+						color: #fff;
+					}
+
+					button i:first-of-type {
+
+						color: #00B8D4;
+					}
+				}
+		 	}
+		}
 	}
 }
