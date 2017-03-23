@@ -144,6 +144,8 @@ export default {
          * 默认的校验配置
          */
         defaults () {
+            let el = this.$el
+
             return {
                 debug : this.debug,
                 ignore : '.ignore',
@@ -154,8 +156,12 @@ export default {
                 errorPlacement : function(error, element) {
                     let field = element.parents('.sti-field'),
                         formGroup = field.parents('.form-group'),
-                        validEl = formGroup.find('.sti-validator-rule')
+                        validEl = formGroup.find('.sti-validator-rule[valid-for=' + element.prop('name') + ']')
 
+                    if(!$(error).html()){
+
+                        return
+                    }
                     //  添加错误提示样式
                     //error.addClass('control-label')
                     //  如果存在验证容器
