@@ -7,6 +7,13 @@
 		margin-top: 0;
 		background-color: inherit;
 	 	line-height: 1.5em;
+
+	 	ul:first-of-type {
+
+			height: 0;
+			transition: all .5s cubic-bezier(0.4, 0, 0.2, 1);
+		  	overflow: hidden
+		}
 	}
 
 	a{
@@ -57,16 +64,6 @@
 		}
 	}
 
-	// .selected{
-	// 	color: #fff;
-
-	// 	li {
-
-	// 		background-color: #607D8B;
-	// 	}
-		
-	// }
-
 	.unselected{
 		color: #a7b1c2;
 		button span{
@@ -93,14 +90,21 @@
 	}
 
 	.sub-menu{
-		background-color: #455A64
+
+		a {
+
+			.menu-item {
+
+				min-width: 150px
+			}
+		}
 	}
+
 }
 
 .sti-web.default {
 
 	#sti-menu-list{
-
 
 		li {
 
@@ -123,6 +127,22 @@
 						color: #00B8D4;
 					}
 				}
+		 	}
+
+		 	.sub-menu {
+
+		 		background-color: #37474F;
+
+		 		a {
+
+		 			&:hover {
+
+		 				button span, {
+
+							color: #fff;
+						}
+		 			}
+		 		}
 		 	}
 		}
 	}
