@@ -43,25 +43,17 @@ app的创建一定要通过平台的创建函数生成
 
 常量配置文件
 
+### gloabl
+
+平台相关文件
+
 ### i18n
 
 国际化配置文件
 
-### lib
-
-平台库文件
-
-### plugins
-
-平台插件
-
 ### router
 
 路由管理(vue-router)
-
-### services
-
-平台服务
 
 ### store
 
