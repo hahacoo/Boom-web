@@ -22,7 +22,7 @@ if(process.env.NODE_ENV !== 'production') {
 `
 }
 
-export default class StiApp {
+export default class StiRoot {
 
 	constructor({
 

@@ -119,7 +119,8 @@ function generator(config, options) {
 					$: "jquery",
 					jQuery: "jquery",
 					"window.jQuery": "jquery",
-					_: 'lodash'
+					_: 'lodash',
+					http: 'http'
 				}),
 		    	// commons chunk
 		        new webpack.optimize.CommonsChunkPlugin({

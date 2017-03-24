@@ -1,6 +1,6 @@
 /**
  * 测试app
  */
-import { createApp } from 'utils'
+import StiApp from 'lib/StiApp'
 
-export default createApp()
+export default new StiApp()

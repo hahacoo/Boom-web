@@ -15,6 +15,7 @@ env:
 # 全局变量
 globals:
   _: true
+  http: true
 # 引用库
 extends: 'eslint:recommended'
 

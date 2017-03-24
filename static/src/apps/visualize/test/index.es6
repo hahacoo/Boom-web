@@ -1,17 +1,6 @@
 import './style'
 import template from './view'
-import { createVisualize } from 'utils'
+import StiVisualize from 'lib/StiVisualize'
 
-export default createVisualize(template, {
-
-	created() {
-
-		console.log('test')
-	},
-
-	destroy() {
-
-		console.log('destroy')
-	}
-})
+export default new StiVisualize(template)
 

@@ -1,7 +1,7 @@
 import './style'
 import template from './view'
 
-import { createVisualize } from 'utils'
+import StiVisualize from 'lib/StiVisualize'
 
-export default createVisualize(template, 'sti-fade')
+export default new StiVisualize(template)
 

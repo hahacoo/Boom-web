@@ -8,17 +8,15 @@
 import './style'
 import template from './view'
 import $ from 'jquery'
-import { createVisualize } from 'utils'
+import StiVisualize from 'lib/StiVisualize'
 import putAway from '../components/putAway'    // 展开收起容器
 
-export default createVisualize(
+export default new StiVisualize(template, {
 
-    template,
-
-    {
         components: {
             putAway
         },
+        
         data() {
             return {
                 leftWidth: null,
@@ -94,6 +92,5 @@ export default createVisualize(
         mounted() {
             this.computSize()
         }
-    }
+})
 
-)

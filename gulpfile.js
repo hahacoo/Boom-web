@@ -238,7 +238,8 @@ function webpackBundle(done) {
 					$: "jquery",
 					jQuery: "jquery",
 					"window.jQuery": "jquery",
-					_: 'lodash'
+					_: 'lodash',
+					http: 'http'
 				}),
 				new webpack.ResolverPlugin([
 		    		new DirectoryNameAsMain()
@@ -339,7 +340,8 @@ function webpackBundle(done) {
 					$: "jquery",
 					jQuery: "jquery",
 					"window.jQuery": "jquery",
-					_: 'lodash'
+					_: 'lodash',
+					http: 'http'
 				}),
 		        new webpack.optimize.CommonsChunkPlugin({
 		            names: ['commons', 'vendor']

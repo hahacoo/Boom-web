@@ -18,7 +18,6 @@ import {
 	validRule as StiValidRule 
 } from 'components/validator'
 /*服务*/
-import http from 'utils/http'
 import { subscribe, publish, listen, trigger } from 'event'
 import { setParam, getParam } from 'router/param'
 /*过滤器*/
@@ -29,7 +28,6 @@ let Sti = {
 	install: (Vue, option) => {
 
 		//注册系统服务
-		Vue.prototype.$http = http
 		Vue.prototype.$subscribe = subscribe
 		Vue.prototype.$publish = publish
 		Vue.prototype.$listen = listen

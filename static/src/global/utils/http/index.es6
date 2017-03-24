@@ -53,9 +53,9 @@ let request = function(url, settings) {
  */
 let http = function (url, settings) {
 
-	let { data } = settings
+	// let { data } = settings
 
-	this.$setParam(url, data)
+	// this.$setParam(url, data)
 
 	return request(url, settings)
 }

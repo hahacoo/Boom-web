@@ -46,31 +46,31 @@ export default {
 
 		change(label) {
 
-			this.$http.setItem('console-label', label)
+			http.setItem('console-label', label)
 		},
 
 		resize(w, h, l, t) {
 
-			this.$http.setItem('console-width', w)
-			this.$http.setItem('console-height', h)
-			this.$http.setItem('console-left', l)
-			this.$http.setItem('console-top', t)
+			http.setItem('console-width', w)
+			http.setItem('console-height', h)
+			http.setItem('console-left', l)
+			http.setItem('console-top', t)
 		},
 
 		move(t, l) {
 
-			this.$http.setItem('console-top', t)
-			this.$http.setItem('console-left', l)
+			http.setItem('console-top', t)
+			http.setItem('console-left', l)
 		},
 
 		init() {
 
-			this.active = this.$http.getItem('console-active')
-			this.activeLable = this.$http.getItem('console-label')
-			this.initWidth = this.$http.getItem('console-width') || 400
-			this.initHeight = this.$http.getItem('console-height') || 400
-			this.initTop = this.$http.getItem('console-top') || 200
-			this.initLeft = this.$http.getItem('console-left') || 200
+			this.active = http.getItem('console-active')
+			this.activeLable = http.getItem('console-label')
+			this.initWidth = http.getItem('console-width') || 400
+			this.initHeight = http.getItem('console-height') || 400
+			this.initTop = http.getItem('console-top') || 200
+			this.initLeft = http.getItem('console-left') || 200
 		}
 	},
 
@@ -86,7 +86,7 @@ export default {
 
 				that.active = !that.active
 
-				that.$http.setItem('console-active', that.active)
+				http.setItem('console-active', that.active)
 
 				if(that.active) {
 
