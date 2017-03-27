@@ -21,7 +21,15 @@ import {
 import { subscribe, publish, listen, trigger } from 'event'
 import { setParam, getParam } from 'router/param'
 /*过滤器*/
-import toPixel from 'filters/toPixel'
+import {
+
+	capitalize,
+	uppercase,
+	lowercase,
+	currency,
+	json,
+	toPixel
+} from 'filters'
 
 let Sti = {
 
@@ -47,6 +55,11 @@ let Sti = {
 		Vue.component('sti-validrule', StiValidRule)
 
 		//注册全局过滤器
+		Vue.filter('capitalize', capitalize)
+		Vue.filter('uppercase', uppercase)
+		Vue.filter('lowercase', lowercase)
+		Vue.filter('currency', currency)
+		Vue.filter('json', json)
 		Vue.filter('toPixel', toPixel)
 	}
 }

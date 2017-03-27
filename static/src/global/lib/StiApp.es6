@@ -21,7 +21,7 @@ export default class StiApp {
 					<!--菜单区域-->
 					<app-menu></app-menu>
 					<!--主视图区域-->
-					<main class="content-main">
+					<main id="content-main" class="content-main">
 						<transition name="sti-fadeInUp" mode="out-in" appear>
 							<router-view></router-view>
 						</transition>
