@@ -1,103 +1,6 @@
 import './style'
 import template from './view'
-
-let states = {
-
-	PROGRESS: 'progressing',
-	STOP: 'stop'
-}
-
-function ProgressBar({
-
-	timeout,
-	intervals,
-	waitProgress
-},	startCb = () => void(0),
-	progressCb = () => void(0),
-	stopCb = () => void(0),
-	timeoutCb = () => void(0),
-	cancleCb = () => void(0)
-) {
-
-	this.startCb = startCb
-	this.progressCb = progressCb
-	this.stopCb = stopCb
-	this.cancleCb = cancleCb
-	this.timeoutCb = timeoutCb
-	this.intervals = intervals
-	this.timeout = timeout
-	this.waitProgress = waitProgress
-
-	this.startRange = 30
-}
-
-ProgressBar.prototype.start = function() {
-
-	if(_.isArray(this.waitProgress)) {
-
-		let len = this.waitProgress.length
-
-		this.waitProgress = this.waitProgress[Math.floor(Math.random() * len)]
-	}
-
-	this.startCb()
-	this.progress()
-	this.complateTimer = setTimeout(() => {
-
-		this.timeoutCb()
-	}, this.timeout)
-}
-
-ProgressBar.prototype.progress = function() {
-
-	clearTimeout(this.goTimer)
-
-	this.goTimer = null
-
-	let intervals = this.intervals,
-		len = intervals.length
-
-	let result = this.progressCb()
-
-	if(result <= this.startRange) {
-
-		this.goTimer = setTimeout(() => {
-
-			this.progress()
-		}, 40)
-	} else if(result < this.waitProgress && result > this.startRange) {
-
-		this.goTimer = setTimeout(() => {
-
-			this.progress()
-		}, intervals[Math.floor(Math.random() * len)])
-	}
-}
-
-ProgressBar.prototype.stop = function() {
-
-	clearTimeout(this.goTimer)
-	clearTimeout(this.complateTimer)
-
-	this.goTimer = null
-	this.complateTimer = null
-	this.stopCb()
-
-	return this
-}
-
-ProgressBar.prototype.cancle = function() {
-
-	clearTimeout(this.goTimer)
-	clearTimeout(this.complateTimer)
-
-	this.goTimer = null
-	this.complateTimer = null
-
-	this.cancleCb()
-
-	return this
-}
+import ProgressBar from './ProgressBar'
 
 export default {
 
@@ -108,7 +11,8 @@ export default {
 		return {
 
 			progress: 0,
-			show: false
+			show: false,
+			color: '#263238'
 		}
 	},
 
@@ -120,19 +24,13 @@ export default {
 			default: 50
 		},
 
-		//进度条颜色
-		color: {
-
-			type: String,
-			default: '#263238'
-		},
-
+		//时间间隔集合
 		intervals: {
 
 			type: [ Array, Number ],
 			default() {
 
-				return [ 60, 80, 100 ]
+				return [ 10, 10, 20, 20, 40 ]
 			}
 		},
 
@@ -142,7 +40,7 @@ export default {
 			type: [ Array, Number ],
 			default() {
 
-				return [ 2, 4, 8 ]
+				return [ 2, 4, 6 ]
 			}
 		},
 
@@ -152,7 +50,7 @@ export default {
 			type: [ Array, Number ],
 			default() {
 
-				return [ 75, 80, 85, 90 ]
+				return [ 80, 85, 85, 85, 90, 90, 95, 95 ]
 			}
 		},
 
@@ -160,7 +58,7 @@ export default {
 		timeout: {
 
 			type: Number,
-			default: 10000
+			default: 4000
 		}
 	},
 
@@ -171,7 +69,7 @@ export default {
 			return {
 
 				width: this.progress + '%',
-				backgroundColor: this.color
+				background: this.color
 			}
 		}
 	},
@@ -180,7 +78,20 @@ export default {
 
 		$route(to) {
 
-			this.start()
+			let progress = to.meta.progress
+
+			if(progress) {
+
+				if(progress.color) {
+
+					this.color = progress.color
+				}
+
+				this.start()
+			} else {
+
+				this.cancle()
+			}
 		}
 	},
 
@@ -190,51 +101,36 @@ export default {
 
 			if(!this.progressBar) {
 
-				let waitProgress = this.waitProgress
-
-				if(_.isArray(waitProgress)) {
-
-					let len = waitProgress.length
-
-					waitProgress = waitProgress[Math.floor(Math.random() * len)]
-				}
-
 				this.progressBar = new ProgressBar({
 
 					timeout: this.timeout,
 					intervals: this.intervals,
-					waitProgress: this.waitProgress
+					waitProgress: this.waitProgress,
+					ticks: this.ticks
 				}, 	() => {
 
 						this.show = true
-						this.progress = 0
 					},
 
-					() => {
+					tick => {
 						
-						this.state = states.PROGRESS
+						if(this.progress <= 10) {
 
-						let ticks = this.ticks
-
-						if(_.isArray(ticks)) {
-
-							let len = ticks.length
-
-							ticks = ticks[Math.floor(Math.random() * len)]
+							return this.progress += .2
 						}
 
-						this.progress += this.progress < 30 ? .3 : ticks
+						if(this.progress > 50 && this.progress < 80) {
 
-						return this.progress
+							return this.progress += .5
+						}
 
+						return this.progress += tick
 					},
 
 					() => {
 
 						this.progress = 100
-						this.state = states.STOP
-
-						setTimeout(() => {
+						this.showTimer = setTimeout(() => {
 
 							this.show = false
 						}, 1000)
@@ -242,56 +138,42 @@ export default {
 
 					() => {
 
-						this.progress = 100
-						this.state = states.STOP
-
-						setTimeout(() => {
-
-							this.show = false
-						}, 1000)
-					},
-
-					() => {
-
+						clearTimeout(this.showTimer)
+						this.showTimer = null
 						this.show = false
 						this.progress = 0
-						this.state = states.STOP
 					}
 				)
 
 			}
 
-			if(this.state === states.PROGRESS) {
+			this.progressBar.cancle()
 
-				this.progressBar.cancle()
-
-				this.$nextTick(() => {
-
-					this.progressBar.start()
-				})
-			} else {
+			this.$nextTick(() => {
 
 				this.progressBar.start()
-			}
-
+			})
 		},
 
 		stop() {
 
 			this.progressBar && this.progressBar.stop()
+		},
+
+		cancle() {
+
+			this.progressBar && this.progressBar.cancle()
 		}
 	},
 
 	created() {
 
-		this.state = states.STOP
-
-		this.$on('progress.start', () => {
+		this.$subscribe('progress.start', () => {
 
 			this.start()
 		})
 
-		this.$on('progress.stop', () => {
+		this.$subscribe('progress.stop', () => {
 
 			this.stop()
 		})

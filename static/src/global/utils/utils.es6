@@ -5,12 +5,22 @@
  */
 
 /**
+ * 是否在浏览器环境
+ * @return {[type]} [description]
+ */
+function inBrowser() {
+
+	return typeof window !== 'undefined' &&
+		Object.prototype.toString.call(window) !== '[object Object]'
+}
+
+/**
  * 类数组对象转为数组
  * @param  {[type]} list  [description]
  * @param  {[type]} start [description]
  * @return {[type]}       [description]
  */
-function toArray (list, start) {
+function toArray(list, start) {
 
 	start = start || 0
 	let i = list.length - start,
@@ -100,6 +110,7 @@ function pathJoin(...paths) {
 
 export {
 
+	inBrowser,
 	pathJoin,
 	toNumber,
 	toArray

@@ -229,6 +229,13 @@ function webpackBundle(done) {
 
 			plugins: [
 				new WebpackMd5Hash(),
+				new webpack.BannerPlugin(
+`sti-web
+Version 0.0.1
+Created by zhangdi@b.360.cn`, {
+
+		    		entryOnly: true
+		    	}),
 				new webpack.DefinePlugin({
 					'process.env': {
 						NODE_ENV: JSON.stringify('production')
@@ -336,6 +343,13 @@ function webpackBundle(done) {
 				new webpack.ResolverPlugin([
 		    		new DirectoryNameAsMain()
 		    	]),
+				new webpack.BannerPlugin(
+`sti-web
+Version 0.0.1
+Created by zhangdi@b.360.cn`, {
+
+		    		entryOnly: true
+		    	}),
 		    	new webpack.ProvidePlugin({
 					$: "jquery",
 					jQuery: "jquery",

@@ -29,7 +29,14 @@ let router = new Router()
 				text: '首页',
 			}
 		},
-		...Router.setMetas(routes.apps, {requestAuth: true})
+		...Router.setMetas(routes.apps, {
+
+			requestAuth: true, 
+			progress: {
+
+				color: '#455A64'
+			}
+		})
 	]
 })
 .register('/visualize', Visualize, {
@@ -44,7 +51,14 @@ let router = new Router()
 				text: '大屏首页',
 			}
 		},
-		...Router.setMetas(routes.visualize, {requestAuth: true})
+		...Router.setMetas(routes.visualize, {
+
+			requestAuth: true, 
+			progress: {
+
+				color: '#ccc'
+			}
+		})
 	]
 })
 .register('/login', LoginPage)

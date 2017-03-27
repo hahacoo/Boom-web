@@ -26,5 +26,13 @@ export default {
 				path: '/config'
 			}]
 		}
+	},
+
+	mounted() {
+
+		this.$nextTick(() => {
+
+			this.$publish('progress.stop')
+		})
 	}
 }

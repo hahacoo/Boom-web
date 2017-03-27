@@ -114,6 +114,13 @@ function generator(config, options) {
 		    	new webpack.ResolverPlugin([
 		    		new DirectoryNameAsMain()
 		    	]),
+		    	new webpack.BannerPlugin(
+`sti-web
+Version 0.0.1
+Created by zhangdi@b.360.cn`, {
+
+		    		entryOnly: true
+		    	}),
 		    	//将jquery作为全局导出，使所有模块可以任意调用，不需要import(require)
 		    	new webpack.ProvidePlugin({
 					$: "jquery",
