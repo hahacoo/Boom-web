@@ -8,6 +8,7 @@ if(process.env.NODE_ENV !== 'production') {
 	defaultTemp = `
 <div class="sti-web" :class="theme">
 	
+	<sti-progress></sti-progress>
 	<router-view></router-view>
 	<sti-console></sti-console>
 </div>
@@ -17,6 +18,7 @@ if(process.env.NODE_ENV !== 'production') {
 	defaultTemp = `
 <div class="sti-web" :class="theme">
 	
+	<sti-progress></sti-progress>
 	<router-view></router-view>
 </div>
 `

@@ -12,6 +12,7 @@ import StiAssist from 'components/assist'
 import StiSidenav from 'components/sidenav'
 import StiDrag from 'components/drag'
 import StiConsole from 'components/console'
+import StiProgress from 'components/progress'
 import { 
 	
 	validator as StiValidator, 
@@ -51,6 +52,7 @@ let Sti = {
 		Vue.component('sti-sidenav', StiSidenav)
 		Vue.component('sti-drag', StiDrag)
 		Vue.component('sti-console', StiConsole)
+		Vue.component('sti-progress', StiProgress)
 		Vue.component('sti-validator', StiValidator)
 		Vue.component('sti-validrule', StiValidRule)
 
