@@ -4,6 +4,8 @@
  * by zhangdi
  */
 
+import 'utils/classList'
+
 /**
  * 是否在浏览器环境
  * @return {[type]} [description]

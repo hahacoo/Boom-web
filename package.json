@@ -21,6 +21,7 @@
     "crypto-js": "^3.1.9-1",
     "debug": "~2.2.0",
     "ejs": "^2.5.1",
+    "es6-promise": "^4.1.0",
     "express": "~4.13.4",
     "express-http-proxy": "^0.9.1",
     "jade": "~1.11.0",
@@ -31,6 +32,7 @@
     "mockjs": "^1.0.1-beta2",
     "morgan": "~1.7.0",
     "path-to-regexp": "^1.5.3",
+    "proxy-polyfill": "^0.1.6",
     "react": "^15.4.1",
     "react-dom": "^15.4.1",
     "react-redux": "^5.0.2",
@@ -45,7 +47,8 @@
     "vue-i18n": "^5.0.3",
     "vue-material": "^0.7.1",
     "vue-router": "^2.3.0",
-    "vuex": "^2.2.1"
+    "vuex": "^2.2.1",
+    "whatwg-fetch": "^2.0.3"
   },
   "devDependencies": {
     "autoprefixer": "^6.5.3",
@@ -56,6 +59,8 @@
     "babel-plugin-add-module-exports": "^0.2.1",
     "babel-plugin-transform-async-to-generator": "^6.16.0",
     "babel-plugin-transform-es2015-modules-amd": "^6.8.0",
+    "babel-plugin-transform-es3-member-expression-literals": "^6.22.0",
+    "babel-plugin-transform-es3-property-literals": "^6.22.0",
     "babel-plugin-transform-object-rest-spread": "^6.20.2",
     "babel-plugin-transform-runtime": "^6.15.0",
     "babel-preset-es2015": "^6.16.0",
@@ -66,6 +71,7 @@
     "css-loader": "^0.25.0",
     "eslint": "^3.12.2",
     "eslint-loader": "^1.6.1",
+    "exports-loader": "^0.6.4",
     "extract-text-webpack-plugin": "^1.0.1",
     "file-loader": "^0.9.0",
     "gulp": "github:gulpjs/gulp#4.0",
@@ -81,6 +87,7 @@
     "gulp-util": "^3.0.7",
     "html-loader": "^0.4.3",
     "html-webpack-plugin": "^2.24.1",
+    "imports-loader": "^0.7.1",
     "karma": "^1.3.0",
     "karma-chrome-launcher": "^2.0.0",
     "karma-mocha": "^1.3.0",
@@ -102,6 +109,6 @@
     "webpack-md5-hash": "0.0.5",
     "webpack-uglify-parallel": "^0.1.3"
   },
-  "author": "zhangdi525@163.com",
+  "author": "zhangdi@b.360.cn",
   "license": "MIT"
 }

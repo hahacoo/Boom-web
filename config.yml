@@ -80,13 +80,12 @@ src:
   validation: jquery-validation
  # 第三方库，单独打包
  vendor:
+  - utils/classList
   - vue
   - vuex
   - vue-material
   - vue-router
   - vue-i18n
-  - jquery
-  - lodash
   - crypto-js
   - three
   - validation/dist/additional-methods
