@@ -27,23 +27,6 @@ const routes = {
 			children: [
 
 				{
-					path: '',
-					redirect: 'sec',
-					component: resolve => {
-
-						require.ensure(['apps/app/test/sec'], () => {
-
-							resolve(require('apps/app/test/sec'))
-						}, 'app')
-
-					},
-					meta: {
-
-						appName: '测试菜单'
-					}
-				},
-
-				{
 					path: 'sec',
 					defaultView: true,
 					component: resolve => {
@@ -94,23 +77,6 @@ const routes = {
 				text: '通用配置'
 			},
 			children: [
-
-				{
-					path: '',
-					redirect: 'important',
-					component: resolve => {
-
-						require.ensure(['apps/app/config/important'], () => {
-
-							resolve(require('apps/app/config/important'))
-						}, 'app')
-
-					},
-					meta: {
-						icon: 'snowflake-o'
-					},
-
-				},
 
 				{
 					path: 'important',

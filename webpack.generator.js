@@ -14,6 +14,8 @@ var path = require('path'),
 
 var extend = require('./extend')
 
+var package = require('./package')
+
 function generator(config, options) {
 
 	var src = config.src,
@@ -74,6 +76,7 @@ function generator(config, options) {
 						exclude: /(node_modules|libs)/,
 						loader: "babel-loader",
 						query: {
+							cacheDirectory: true,
 							plugins: [
 								['transform-runtime', {
 
@@ -115,19 +118,21 @@ function generator(config, options) {
 		    		new DirectoryNameAsMain()
 		    	]),
 		    	new webpack.BannerPlugin(
-`sti-web
-Version 0.0.1
-Created by zhangdi@b.360.cn`, {
+`${package.name}
+Version ${package.version}
+Created by ${package.author}`, {
 
 		    		entryOnly: true
 		    	}),
 		    	//将jquery作为全局导出，使所有模块可以任意调用，不需要import(require)
+		    	//导出http全局变量
+		    	//增加promise,fetch,Proxy的polyfill
 		    	new webpack.ProvidePlugin({
 					$: "jquery",
 					jQuery: "jquery",
 					"window.jQuery": "jquery",
 					_: 'lodash',
-					http: 'http'
+					http: 'http',
 				}),
 		    	// commons chunk
 		        new webpack.optimize.CommonsChunkPlugin({

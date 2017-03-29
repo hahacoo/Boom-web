@@ -63,10 +63,7 @@ let router = new Router()
 })
 .register('/login', LoginPage)
 .register('/public', resolve => require(['apps/public'], resolve))
-.register('*', ErrorPage, {
-	
-	name: 'error'
-})
+.register('*', ErrorPage, {	name: 'error' })
 .before(log)
 .before(filter)
 .before(paramBefore)

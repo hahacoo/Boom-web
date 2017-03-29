@@ -47,6 +47,8 @@ var processes = {
 	server: null
 }
 
+var package = require('./package')
+
 //读取配置信息
 var _config = {}
 
@@ -229,10 +231,10 @@ function webpackBundle(done) {
 
 			plugins: [
 				new WebpackMd5Hash(),
-				new webpack.BannerPlugin(
-`sti-web
-Version 0.0.1
-Created by zhangdi@b.360.cn`, {
+		    	new webpack.BannerPlugin(
+`${package.name}
+Version ${package.version}
+Created by ${package.author}`, {
 
 		    		entryOnly: true
 		    	}),
@@ -241,12 +243,16 @@ Created by zhangdi@b.360.cn`, {
 						NODE_ENV: JSON.stringify('production')
 					}
 				}),
+				//增加第三方promise,fetch,Proxy的polyfill
 				new webpack.ProvidePlugin({
 					$: "jquery",
 					jQuery: "jquery",
 					"window.jQuery": "jquery",
 					_: 'lodash',
-					http: 'http'
+					http: 'http',
+					Promise: 'babel!es6-promise',
+					fetch: 'exports?global.fetch!babel!whatwg-fetch', 
+					Proxy: 'exports?global.Proxy!babel!proxy-polyfill',
 				}),
 				new webpack.ResolverPlugin([
 		    		new DirectoryNameAsMain()
@@ -276,7 +282,7 @@ Created by zhangdi@b.360.cn`, {
 	                minify: {
 	                    //压缩html文件
 	                    removeComments: true,
-	                    collapseWhitespace: true
+	                    collapseWhitespace: false
 	                }
 	            })
 			]
@@ -286,7 +292,7 @@ Created by zhangdi@b.360.cn`, {
 
 		webpackConfig = webpackGenerator(_config, {
 
-			devtool: '#cheap-module-eval-source-map', //sourcemap生成方式
+			devtool: '#cheap-eval-source-map', //sourcemap生成方式
 
 	        module: {
 
@@ -343,19 +349,23 @@ Created by zhangdi@b.360.cn`, {
 				new webpack.ResolverPlugin([
 		    		new DirectoryNameAsMain()
 		    	]),
-				new webpack.BannerPlugin(
-`sti-web
-Version 0.0.1
-Created by zhangdi@b.360.cn`, {
+		    	new webpack.BannerPlugin(
+`${package.name}
+Version ${package.version}
+Created by ${package.author}`, {
 
 		    		entryOnly: true
 		    	}),
+		    	//增加第三方promise,fetch,Proxy的polyfill
 		    	new webpack.ProvidePlugin({
 					$: "jquery",
 					jQuery: "jquery",
 					"window.jQuery": "jquery",
 					_: 'lodash',
-					http: 'http'
+					http: 'http',
+					Promise: 'babel!es6-promise',
+					fetch: 'imports?this=>global!exports?global.fetch!babel!whatwg-fetch', 
+					Proxy: 'imports?this=>global!exports?global.Proxy!babel!proxy-polyfill',
 				}),
 		        new webpack.optimize.CommonsChunkPlugin({
 		            names: ['commons', 'vendor']
