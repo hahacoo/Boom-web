@@ -18,6 +18,10 @@ import {
 	validator as StiValidator, 
 	validRule as StiValidRule 
 } from 'components/validator'
+import { 
+	//jqGrid as StiJqGrid, 
+	jqCol as StiJqCol
+} from 'components/grid'
 /*服务*/
 import { subscribe, publish, listen, trigger } from 'event'
 import { setParam, getParam } from 'router/param'
@@ -35,6 +39,8 @@ import {
 let Sti = {
 
 	install: (Vue, option) => {
+
+		let locale = 'cn'
 
 		//注册系统服务
 		Vue.prototype.$subscribe = subscribe
@@ -55,6 +61,12 @@ let Sti = {
 		Vue.component('sti-progress', StiProgress)
 		Vue.component('sti-validator', StiValidator)
 		Vue.component('sti-validrule', StiValidRule)
+		Vue.component('sti-grid', (resolve, reject) => {
+			require(['components/grid/jqGridInd'], jqgrid => {
+				jqgrid(locale, resolve, reject)
+			})
+		})
+		Vue.component('sti-col', StiJqCol)
 
 		//注册全局过滤器
 		Vue.filter('capitalize', capitalize)

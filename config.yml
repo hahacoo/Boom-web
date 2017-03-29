@@ -78,6 +78,7 @@ src:
  moduleAlias:
   vue$: vue/dist/vue.common.js
   validation: jquery-validation
+  jqGridjs: jqGrid/js/jquery.jqGrid.min.js
  # 第三方库，单独打包
  vendor:
   - vue
@@ -91,6 +92,7 @@ src:
   - three
   - validation/dist/additional-methods
   - validation/dist/localization/messages_zh
+  - jqGrid/js/jquery.jqGrid.min.js
 
 # 开发模式下发布路径
 dev:
