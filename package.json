@@ -87,11 +87,8 @@
     "gulp-util": "^3.0.7",
     "html-loader": "^0.4.3",
     "html-webpack-plugin": "^2.24.1",
-<<<<<<< HEAD
     "jqGrid": "^5.1.1",
-=======
     "imports-loader": "^0.7.1",
->>>>>>> d4758263cb2f658aa8cbd328c8bce2ea4d8ebfb4
     "karma": "^1.3.0",
     "karma-chrome-launcher": "^2.0.0",
     "karma-mocha": "^1.3.0",
