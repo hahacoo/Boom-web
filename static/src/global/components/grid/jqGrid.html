@@ -1,0 +1,29 @@
+<div class="sti-jq-grid" :class="theme">
+    <table :id="id">
+        <slot></slot>
+    </table>
+    <div :id="pagerId"></div>
+    <sti-modal :show.sync="showDialog" :backdrop="false" effect="fade" width="800">
+        <div slot="modal-header" class="modal-header"  >
+            <h4 class="modal-title">请选择需要显示的列</h4>
+        </div>
+        <div slot="modal-body" class="modal-body">
+            <form class="form-horizontal">
+                <div class="form-group">
+                    <div class="col-xs-4" v-for="col in listColModel">
+                        <div class="checkbox">
+                            <label>
+                                <input type="checkbox" v-model="col.shown"> {{col.label}}
+                            </label>
+                        </div>
+                    </div>
+                </div>
+            </form>
+            <span style="color:red;" v-if="showColCount==0">至少选择一列</span>
+        </div>
+        <div slot="modal-footer" class="modal-footer">
+            <button class="btn btn-primary" @click.stop.prevent="sure" :disabled="showColCount==0">确定</button>
+            <button class="btn btn-default" @click.stop.prevent="cancel">取消</button>
+        </div>
+    </sti-modal>
+</div>

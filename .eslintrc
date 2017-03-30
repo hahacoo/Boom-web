@@ -83,7 +83,7 @@ rules:
    ignoreStrings: true
    ignoreTemplateLiterals: true
  # 最大行数
- max-lines: [1, {max: 300, skipComments: true, skipBlankLines: true}]
+ max-lines: [1, {max: 500, skipComments: true, skipBlankLines: true}]
  # 构造函数规范
  new-cap: [2, {newIsCap: true}]
  # 变量空一行
