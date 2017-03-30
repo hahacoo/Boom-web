@@ -1,0 +1,23 @@
+<div class="sti-tabs" :style="tabsStyle.tabs">
+
+	<nav class="tabs-nav" :style="tabsStyle.nav">
+		
+		<div class="nav-label" 
+			v-for="(tab, $index) in tabList" 
+			:key="tab.id" 
+			@click="setActiveTab(tab, $index)" 
+			ref="headers">
+			<md-button class="md-primary">
+				<div>{{tab.label}}</div>
+			</md-button>
+		</div>
+		<span class="nav-label-indicator" :style="activeIndexStyle" ref="indicator"></span>
+	</nav>
+	<div class="tabs-content" :style="tabsStyle.content">
+
+		<div class="content-wrapper" :style="activeTabStyle">
+			
+			<slot></slot>
+		</div>
+	</div>
+</div>

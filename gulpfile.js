@@ -252,7 +252,7 @@ Created by ${package.author}`, {
 					http: 'http',
 					Promise: 'babel!es6-promise',
 					fetch: 'exports?global.fetch!babel!whatwg-fetch', 
-					Proxy: 'exports?global.Proxy!babel!proxy-polyfill',
+					Proxy: 'exports?global.Proxy!babel!proxy-polyfill'
 				}),
 				new webpack.ResolverPlugin([
 		    		new DirectoryNameAsMain()
@@ -365,7 +365,7 @@ Created by ${package.author}`, {
 					http: 'http',
 					Promise: 'babel!es6-promise',
 					fetch: 'imports?this=>global!exports?global.fetch!babel!whatwg-fetch', 
-					Proxy: 'imports?this=>global!exports?global.Proxy!babel!proxy-polyfill',
+					Proxy: 'imports?this=>global!exports?global.Proxy!babel!proxy-polyfill'
 				}),
 		        new webpack.optimize.CommonsChunkPlugin({
 		            names: ['commons', 'vendor']

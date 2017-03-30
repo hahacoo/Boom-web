@@ -3,7 +3,6 @@
  *
  * by zhangdi
  */
-
 import 'utils/classList'
 
 /**
@@ -14,6 +13,33 @@ function inBrowser() {
 
 	return typeof window !== 'undefined' &&
 		Object.prototype.toString.call(window) !== '[object Object]'
+}
+
+/**
+ * 检测浏览器版本
+ * @return {[type]} [description]
+ */
+function browserIs() {
+
+	let browser = {}
+
+	if(!inBrowser) {
+
+		return browser
+	}
+
+	let nav = navigator.userAgent.toLowerCase()
+
+	let result
+
+	(result = nav.match(/rv:([\d.]+)\) like gecko/)) ? browser.ie = result[1] :
+	(result = nav.match(/msie ([\d.]+)/)) ? browser.ie = result[1] :
+    (result = nav.match(/firefox\/([\d.]+)/)) ? browser.firefox = result[1] :
+    (result = nav.match(/chrome\/([\d.]+)/)) ? browser.chrome = result[1] :
+    (result = nav.match(/opera.([\d.]+)/)) ? browser.opera = result[1] :
+    (result = nav.match(/version\/([\d.]+).*safari/)) ? browser.safari = result[1] : 0
+
+	return browser
 }
 
 /**
@@ -110,10 +136,38 @@ function pathJoin(...paths) {
 	}, '')
 }
 
+/**
+ * 查找满足条件最近的父组件
+ * @param  {[type]} $parent  [description]
+ * @param  {[type]} cssClass [description]
+ * @return {[type]}          [description]
+ */
+function getClosestVueParent($parent, cssClass) {
+
+	if (!$parent || !$parent.$el) {
+
+		return false
+	}
+
+	if ($parent._uid === 0) {
+
+		return false
+	}
+
+	if ($parent.$el.classList.contains(cssClass)) {
+
+		return $parent
+	}
+
+	return getClosestVueParent($parent.$parent, cssClass)
+}
+
 export {
 
 	inBrowser,
+	browserIs,
 	pathJoin,
 	toNumber,
-	toArray
+	toArray,
+	getClosestVueParent
 }

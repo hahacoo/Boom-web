@@ -3,17 +3,26 @@
 	<div class="header-nav">
 
 		<h2 class="md-title nav-title" style="flex: 1" @click="goHome">STI WEB</h2>
-		<md-button class="md-icon-button md-primary" @click.native.stop="toggleLocale">
+
+		<md-button class="nav-button md-icon-button md-primary" @click.native.stop="toggleTheme">
+
+			<sti-icon icon="circle"></sti-icon>
+		</md-button>
+		<md-button class="nav-button md-icon-button md-primary" @click.native.stop="toggleLocale">
 
 			<sti-icon>{{locale}}</sti-icon>
 		</md-button>
-		<md-button class="md-icon-button md-primary" @click.native.stop="toggleTheme">
+		<md-button class="nav-button md-icon-button md-primary" @click.native.stop="toggleTheme">
 
-			<sti-icon icon="paint-brush"></sti-icon>
+			<sti-icon icon="envelope"></sti-icon>
 		</md-button>
-		<md-button class="md-icon-button md-primary">
+		<md-button class="nav-button md-icon-button md-primary">
 
 			<sti-icon icon="user-o"></sti-icon>
+		</md-button>
+		<md-button class="nav-button md-icon-button md-primary">
+
+			<sti-icon icon="cog"></sti-icon>
 		</md-button>
 	</div>
 </md-whiteframe>

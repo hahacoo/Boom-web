@@ -1,14 +1,18 @@
 <li :class="[unfold?'':'fold-style', open && isShow ? 'active' : '']">
+
   <a href="javascript:void(0)"
-    :class="{ selected: selected }"
+    :class="{ parent: isFolder, selected: selected }"
     @click="toggle">
+
       <md-button class="menu-item" :style="{paddingLeft: (model.level - 1) * 1 + 'em'}">
+
           <sti-icon :icon="iconShow"></sti-icon>
           <span>{{model.meta.text}}</span>
           <sti-icon class="sti-menu-arrow" :icon="open|arrowFilter" v-if="isFolder"></sti-icon>
       </md-button>
   </a>
   <ul :style="{height: isShow ? 35 * model.children.length + 'px' : null}">
+
     <item 
       v-on:menu-selected="childSelect"
       :unfold="unfold"
@@ -19,10 +23,14 @@
     </item>
   </ul>
   <ul v-if="!unfold" class="sub-menu">
+
     <li v-for="model in model.children">
+
       <a href="javascript:void(0)"  
         @click="subMenu(model)" >
+
         <md-button class="menu-item">
+
             <span>{{model.meta.text}}</span>
         </md-button>
       </a>

@@ -87,6 +87,7 @@ function generator(config, options) {
 								}],
 								[path.resolve('./babel-plugin-try-catch'), {
 									
+									"enable": true,
 						 			"errorHandler": "stiError",
  									"throwError": false
 						 		}]
@@ -125,6 +126,7 @@ Created by ${package.author}`, {
 		    		entryOnly: true
 		    	}),
 		    	//将jquery作为全局导出，使所有模块可以任意调用，不需要import(require)
+		    	//不是将变量绑定到window上，而是在webpack.global上
 		    	//导出http全局变量
 		    	//增加promise,fetch,Proxy的polyfill
 		    	new webpack.ProvidePlugin({
@@ -132,7 +134,7 @@ Created by ${package.author}`, {
 					jQuery: "jquery",
 					"window.jQuery": "jquery",
 					_: 'lodash',
-					http: 'http',
+					http: 'http'
 				}),
 		    	// commons chunk
 		        new webpack.optimize.CommonsChunkPlugin({

@@ -8,11 +8,10 @@ import { mapState, mapActions } from 'vuex'
 
 import { STI_THEME_DEFAULT } from 'constant'
 import appHeader from './components/header'
+import { browserIs } from 'utils'
 
-let a = 1
-
-let template = `
-<div class="sti-container">
+let template = 
+`<div class="sti-container">
 	<!--头部区域-->
 	<app-header></app-header>
 	<!--主视图区域-->
@@ -21,8 +20,7 @@ let template = `
 	</transition>
 	<!--提示区域-->
 	<sti-notice></sti-notice>
-</div>
-`
+</div>`
 
 export default {
 

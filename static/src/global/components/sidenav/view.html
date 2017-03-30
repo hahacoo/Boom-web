@@ -4,20 +4,27 @@
 		
 		<slot>
 
-			<div>
+			<sti-tabs direction="bottom" :text-icon="true">
 				
-			</div>
+				<sti-tab id="visualize" label="大屏">
+					
+					<sti-card :title="$t('commons.safety')" path="/visualize/test">
 
-			<div>
-				
-			</div>
+					</sti-card>
+					<sti-card :title="$t('commons.safety')" path="/visualize/equalProtection">
 
-			<sti-card :title="$t('commons.safety')" path="/visualize/test">
-
-			</sti-card>
-			<sti-card :title="$t('commons.safety')" path="/visualize/equalProtection">
-
-			</sti-card>
+					</sti-card>
+				</sti-tab>
+				<sti-tab id="bbb" label="b">
+					<div>
+						
+					</div>
+				</sti-tab>
+				<sti-tab id="bbb" label="b">
+					<div>
+					</div>
+				</sti-tab>
+			</sti-tabs>
 		</slot>
 	</md-sidenav>
 </div>

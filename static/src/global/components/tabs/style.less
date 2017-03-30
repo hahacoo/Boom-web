@@ -1,0 +1,119 @@
+.sti-tabs {
+
+	width: 100%;
+	position: relative;
+	overflow: hidden;
+
+	.tabs-nav {
+
+		width: 100%;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		position: relative;
+
+		.nav-label {
+
+			text-align: center;
+
+			.md-button {
+
+				color: rgba(255, 255, 255, .87);
+				margin: 0;
+
+				&:hover {
+
+					background-color: transparent;
+				}
+			}
+		}
+
+		.nav-label-indicator {
+
+			height: 2px;
+			position: absolute;
+			bottom: 0;
+			transition: all .4s cubic-bezier(.25,.8,.25,1);
+		}
+	}
+
+	.tabs-content {
+
+		width: 100%;
+		padding: 10px 0;
+		overflow: hidden;
+
+		.content-wrapper {
+
+			width: 100%;
+			white-space: nowrap;
+			position: relative;
+			overflow-x: visible;
+			transition: all .4s cubic-bezier(.25,.8,.25,1);
+
+			.sti-tab {
+
+				width: 100%;
+				padding: 0 10px;
+				position: absolute;
+				overflow: hidden;
+			}
+		}
+	}
+}
+
+.sti-web.default {
+
+	.sti-tabs {
+
+		.tabs-nav {
+
+			background-color: #00BFA5;
+
+			.nav-label {
+
+				.md-button {
+
+					color: rgba(255, 255, 255, .87);
+				}
+
+				&.label-active {
+
+					:after {
+
+						content: ''
+					}
+				}
+			}
+
+			.nav-label-indicator {
+
+				background-color: red
+			}
+		}
+	}
+}
+
+.sti-web.dark {
+
+	.sti-tabs {
+
+		.tabs-nav {
+
+			background-color: #000;
+
+			.nav-label {
+
+				.md-button {
+
+					color: rgba(255, 255, 255, .87);
+				}
+			}
+
+			.nav-label-indicator {
+
+				border: 1px solid rgba(255, 255, 255, .87)
+			}
+		}
+	}
+}
