@@ -1,13 +1,13 @@
 import Vue from 'vue'
 import VueI18n from 'vue-i18n'
 
-import { STI_LOCALE_ZH, STI_LOCALE_EN } from 'constant'
-import { zh as commons, en as commons_e } from './locales/commons'
+import { STI_LOCALE_CN, STI_LOCALE_EN } from 'constant'
+import { cn as commons, en as commons_e } from './locales/commons'
 
 Vue.use(VueI18n)
 
 //注册国际化文件
-Vue.locale(STI_LOCALE_ZH, {
+Vue.locale(STI_LOCALE_CN, {
 
 	commons
 })

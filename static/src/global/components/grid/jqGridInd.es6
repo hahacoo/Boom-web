@@ -5,6 +5,8 @@
 // import $ from 'jquery'
 import 'jqGrid/css/ui.jqgrid-bootstrap.css'
 import 'jqGridjs'
+
+import store from 'store'
 import template from './jqGrid.html'
 import { modal } from 'lib/StiStrap'
 import init from './init'
@@ -165,7 +167,13 @@ let jqGrid = {
 					}
 				})
 				this.colModel.sort((a, b) => a.order - b.order)
-				this.$nextTick(() => this.render())
+				this.$nextTick(() => {
+
+					require(['jqGrid/js/i18n/grid.locale-' + store.state.locale], () => {
+
+							this.render()
+					})
+				})
 			}
 		},
 
@@ -204,7 +212,8 @@ let jqGrid = {
 			$('.sti-jq-grid .glyphicon-step-forward').parent().attr('title', localObj.lastPage) 
 		}
 	},
-	ready() {
+
+	mounted() {
 		let that = this
 
 		$(window).resize(function() {
@@ -216,14 +225,5 @@ let jqGrid = {
 	}
 }
 
-/**
- * 需要时才进行加载
- */
-let lazyload = function(locale, resolve, reject) {
-	require(['jqGrid/js/i18n/grid.locale-' + locale], () => {
-		resolve(jqGrid)
-	})
-}
-
 // 导出的名称无所谓
-export default lazyload
+export default jqGrid

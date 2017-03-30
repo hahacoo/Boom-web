@@ -1,4 +1,4 @@
-export const zh = {
+export const cn = {
 
 	footer: 'STI前端工作组',
 	safety: '安全检测系统',

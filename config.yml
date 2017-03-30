@@ -89,6 +89,8 @@ src:
   - vue-i18n
   - crypto-js
   - three
+  - jquery
+  - lodash
   - validation/dist/additional-methods
   - validation/dist/localization/messages_zh
   - jqGrid/js/jquery.jqGrid.min.js

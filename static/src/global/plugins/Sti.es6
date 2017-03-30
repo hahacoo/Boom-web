@@ -21,7 +21,8 @@ import {
 	validRule as StiValidRule 
 } from 'components/validator'
 import { 
-	//jqGrid as StiJqGrid, 
+	
+	jqGrid as StiJqGrid, 
 	jqCol as StiJqCol
 } from 'components/grid'
 /*服务*/
@@ -65,11 +66,7 @@ let Sti = {
 		Vue.component('sti-tabs', StiTabs)
 		Vue.component('sti-validator', StiValidator)
 		Vue.component('sti-validrule', StiValidRule)
-		Vue.component('sti-grid', (resolve, reject) => {
-			require(['components/grid/jqGridInd'], jqgrid => {
-				jqgrid(locale, resolve, reject)
-			})
-		})
+		Vue.component('sti-grid', StiJqGrid)
 		Vue.component('sti-col', StiJqCol)
 
 		//注册全局过滤器

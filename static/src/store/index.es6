@@ -10,7 +10,7 @@ import Vuex from 'vuex'
 
 import { 
 	
-	STI_LOCALE_ZH, 
+	STI_LOCALE_CN, 
 	STI_LOCALE_EN, 
 	STI_THEME_DEFAULT, 
 	STI_THEME_DARK, 
@@ -33,7 +33,7 @@ const state = {
 		org: 'STI-WEB'
 	}, //用户信息
 	menu: true, //菜单状态
-	locale: STI_LOCALE_ZH, //国际化信息
+	locale: STI_LOCALE_CN, //国际化信息
 	theme: STI_THEME_DEFAULT //主题信息
 
 }
@@ -80,11 +80,11 @@ const actions = {
 	},
 	updateLocale: ({commit}, locale) => {
 
-		let locales = [ STI_LOCALE_ZH, STI_LOCALE_EN ]
+		let locales = [ STI_LOCALE_CN, STI_LOCALE_EN ]
 
 		locale = locales.some((item) => item === locale) 
 			? locale 
-			: STI_LOCALE_ZH
+			: STI_LOCALE_CN
 			
 		commit(types.LOCALE_UPDATE, locale)
 	},

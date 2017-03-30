@@ -15,7 +15,7 @@ export const STI_THEME_DEFAULT = 'default'
 export const STI_THEME_DARK = 'dark'
 export const STI_THEME_DASHBORD = 'visualize'
 
-export const STI_LOCALE_ZH = 'zh'
+export const STI_LOCALE_CN = 'cn'
 export const STI_LOCALE_EN = 'en'
 
 export const STI_EVENT_PREFIX = 'sti-event'

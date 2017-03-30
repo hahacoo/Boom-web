@@ -144,7 +144,7 @@ export default {
 			}
 		},
 
-		setActiveTab(tab, $index=0) {
+		setActiveTab(tab, $index = 0) {
 
 			this.activeTab = tab
 			this.activeTabIndex = $index

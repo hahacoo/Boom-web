@@ -10,7 +10,7 @@ import {
 	STI_THEME_DEFAULT,
 	STI_THEME_DARK,
 	STI_THEME_LIGHT,
-	STI_LOCALE_ZH,
+	STI_LOCALE_CN,
 	STI_LOCALE_EN
 } from 'constant'
 import './style'
@@ -52,7 +52,7 @@ export default {
 
 		toggleLocale() {
 
-			let locales = [ STI_LOCALE_ZH, STI_LOCALE_EN ]
+			let locales = [ STI_LOCALE_CN, STI_LOCALE_EN ]
 
 			this.updateLocale(locales.filter(item => item !== this.locale)[0])
 		},
