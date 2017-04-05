@@ -6,10 +6,10 @@
 
 			<div class="container-input" :class="{'focus-input': focused}">
 				
-				<input v-model="param" class="form-control" :placeholder="$t('commons.search')" @click.stop @focus="focus" @keyup.enter="search"/>
+				<input v-model="param" class="form-control" :placeholder="$t('commons.search')" @click.stop @focus="focus"/>
 				<ul class="form-control" v-if="focused && contents.length > 0">
 
-					<li v-for="(content, index) in contents" :key="index">content</li>
+					<li v-for="(content, index) in hlContents" :key="index" v-html="content"></li>
 				</ul>
 			</div>
 		</div>	

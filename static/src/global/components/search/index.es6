@@ -1,5 +1,6 @@
 import './style'
 import template from './view'
+import { highlight } from 'filters'
 
 export default {
 	
@@ -31,10 +32,28 @@ export default {
 			this.param = ''
 			this.contents = []
 			this.focused = false
+		},
+
+		param(value) {
+
+			this.search(value)
+		}
+	},
+
+	computed: {
+
+		hlContents() {
+
+			return this.contents.map(content => {
+
+				return this.highlight(content, this.param)
+			})
 		}
 	},
 
 	methods: {
+
+		highlight,
 
 		open() {
 
@@ -56,7 +75,7 @@ export default {
 		search() {
 
 			//TODO查询
-			this.contents = [ 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 ]
+			this.contents = [ "xsd1", "xsd2" ]
 		}
 	},
 
@@ -69,8 +88,6 @@ export default {
 		document.body.addEventListener('keydown', function(e) {
 
 			if(e.ctrlKey && e.keyCode == that.keyCode) {
-
-				console.log('xx')
 
 				that.active = !that.active
 			}

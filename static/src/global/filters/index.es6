@@ -242,6 +242,26 @@ function toPixel(value) {
 	return value + pixel
 }
 
+/**
+ * 高亮显示
+ * 
+ * @param  {[type]} value    [description]
+ * @param  {[type]} reg      [description]
+ * @param  {[type]} replacer [description]
+ * @return {[type]}          [description]
+ */
+function highlight(value, reg, replacer) {
+
+	let _value = value.toString()
+
+	if(typeof replacer === 'function') {
+
+		return _value.replace(reg, replacer)
+	}
+
+	return _value.replace(reg, '<b>$&</b>')
+}
+
 export {
 
 	capitalize,
@@ -249,5 +269,6 @@ export {
 	lowercase,
 	currency,
 	json,
-	toPixel
+	toPixel,
+	highlight
 }
