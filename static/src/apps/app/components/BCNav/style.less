@@ -1,13 +1,46 @@
+@color: #676a6c;
+
 .header-nav{
-	padding: 5px 0 0 15px;
+
+	height: 100%;
+	padding: 10px 0 0 15px;
+
+	.bcnav-title {
+
+		margin-bottom: 10px;
+	}
 
 	#bcnav-content{
 		overflow: hidden;
+
 		li{
+		    
+		    line-height: 30px;
 		    margin-top: 0;
 			float: left;
+
 			a{
-				color: #777;
+
+				color: @color;
+				text-decoration: none;
+
+				:hover {
+					
+					color: @color;
+				}
+			}
+
+			span {
+
+				padding: 0 5px;
+			}
+
+			&:last-child {
+
+				a {
+
+					font-weight: bold
+				}
 			}
 		}
 	}

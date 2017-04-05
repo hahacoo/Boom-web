@@ -20,7 +20,7 @@ export default {
 				}
 			},
 			editable: true,
-			verticalMargin: 0,
+			verticalMargin: 15,
 			cellHeight: 100
 		}
 	},

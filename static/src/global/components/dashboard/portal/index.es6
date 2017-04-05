@@ -9,6 +9,8 @@ export default {
 	data() {
 
 		return {
+
+			locked: false
 		}
 	},
 
@@ -43,6 +45,20 @@ export default {
 			default: 1
 		}
 
+	},
+
+	methods: {
+
+		remove() {
+
+			this.parentDashboard.remove(this.$el)
+		},
+
+		lock() {
+
+			this.locked = !this.locked
+			this.parentDashboard.lock(this.$el, this.locked)
+		}
 	},
 
 	mounted() {

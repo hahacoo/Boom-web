@@ -1,21 +1,43 @@
-.grid-stack-toolbar {
 
-	height: 40px;
-	line-height: 40px;
-	width: 100%;
-	padding: 0 10px;
-	position: absolute;
-	z-index: 1;
+.grid-stack-item {
 
-	nav {
+	.fa {
 
-		border-bottom: 1px solid #c4c4c4;
-		text-align: right;
+		transition: transform .2s ease;
 	}
 
-	.sti-icon {
+	&.locked {
 
-		color: #c4c4c4;
-		margin: 0 5px;
+		.fa-thumb-tack {
+
+			transform: rotate(45deg)
+		}
+	}
+
+	.grid-stack-toolbar {
+
+		height: 40px;
+		line-height: 40px;
+		width: 100%;
+		padding: 0 10px;
+		position: absolute;
+		z-index: 1;
+
+		nav {
+
+			border-bottom: 1px solid #c4c4c4;
+			text-align: right;
+
+			i {
+
+				cursor: pointer;
+			}
+		}
+
+		.sti-icon {
+
+			color: #c4c4c4;
+			margin: 0 5px;
+		}
 	}
 }

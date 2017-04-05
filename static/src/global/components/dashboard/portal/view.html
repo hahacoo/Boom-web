@@ -1,12 +1,16 @@
-<div class="grid-stack-item" :data-portal-id="id" :data-gs-x="gsX" :data-gs-y="gsY" :data-gs-width="gsWidth" :data-gs-height="gsHeight">
+<div class="grid-stack-item" :class="{locked: locked}" 
+	:data-portal-id="id" 
+	:data-gs-x="gsX" 
+	:data-gs-y="gsY" 
+	:data-gs-width="gsWidth" 
+	:data-gs-height="gsHeight">
 
 	<div class="grid-stack-toolbar" v-if="editable">
 		
 		<nav>
 
-				
-			<sti-icon icon="thumb-tack "></sti-icon>
-			<sti-icon icon="remove"></sti-icon>
+			<sti-icon icon="thumb-tack" @click.native="lock"></sti-icon>
+			<sti-icon icon="remove" @click.native="remove"></sti-icon>
 		</nav>
 	</div>
 	<div class="grid-stack-item-content">

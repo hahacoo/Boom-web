@@ -99,9 +99,10 @@ input {
   overflow: auto;
 }
 .sti-web .sti-container .sti-content .content-main .main-crumbs {
-  height: 50px;
+  height: 80px;
   background-color: #fff;
   margin: 0 -15px 15px -15px;
+  color: #676a6c;
 }
 .sti-web .sti-container .visualize-main {
   height: 100%;

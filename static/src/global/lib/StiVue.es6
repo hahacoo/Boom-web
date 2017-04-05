@@ -1,5 +1,6 @@
 /**
- * 小屏app
+ * StiVue
+ * 
  */
 import Vue from 'vue'
 import { mapState } from 'vuex'

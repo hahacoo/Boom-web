@@ -4,6 +4,7 @@ export const cn = {
 	safety: '安全检测系统',
 	situation: '态势感知系统',
 	config: '菜单测试',
+	operate: '操作台',
 	lang: '语言',
 	lan: {
 
@@ -21,7 +22,8 @@ export const en = {
 	footer: 'STI-WFront',
 	safety: 'Safety inspection',
 	situation: 'Situational awareness',
-	config: 'menu test',
+	config: 'Menu test',
+	operate: 'Operate',
 	lang: 'language',
 	lan: {
 

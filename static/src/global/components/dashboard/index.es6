@@ -237,16 +237,22 @@ export default {
 
 		/**
 		 * 根据uid删除portal
-		 * @param  {[type]} uid [description]
-		 * @param  {[type]} uid [description]
+		 * @param  {[type]} el [description]
 		 * @return {[type]}     [description]
 		 */
-		remove(el, uid) {
+		remove(el) {
 
 			//删除portal
-			this.removeWidget(el, false)
+			this.grid.removeWidget(el, false)
 			//删除数据
-			this.$remove(this.portals, item => item._uid == uid)
+			this.$remove(this.portals, item => item._uid == el.dataset.uid)
+		},
+
+		lock(el, val) {
+
+			this.grid.movable(el, !val)
+			this.grid.resizable(el, !val)
+			this.grid.locked(el, val)
 		}
 	},
 
@@ -276,9 +282,5 @@ export default {
 		$(this.$refs.gridstack).gridstack(options)
 
 		this.grid = $(this.$refs.gridstack).data('gridstack')
-
-		$(this.$refs.gridstack).on('removed', function(event, items) {
-
-		})
 	}
 }
