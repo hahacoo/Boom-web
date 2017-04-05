@@ -6,7 +6,7 @@
 import './style'
 import view from './view'
 import template from './template'
-import app from 'router/routes'
+import apps from 'router/routes'
 import Vue from 'vue'
 
 //菜单权限同privilege格式
@@ -23,7 +23,8 @@ let privilege = [{
 }]
 
 let currentApp = null,
-	currentPage = null
+	currentPage = null,
+	app = _.cloneDeep(apps)
 
 Vue.component('item', {
 

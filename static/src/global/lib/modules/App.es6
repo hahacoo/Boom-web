@@ -5,6 +5,7 @@ import Vue from 'vue'
 import { mapState } from 'vuex'
 
 import appMenu from 'apps/app/components/menu'
+import breadcNav from 'apps/app/components/bcNav'
 
 function App(options) {
 
@@ -21,7 +22,9 @@ function App(options) {
 			<!--主视图区域-->
 			<main id="content-main" class="content-main">
 				<!--面包屑-->
-				<div class="main-crumbs"></div>
+				<div class="main-crumbs">
+					<breadc-nav></breadc-nav>
+				</div>
 				<transition name="sti-fadeInUp" mode="out-in" appear>
 					<router-view></router-view>
 				</transition>
@@ -48,7 +51,8 @@ function App(options) {
 
 		components: {
 
-			appMenu
+			appMenu,
+			breadcNav
 		}
 	}
 
