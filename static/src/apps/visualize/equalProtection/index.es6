@@ -7,10 +7,10 @@
  */
 import './style'
 import template from './view'
-import StiVisualize from 'lib/StiVisualize'
+import StiVue from 'lib/StiVue'
 import putAway from '../components/putAway'    // 展开收起容器
 
-export default new StiVisualize(template, {
+export default new StiVue.Visualize(template, {
 
         components: {
             putAway

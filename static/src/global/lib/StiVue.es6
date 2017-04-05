@@ -1,5 +1,12 @@
+/**
+ * 小屏app
+ */
 import Vue from 'vue'
 import { mapState } from 'vuex'
+
+import App from './modules/App'
+import Visualize from './modules/Visualize'
+import Component from './modules/Component'
 
 let defaultTemp
 
@@ -10,6 +17,7 @@ if(process.env.NODE_ENV !== 'production') {
 	
 	<sti-progress></sti-progress>
 	<router-view></router-view>
+	<sti-search></sti-search>
 	<sti-console></sti-console>
 </div>
 `
@@ -20,11 +28,12 @@ if(process.env.NODE_ENV !== 'production') {
 	
 	<sti-progress></sti-progress>
 	<router-view></router-view>
+	<sti-search></sti-search>
 </div>
 `
 }
 
-export default class StiRoot {
+class StiVue {
 
 	constructor({
 
@@ -53,5 +62,13 @@ export default class StiRoot {
 				})
 			}
 		})
-	}	
+	}
 }
+
+StiVue.App = App
+
+StiVue.Visualize = Visualize
+
+StiVue.Component = Component
+
+export default StiVue

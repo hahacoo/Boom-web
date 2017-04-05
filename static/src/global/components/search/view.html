@@ -1,0 +1,17 @@
+<div class="sti-search">
+	
+	<transition name="sti-fadeInDown" appear>
+		
+		<div class="search-container" v-if="active">
+
+			<div class="container-input" :class="{'focus-input': focused}">
+				
+				<input v-model="param" class="form-control" :placeholder="$t('commons.search')" @click.stop @focus="focus" @keyup.enter="search"/>
+				<ul class="form-control" v-if="focused && contents.length > 0">
+
+					<li v-for="(content, index) in contents" :key="index">content</li>
+				</ul>
+			</div>
+		</div>	
+	</transition>
+</div>

@@ -1,6 +1,6 @@
 /**
  * 测试app
  */
-import StiApp from 'lib/StiApp'
+import StiVue from 'lib/StiVue'
 
-export default new StiApp()
+export default new StiVue.App()

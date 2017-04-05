@@ -11,7 +11,7 @@ import theme from 'theme'//vue-material
 import i18n from 'i18n'//vue-i18n
 import router from 'router'//vue-router
 //平台依赖
-import StiRoot from 'lib/StiRoot'
+import StiVue from 'lib/StiVue'
 import Sti from 'plugins/Sti'
 
 //初始化国际化插件
@@ -19,7 +19,7 @@ i18n.init(store, 'locale')
 //初始化主题插件
 theme.init(store, 'theme')
 //初始化app
-let app = new StiRoot({
+let app = new StiVue({
 
 	plugins: [Sti]
 }, store, router)

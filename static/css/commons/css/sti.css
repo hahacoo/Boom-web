@@ -153,7 +153,7 @@ input {
   padding: 10px;
   position: fixed;
   top: 0;
-  z-index: 12;
+  z-index: 13;
   overflow: auto;
 }
 .sti-fade-enter-active,
@@ -197,7 +197,7 @@ input {
           animation: fadeOutDown 0.5s;
 }
 /*
- * 自下往上切换效果
+ * 自上往下切换效果
  */
 .sti-fadeInDown-enter-active {
   -webkit-animation: fadeInDown 0.5s;

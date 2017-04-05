@@ -12,7 +12,8 @@ export const cn = {
 	},
 	theme: '主题',
 	settings: '设置',
-	visualize: '大屏'
+	visualize: '大屏',
+	search: '搜索'
 }
 
 export const en = {
@@ -29,5 +30,6 @@ export const en = {
 	},
 	theme: 'theme',
 	settings: 'Settings',
-	visualize: 'Visualize'
+	visualize: 'Visualize',
+	search: 'Search...'
 }

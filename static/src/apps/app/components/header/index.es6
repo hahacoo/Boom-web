@@ -63,6 +63,11 @@ export default {
 
 				path: '/'
 			})
+		},
+
+		search() {
+
+			this.$publish('search.open')
 		}
 	}
 }

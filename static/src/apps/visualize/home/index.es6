@@ -1,7 +1,7 @@
 import './style'
 import template from './view'
 
-import StiVisualize from 'lib/StiVisualize'
+import StiVue from 'lib/StiVue'
 
-export default new StiVisualize(template)
+export default new StiVue.Visualize(template)
 
