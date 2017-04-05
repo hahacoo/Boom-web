@@ -63,9 +63,11 @@ src:
   apps: ./static/src/apps
   constant: ./static/src/constant
   i18n: ./static/src/i18n
+  portals: ./static/src/portals
   router: ./static/src/router
   store: ./static/src/store
   theme: ./static/src/theme
+  global: ./static/src/global
   components: ./static/src/global/components
   plugins: ./static/src/global/plugins
   filters: ./static/src/global/filters
@@ -74,8 +76,11 @@ src:
   utils: ./static/src/global/utils
   lib: ./static/src/global/lib
   http: ./static/src/global/utils/http
+  config: ./static/src/config
 # 模块alias
  moduleAlias:
+  gridstack: gridstack/dist
+  jquery-ui: jquery-ui/ui
   vue$: vue/dist/vue.common.js
   validation: jquery-validation
   jqGridjs: jqGrid/js/jquery.jqGrid.min.js
@@ -89,11 +94,12 @@ src:
   - vue-i18n
   - crypto-js
   - three
-  - jquery
   - lodash
+  - jquery
+  - jqGridjs
+  - gridstack/gridstack
   - validation/dist/additional-methods
   - validation/dist/localization/messages_zh
-  - jqGrid/js/jquery.jqGrid.min.js
 
 # 开发模式下发布路径
 dev:

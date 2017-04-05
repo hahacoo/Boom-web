@@ -1,0 +1,29 @@
+<div class="dashboard-aside">
+	<ul>
+		<li class="aside-item">
+            <a class="item-title" href="javascript:;" @click="fold = !fold">
+                <i class="fa" :class="{'fa-caret-right': !fold, 'fa-caret-down': fold}" aria-hidden="true"></i>
+                视图组件
+            </a>
+            <div class="item-content" v-show="fold">
+                <div class="grid-stack-item" href="javascript:;" v-for="item in items" @click="add(item.id)" :key="item.id">
+                    <div class="grid-stack-item-content chart">
+                        <component :is="item.id"></component>
+                    </div>
+                    <div class="item-mask">
+                        <div class="mask-horizontal"></div>
+                        <div class="mask-vertical"></div>
+                    </div>
+                </div>
+            </div>  
+        </li>
+	</ul>
+
+    <button class="btn btn-success" @click="exportData">
+        export
+    </button>
+
+    <!--  <modal :dialog-model="false" title="dashboard配置信息">
+        <p>{{result}}</p>
+    </modal> -->
+</div>

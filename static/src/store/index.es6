@@ -19,6 +19,7 @@ import {
 import * as types from './types'
 import storage from './plugins/storage'
 import logs from './modules/console' 
+import dashboard from './modules/dashboard' 
 
 Vue.use(Vuex)
 
@@ -35,7 +36,6 @@ const state = {
 	menu: true, //菜单状态
 	locale: STI_LOCALE_CN, //国际化信息
 	theme: STI_THEME_DEFAULT //主题信息
-
 }
 
 const mutations = {
@@ -108,7 +108,8 @@ export default new Vuex.Store({
 	actions,
 	modules: {
 
-		logs
+		logs,
+		dashboard
 	},
 	plugins: [storage({
 

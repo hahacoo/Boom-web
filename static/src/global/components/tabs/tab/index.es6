@@ -35,6 +35,14 @@ export default {
 		}
 	},
 
+	watch: {
+
+		label(val) {
+
+			this.parentTabs.registryTab(this.getTabData())
+		}
+	},
+
 	methods: {
 
 		getTabData() {

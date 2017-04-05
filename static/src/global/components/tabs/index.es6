@@ -96,14 +96,51 @@ export default {
 
 	methods: {
 
+		checkTab(tab) {
+
+			let len = this.tabList.length,
+				i = 0
+
+			for(; i < len; i++) {
+
+				if(this.tabList[i].id === tab.id) {
+
+					return {
+
+						exists: true,
+						index: i
+					}
+				}
+			}
+
+			return {
+
+				exists: false,
+				index: null
+			}
+		},
+
 		registryTab(tab) {
 
-			this.tabList.push(tab)
+			let result = this.checkTab(tab)
 
-			if(tab.active) {
+			if(result.exists) {
 
-				this.setActiveTab(tab)
+				this.updateTab(result.index, tab)
+			} else {
+
+				this.tabList.push(tab)
+
+				if(tab.active) {
+
+					this.setActiveTab(tab)
+				}
 			}
+		},
+
+		updateTab(index, tab) {
+
+			Object.assign(this.tabList[index], tab)
 		},
 
 		calcActiveIndexStyle(index) {

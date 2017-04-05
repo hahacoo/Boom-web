@@ -1,0 +1,7 @@
+<div class="dashboard-container">
+	<div class="grid-stack" :class="gridstackClass" ref="gridstack">
+		<portal v-for="(portal, index) in portalsComputed" :editable="portal.editable" :id="portal.id" :data-uid="portal._uid" :gs-x="portal.x" :gs-y="portal.y" :gs-width="portal.width" :gs-height="portal.height" :key="portal._uid">
+			<component :is="portal.id"></component>
+		</portal>
+	</div>
+</div>

@@ -2,12 +2,12 @@
 	
 	<div class="header-nav">
 
-		<h2 class="md-title nav-title" style="flex: 1" @click="goHome">STI WEB</h2>
+		<h2 class="md-title nav-title" style="flex: 1" @click="goHome">{{$config.TITLE}}</h2>
 
-		<md-button class="nav-button md-icon-button md-primary" @click.native.stop="toggleTheme">
+		<!-- <md-button class="nav-button md-icon-button md-primary" @click.native.stop="toggleTheme">
 
 			<sti-icon icon="circle"></sti-icon>
-		</md-button>
+		</md-button> -->
 		<md-button class="nav-button md-icon-button md-primary" @click.native.stop="toggleLocale">
 
 			<sti-icon>{{locale}}</sti-icon>

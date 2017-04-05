@@ -5,8 +5,40 @@
 		<slot>
 
 			<sti-tabs direction="bottom" :text-icon="true">
-				
-				<sti-tab id="visualize" label="大屏">
+
+				<sti-tab id="settings" :label="$t('commons.settings')">
+
+					<div class="sidenav-settings">
+						
+						<div class="settings-section">
+							
+							<label>
+
+								{{$t('commons.lang')}}
+							</label>
+							<div>
+
+							<!-- <md-radio v-model="radio2" id="my-test4" name="my-test-group2" md-value="1" class="md-primary">Primary radio</md-radio>
+							  <md-radio v-model="radio2" id="my-test5" name="my-test-group2" md-value="2" class="md-primary">Another primary radio</md-radio>
+							  <md-radio v-model="radio2" id="my-test6" name="my-test-group2" md-value="3" class="md-primary">Another another primary radio</md-radio>
+							</div> -->
+
+								<!-- <md-radio v-model="locale" :id="lang.id" name="my-test-group2" :md-value="lang.id" class="md-primary" v-for="lang in langs" :key="lang.id">{{$t('commons.lan.' + lang.id)}}</md-radio> -->
+							</div>
+						</div>
+
+						<div class="settings-section">
+							
+							<label>
+								
+								{{$t('commons.theme')}}
+							</label>
+
+							<md-whiteframe md-elevation="2" md-tag="div" class="settings-theme fa" :class="[theme, { active : theme == vtheme }]" v-for="theme in themes" @click.native.stop="updateTheme(theme)" :key="theme"></md-whiteframe>
+						</div>
+					</div>
+				</sti-tab>
+				<sti-tab id="visualize" :label="$t('commons.visualize')">
 					
 					<sti-card :title="$t('commons.safety')" path="/visualize/test">
 
@@ -14,15 +46,6 @@
 					<sti-card :title="$t('commons.safety')" path="/visualize/equalProtection">
 
 					</sti-card>
-				</sti-tab>
-				<sti-tab id="bbb" label="b">
-					<div>
-						
-					</div>
-				</sti-tab>
-				<sti-tab id="bbb" label="b">
-					<div>
-					</div>
 				</sti-tab>
 			</sti-tabs>
 		</slot>

@@ -23,7 +23,7 @@ function template(port) {
 	<div id="sti-loading"></div>
 	<script type="text/javascript" src="/static/stiError.js"></script>
 	<script type="text/javascript" src="http://localhost:${port}/vendor.js"></script>
-	<script type="text/javascript" src="http://localhost:${port}/commons.js"></script>
+	<script type="text/javascript" src="http://localhost:${port}/config.js"></script>
 	<script type="text/javascript" src="http://localhost:${port}/main.js"></script>
 </html>
 `

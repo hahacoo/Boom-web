@@ -4,6 +4,8 @@
  * 
  * by zhangdi 
  */
+
+import config from 'global/config'
 /*组件*/
 import StiIcon from 'components/icon' 
 import StiCard from 'components/card'
@@ -15,6 +17,8 @@ import StiConsole from 'components/console'
 import StiProgress from 'components/progress'
 import StiTabs from 'components/tabs'
 import StiTab from 'components/tabs/tab'
+import StiDashboard from 'components/dashboard'
+import StiDashaside from 'components/dashboard/aside'
 import { 
 	
 	validator as StiValidator, 
@@ -28,6 +32,7 @@ import {
 /*服务*/
 import { subscribe, publish, listen, trigger } from 'event'
 import { setParam, getParam } from 'router/param'
+import { remove } from './array'
 /*过滤器*/
 import {
 
@@ -43,8 +48,6 @@ let Sti = {
 
 	install: (Vue, option) => {
 
-		let locale = 'cn'
-
 		//注册系统服务
 		Vue.prototype.$subscribe = subscribe
 		Vue.prototype.$publish = publish
@@ -52,7 +55,13 @@ let Sti = {
 		Vue.prototype.$trigger = trigger
 		Vue.prototype.$setParam = setParam
 		Vue.prototype.$getParam = getParam
+		Vue.prototype.$remove = remove
+		Vue.prototype.$config = config
+		Object.defineProperty(Vue.prototype, '$config', {
 
+			writable: false
+		})
+		
 		//注册全局组件
 		Vue.component('sti-icon', StiIcon)
 		Vue.component('sti-card', StiCard)
@@ -68,6 +77,8 @@ let Sti = {
 		Vue.component('sti-validrule', StiValidRule)
 		Vue.component('sti-grid', StiJqGrid)
 		Vue.component('sti-col', StiJqCol)
+		Vue.component('sti-dashboard', StiDashboard)
+		Vue.component('sti-dashaside', StiDashaside)
 
 		//注册全局过滤器
 		Vue.filter('capitalize', capitalize)

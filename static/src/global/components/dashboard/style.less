@@ -1,0 +1,49 @@
+@padding-base: 7.5px;
+
+.dashboard-container {
+
+	height: 100%;
+	padding: 0 @padding-base;
+	overflow: auto;
+	
+	.grid-stack {
+
+		height: 100%;
+
+		.grid-stack-item {
+
+			.grid-stack-item-content {
+				
+				background-color: #fff;
+			    color: #2c3e50;
+			    text-align: center;
+			    left: @padding-base;
+    			right: @padding-base;
+			}
+
+			.ui-resizable-se {
+
+				left: initial;
+			}
+
+		}
+		
+	}
+	
+}
+
+.dashboard-container, .dashboard-aside {
+
+	.portal-item {
+		position: relative;
+    	height: 100%;
+
+    	h1 {
+    		width: 100%;
+		    text-align: center;
+		    position: absolute;
+		    top: 50%;
+		    transform: translateY(-50%);					
+    	}
+	}
+}

@@ -17,11 +17,13 @@ export default class StiApp {
 
 		let template = `
 
-				<div class='sti-content'>
+				<div class="sti-content">
 					<!--菜单区域-->
 					<app-menu></app-menu>
 					<!--主视图区域-->
 					<main id="content-main" class="content-main">
+						<!--面包屑-->
+						<div class="main-crumbs"></div>
 						<transition name="sti-fadeInUp" mode="out-in" appear>
 							<router-view></router-view>
 						</transition>

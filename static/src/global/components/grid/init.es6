@@ -90,7 +90,7 @@ export default {
             }            
             //  渲染表格
 			this.view.jqGrid(options)
-			this.buildToolBar()			
+			//this.buildToolBar()			
 		},
 
 		/**

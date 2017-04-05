@@ -76,6 +76,7 @@ input {
 }
 .sti-web .sti-container .sti-content {
   height: 100%;
+  -webkit-transition: padding 0.5s cubic-bezier(0.25, 0.8, 0.25, 1);
   transition: padding 0.5s cubic-bezier(0.25, 0.8, 0.25, 1);
 }
 .sti-web .sti-container .sti-content .content-aside {
@@ -86,6 +87,7 @@ input {
   z-index: 6;
   float: left;
   overflow: visible;
+  -webkit-transition: all 0.5s cubic-bezier(0.25, 0.8, 0.25, 1);
   transition: all 0.5s cubic-bezier(0.25, 0.8, 0.25, 1);
 }
 .sti-web .sti-container .sti-content .content-aside.fold {
@@ -93,8 +95,13 @@ input {
 }
 .sti-web .sti-container .sti-content .content-main {
   height: 100%;
-  padding: 15px;
+  padding: 0px 15px;
   overflow: auto;
+}
+.sti-web .sti-container .sti-content .content-main .main-crumbs {
+  height: 50px;
+  background-color: #fff;
+  margin: 0 -15px 15px -15px;
 }
 .sti-web .sti-container .visualize-main {
   height: 100%;
@@ -151,6 +158,7 @@ input {
 }
 .sti-fade-enter-active,
 .sti-fade-leave-active {
+  -webkit-transition: opacity 0.5s;
   transition: opacity 0.5s;
 }
 .sti-fade-enter,
@@ -159,78 +167,96 @@ input {
 }
 .sti-list-enter-active,
 .sti-list-leave-active {
+  -webkit-transition: all 1s;
   transition: all 1s;
 }
 .sti-list-enter,
 .sti-list-leave-active {
   opacity: 0;
-  transform: translateY(10px);
+  -webkit-transform: translateY(10px);
+      -ms-transform: translateY(10px);
+          transform: translateY(10px);
 }
 .sti-flip-enter-active {
-  animation: flipInX 0.5s;
+  -webkit-animation: flipInX 0.5s;
+          animation: flipInX 0.5s;
 }
 .sti-flip-leave-active {
-  animation: flipOutX 0.5s;
+  -webkit-animation: flipOutX 0.5s;
+          animation: flipOutX 0.5s;
 }
 /*
  * 自下往上切换效果
  */
 .sti-fadeInUp-enter-active {
-  animation: fadeInUp 0.5s;
+  -webkit-animation: fadeInUp 0.5s;
+          animation: fadeInUp 0.5s;
 }
 .sti-fadeInUp-leave-active {
-  animation: fadeOutDown 0.5s;
+  -webkit-animation: fadeOutDown 0.5s;
+          animation: fadeOutDown 0.5s;
 }
 /*
  * 自下往上切换效果
  */
 .sti-fadeInDown-enter-active {
-  animation: fadeInDown 0.5s;
+  -webkit-animation: fadeInDown 0.5s;
+          animation: fadeInDown 0.5s;
 }
 .sti-fadeInDown-leave-active {
-  animation: fadeOutUp 0.5s;
+  -webkit-animation: fadeOutUp 0.5s;
+          animation: fadeOutUp 0.5s;
 }
 /*
  * 弹跳切换效果
  */
 .sti-bounce-enter-active {
-  animation: bounceInDown 0.5s;
+  -webkit-animation: bounceInDown 0.5s;
+          animation: bounceInDown 0.5s;
 }
 .sti-bounce-leave-active {
-  animation: bounceOutUp 0.5s;
+  -webkit-animation: bounceOutUp 0.5s;
+          animation: bounceOutUp 0.5s;
 }
 /*
  * 缩放切换
  */
 .sti-zoom-enter-active {
-  animation: zoomIn 0.5s;
+  -webkit-animation: zoomIn 0.5s;
+          animation: zoomIn 0.5s;
 }
 .sti-zoom-leave-active {
-  animation: zoomOut 0.5s;
+  -webkit-animation: zoomOut 0.5s;
+          animation: zoomOut 0.5s;
 }
 /**
  * 翻转效果，由右向左
  */
 .sti-flippers-enter-active {
-  animation: flipOutY 1s;
+  -webkit-animation: flipOutY 1s;
+          animation: flipOutY 1s;
 }
 .sti-flippers-leave-active {
-  animation: flipOutY 1s;
+  -webkit-animation: flipOutY 1s;
+          animation: flipOutY 1s;
 }
 /**
  * 以左上角为中心旋转切换动画
  */
 .sti-rotating-enter-active {
-  animation: rotateInDownLeft 1s;
+  -webkit-animation: rotateInDownLeft 1s;
+          animation: rotateInDownLeft 1s;
 }
 .sti-rotating-leave-active {
-  animation: rotateOutUpLeft 1s;
+  -webkit-animation: rotateOutUpLeft 1s;
+          animation: rotateOutUpLeft 1s;
 }
 /**
  * 向左滑出效果
  */
 .sti-fading-enter-active {
-  animation: fadeOutLeft 1s;
+  -webkit-animation: fadeOutLeft 1s;
+          animation: fadeOutLeft 1s;
 }
 /**
  * layout

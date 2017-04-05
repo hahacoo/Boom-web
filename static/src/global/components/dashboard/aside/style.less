@@ -1,0 +1,95 @@
+
+.dashboard-aside {
+	width: 100%;
+	height: 100%;
+	min-width: 200px;
+	overflow-y: auto;
+	overflow-x: hidden;
+
+	.aside-item {
+		// border: 1px solid @base-color;
+		// background-color: @base-item;
+
+		.item-title {
+			height: 40px;
+			line-height: 40px;
+			padding: 0 15px 0 20px;
+			display: block;
+			color: #505050;
+			text-decoration: none;
+			position: relative;
+			white-space: nowrap;
+			overflow: hidden;
+
+			.fa {
+				line-height: 40px;
+				position: absolute;
+			    left: 6px;
+			    top: 0px;
+			}
+		}
+
+		.item-content {
+
+			.grid-stack-item {
+				width: 100%;
+				height: 200px;
+				text-decoration: none;
+				display: block;
+				border-bottom: 1px solid #E4E4E4;
+				overflow: hidden;
+
+				>div {
+					height: 100%
+				}
+
+				.item-mask {
+					height: 100%;
+					background: rgba(247,248,252,0.5);
+					display: none;
+					position: relative;
+					top: -100%;
+					cursor: pointer; 
+
+					.mask-horizontal, .mask-vertical {
+						
+						position: absolute;
+						top: 50%;
+						left: 50%;
+						background: #ecebeb;
+						border-radius: 20px 20px;
+					}
+
+					.mask-horizontal {
+						width: 50%;
+						height: 20px;
+						margin-left: -25%;
+						margin-top: -10px;
+					}
+
+					.mask-vertical {
+						width: 20px;
+						height: 50%;
+						transform: translate(-50%, -50%);
+					}
+				}
+
+				&:hover {
+
+					.item-mask {
+						display: block
+					}
+				}
+
+
+			}
+
+			.ui-draggable-dragging {
+				
+				width: 300px;
+				border: 1px solid #ddd;
+			}
+		}
+
+	}
+}

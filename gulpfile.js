@@ -34,9 +34,7 @@ var util = require('gulp-util'), //gulputil插件
 	less = require('gulp-less'), //gulp-less插件
 	sourcemaps = require('gulp-sourcemaps'), //gulp-sourcmap插件
 	LessAutoprefix = require('less-plugin-autoprefix'), //gulp-css前缀自动补全less插件
-	lessAutoprefix = new LessAutoprefix({
-		browsers: ['last 2 versions']
-	}),
+	lessAutoprefix = new LessAutoprefix(),
 	cssmin = require('gulp-cssmin'), //gulp-css压缩插件
 	rename = require('gulp-rename'), //gulp重命名插件
 	cached = require('gulp-cached'),
@@ -180,6 +178,10 @@ function webpackBundle(done) {
 
 	        	loaders: [
 	        		{
+				        test: /\.json$/,
+				        loader: 'json-loader'
+			      	},
+	        		{
 						test: /\.css$/,
 						loader: ExtractTextPlugin.extract("style-loader", "css-loader!postcss-loader")
 					},
@@ -192,6 +194,7 @@ function webpackBundle(done) {
 						exclude: /(node_modules|libs)/,
 						loader: "babel-loader",
 						query: {
+							cacheDirectory: false,
 							plugins: [
 								['transform-runtime', {
 
@@ -261,7 +264,7 @@ Created by ${package.author}`, {
 	            new ExtractTextPlugin("[name].[contenthash:8].css"),
 				//提取公用组件
 		        new webpack.optimize.CommonsChunkPlugin({
-		            names: ['commons', 'vendor']
+		            names: ['config', 'vendor']
 		        }),
 		        //文件压缩
 	            new UglifyJsParallelPlugin({
@@ -269,7 +272,8 @@ Created by ${package.author}`, {
 	            	workers: os.cpus().length,
 				    compress: {
 				        warnings: false
-				    }
+				    },
+				    exclude: /config.*\.js$/
 				}),
 	            //模板文件
 	            new HtmlWebpackPlugin({
@@ -278,7 +282,7 @@ Created by ${package.author}`, {
 	                template: _config.template || path.resolve('./layout.ejs'), //模板文件
 	                inject: 'body', //js插入位置 head | body
 	                hash: false, //为生成的静态资源生成hash值
-	                //chunk: [], //需要引入的资源，默认为全部资源
+	                excludeChunks: [ 'site' ], //需要引入的资源，默认为全部资源
 	                minify: {
 	                    //压缩html文件
 	                    removeComments: true,
@@ -292,11 +296,15 @@ Created by ${package.author}`, {
 
 		webpackConfig = webpackGenerator(_config, {
 
-			devtool: '#cheap-eval-source-map', //sourcemap生成方式
+			devtool: '#cheap-eval-source-map',
 
 	        module: {
 
 	        	loaders: [
+	        		{
+				        test: /\.json$/,
+				        loader: 'json-loader'
+			      	},
 	        		{
 						test: /\.css$/,
 						loader: "style-loader!css-loader!postcss-loader"
@@ -311,6 +319,7 @@ Created by ${package.author}`, {
 						exclude: /(node_modules|libs)/,
 						loader: "babel-loader",
 						query: {
+							cacheDirectory: false,
 							plugins: [
 								['transform-runtime', {
 
@@ -368,7 +377,7 @@ Created by ${package.author}`, {
 					Proxy: 'imports?this=>global!exports?global.Proxy!babel!proxy-polyfill'
 				}),
 		        new webpack.optimize.CommonsChunkPlugin({
-		            names: ['commons', 'vendor']
+		            names: ['config', 'vendor']
 		        }),
 	            new HtmlWebpackPlugin({
 	                title: _config.name,
@@ -376,6 +385,7 @@ Created by ${package.author}`, {
 	                template: _config.template || path.resolve('./layout.ejs'),
 	                inject: 'body',
 	                hash: true, 
+	                excludeChunks: [ 'site' ],
 	                minify: {
 	                    removeComments: false,
 	                    collapseWhitespace: false

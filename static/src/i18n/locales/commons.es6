@@ -3,7 +3,16 @@ export const cn = {
 	footer: 'STI前端工作组',
 	safety: '安全检测系统',
 	situation: '态势感知系统',
-	config: '菜单测试'
+	config: '菜单测试',
+	lang: '语言',
+	lan: {
+
+		cn: '中文',
+		en: '英文'
+	},
+	theme: '主题',
+	settings: '设置',
+	visualize: '大屏'
 }
 
 export const en = {
@@ -11,5 +20,14 @@ export const en = {
 	footer: 'STI-WFront',
 	safety: 'Safety inspection',
 	situation: 'Situational awareness',
-	config: 'menu test'
+	config: 'menu test',
+	lang: 'language',
+	lan: {
+
+		cn: 'Chinese',
+		en: 'English'
+	},
+	theme: 'theme',
+	settings: 'Settings',
+	visualize: 'Visualize'
 }

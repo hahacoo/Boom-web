@@ -12,3 +12,5 @@ export const LOCALE_UPDATE = 'locale/update'
 export const CONSOLE_UPDATE = 'console/update'
 
 export const CONSOLE_EMPTY = 'console/empty'
+
+export const DASHBOARD_ADD = 'dashboard/add'

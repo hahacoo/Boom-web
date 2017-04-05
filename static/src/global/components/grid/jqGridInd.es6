@@ -171,7 +171,7 @@ let jqGrid = {
 
 					require(['jqGrid/js/i18n/grid.locale-' + store.state.locale], () => {
 
-							this.render()
+						this.render()
 					})
 				})
 			}

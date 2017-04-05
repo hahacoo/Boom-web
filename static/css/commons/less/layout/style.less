@@ -49,8 +49,15 @@
 			.content-main {
 
 				height: 100%;
-				padding: @base-padding;
+				padding: 0px @base-padding;
 				overflow: auto;
+
+				.main-crumbs {
+
+					height: @crumbs-height;
+					background-color: @crumbs-background;
+					margin: 0 -@base-padding @base-padding -@base-padding;
+				}
 			}
 
 		}

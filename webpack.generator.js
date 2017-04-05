@@ -38,6 +38,7 @@ function generator(config, options) {
 
 			entry: {
 		        main: [src.index], //入口文件
+		        site: [ 'config' ], //配置文件
 		        vendor: src.vendor //第三方库
 		    },
 
@@ -62,6 +63,10 @@ function generator(config, options) {
 					}
 		        ],
 		        loaders: [
+		        	{
+				        test: /\.json$/,
+				        loader: 'json-loader'
+			      	},
 		        	{
 						test: /\.css$/,
 						loader: "style-loader!css-loader!postcss-loader"
@@ -138,7 +143,7 @@ Created by ${package.author}`, {
 				}),
 		    	// commons chunk
 		        new webpack.optimize.CommonsChunkPlugin({
-		            names: ['commons', 'vendor']
+		            names: ['config', 'vendor']
 		        }),
 		    	//webpack1.0 required
 		    	new webpack.optimize.OccurenceOrderPlugin(),
@@ -148,7 +153,7 @@ Created by ${package.author}`, {
 
 		    postcss: function() {
 
-		    	return [autoprefix({ browsers: ['last 2 versions'] })]
+		    	return [autoprefix()]
 		    },
 
 		    resolve: {
@@ -160,7 +165,7 @@ Created by ${package.author}`, {
 
 		        alias: alias,
 
-		        extensions: ['', '.js', '.es6', '.less', '.html']
+		        extensions: ['', '.js', '.es6', '.less', '.html', '.json']
 		    },
 		    
 		    resolveLoader: {
