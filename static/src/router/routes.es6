@@ -91,7 +91,8 @@ const routes = {
 					},
 					meta: {
 						icon: 'snowflake-o',
-						text: '重保单位'
+						text: '重保单位',
+						desc: '我是重保单位的描述'
 					},
 					children: [
 						{
@@ -110,7 +111,7 @@ const routes = {
 						},
 
 						{
-							path: 'edit/:id',
+							path: 'edit',
 							component: resolve => {
 
 								require.ensure(['apps/app/config/important/edit'], () => {
@@ -138,7 +139,8 @@ const routes = {
 					},
 					meta: {
 						icon: 'snowflake-o',
-						text: '用户管理'
+						text: '用户管理',
+						desc: '我是用户管理的描述'
 					}
 				},
 

@@ -1,0 +1,17 @@
+<div class="header-nav">
+
+	<div class="bcnav-title">
+		<h3>
+			{{title}}
+			<small>{{desc}}</small>
+		</h3>
+	</div>
+
+	<ul id="bcnav-content">
+		<li v-for="item in navList">
+			<span v-if="item.index != 0">/</span>
+			<a href="javascript:void(0)" @click="direction(item.index)">{{ item.text }}</a>
+		</li>
+	</ul>
+
+</div>
