@@ -56,18 +56,6 @@ export default {
 
 		highlight,
 
-		open() {
-
-			this.param = ''
-			this.active = true
-		},
-
-		close() {
-
-			this.param = ''
-			this.active = false
-		},
-
 		focus() {
 
 			this.focused = true
@@ -122,8 +110,6 @@ export default {
 	created() {
 
 		let that = this
-
-		this.$subscribe('search.open', () => this.active = true)
 
 		document.body.addEventListener('keydown', function(e) {
 
