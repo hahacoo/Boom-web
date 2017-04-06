@@ -12,6 +12,7 @@ export const cn = {
 		en: '英文'
 	},
 	theme: '主题',
+	localstorage: '本地存储',
 	settings: '设置',
 	visualize: '大屏',
 	search: '搜索'
@@ -31,6 +32,7 @@ export const en = {
 		en: 'English'
 	},
 	theme: 'theme',
+	localstorage: 'Localstorage',
 	settings: 'Settings',
 	visualize: 'Visualize',
 	search: 'Search...'

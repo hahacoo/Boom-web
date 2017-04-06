@@ -1,0 +1,60 @@
+@zindex-loading: 11;
+
+.sti-loading {
+
+	height: 100%;
+	width: 100%;
+	background-color: #fff;
+	position: fixed;
+	top: 0;
+	z-index: @zindex-loading;
+	
+	.loading-progress {
+
+		height: 10px;
+		background-color: #000;
+		margin: auto;
+		position: absolute;
+		top: 0;
+		right: 0;
+		bottom: 0;
+		left: 0;
+		animation: loading 1s cubic-bezier(0.65, 0.05, 0.36, 1) both;
+	}
+
+	@keyframes loading {
+
+	    0% {
+
+	        width: 0px;
+	    }
+
+	    60% {
+
+	    	width: 100px;
+	    }
+
+	    80% {
+
+	    	transform: rotate(90deg);
+	    }
+
+	    100% {
+
+	    	transform: rotate(90deg);
+	    	width: 0px;
+	    }
+	}
+
+}
+
+.loading-fade-enter-active, .loading-fade-leave-active {
+
+  	transition: opacity .5s
+}
+
+.loading-fade-leave-active {
+
+  	opacity: 0
+}
+

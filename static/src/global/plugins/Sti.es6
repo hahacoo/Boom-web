@@ -20,6 +20,7 @@ import StiTab from 'components/tabs/tab'
 import StiDashboard from 'components/dashboard'
 import StiDashaside from 'components/dashboard/aside'
 import StiSearch from 'components/search'
+import StiLoading from 'components/loading'
 import { 
 	
 	validator as StiValidator, 
@@ -79,6 +80,7 @@ let Sti = {
 		Vue.component('sti-grid', StiJqGrid)
 		Vue.component('sti-col', StiJqCol)
 		Vue.component('sti-search', StiSearch)
+		Vue.component('sti-loading', StiLoading)
 		Vue.component('sti-dashboard', StiDashboard)
 		Vue.component('sti-dashaside', StiDashaside)
 

@@ -150,4 +150,13 @@ http.remove = function(key) {
 	localStorage.removeItem(STI_STORAGE + separator + key)
 }
 
+/**
+ * 清除缓存
+ * @return {[type]} [description]
+ */
+http.clear = function() {
+
+	localStorage.clear()
+}
+
 export default http

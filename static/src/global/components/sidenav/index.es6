@@ -67,6 +67,12 @@ export default {
 		nav(path) {
 
 			this.$router.push(path)
+		},
+
+		clear() {
+
+			http.clear()
+			window.history.go(0)
 		}
 	},
 

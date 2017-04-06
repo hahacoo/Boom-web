@@ -20,6 +20,7 @@ if(process.env.NODE_ENV !== 'production') {
 	<router-view></router-view>
 	<sti-search></sti-search>
 	<sti-console></sti-console>
+	<sti-loading></sti-loading>
 </div>
 `
 } else {
@@ -30,6 +31,7 @@ if(process.env.NODE_ENV !== 'production') {
 	<sti-progress></sti-progress>
 	<router-view></router-view>
 	<sti-search></sti-search>
+	<sti-loading></sti-loading>
 </div>
 `
 }

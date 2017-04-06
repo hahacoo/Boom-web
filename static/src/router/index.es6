@@ -13,7 +13,6 @@ import routes from './routes'
 import log from './log'
 import filter from './filter'
 import { before as paramBefore } from './param'
-import { begin as loadingBegin, end as loadingEnd } from './loading'
 
 let router = new Router()
 .register('', App, {

@@ -25,6 +25,7 @@ var gulp = require('gulp'),
 	WebpackMd5Hash = require('webpack-md5-hash'),
 	ExtractTextPlugin = require('extract-text-webpack-plugin'),
 	HtmlWebpackPlugin = require('html-webpack-plugin'),
+	AddAssetHtmlPlugin = require('add-asset-html-webpack-plugin'),
 	DirectoryNameAsMain = require('webpack-directory-name-as-main'),
 	UglifyJsParallelPlugin = require('webpack-uglify-parallel'),
 	yaml = require('js-yaml')
@@ -241,6 +242,10 @@ Created by ${package.author}`, {
 
 		    		entryOnly: true
 		    	}),
+		    	new webpack.DllReferencePlugin({
+					context: __dirname,
+					manifest: require('./manifest.json'),
+			    }),
 				new webpack.DefinePlugin({
 					'process.env': {
 						NODE_ENV: JSON.stringify('production')
@@ -253,7 +258,7 @@ Created by ${package.author}`, {
 					"window.jQuery": "jquery",
 					_: 'lodash',
 					http: 'http',
-					Promise: 'babel!es6-promise',
+					//Promise: 'babel!es6-promise',
 					fetch: 'exports?global.fetch!babel!whatwg-fetch', 
 					Proxy: 'exports?global.Proxy!babel!proxy-polyfill'
 				}),
@@ -264,7 +269,7 @@ Created by ${package.author}`, {
 	            new ExtractTextPlugin("[name].[contenthash:8].css"),
 				//提取公用组件
 		        new webpack.optimize.CommonsChunkPlugin({
-		            names: ['config', 'vendor']
+		            names: ['config']
 		        }),
 		        //文件压缩
 	            new UglifyJsParallelPlugin({
@@ -288,10 +293,20 @@ Created by ${package.author}`, {
 	                    removeComments: true,
 	                    collapseWhitespace: false
 	                }
-	            })
+	            }),
+	            new AddAssetHtmlPlugin({
+	            	includeSourcemap: false,
+	           		filepath: require.resolve('./static/vendor.dll.js') 
+	           	})
 			]
 
 		})
+
+		webpackConfig.entry = {
+
+	        main: [src.index], //入口文件
+	        site: [ 'config' ], //配置文件
+	    }
 	} else {
 
 		webpackConfig = webpackGenerator(_config, {
@@ -373,8 +388,8 @@ Created by ${package.author}`, {
 					_: 'lodash',
 					http: 'http',
 					Promise: 'babel!es6-promise',
-					fetch: 'imports?this=>global!exports?global.fetch!babel!whatwg-fetch', 
-					Proxy: 'imports?this=>global!exports?global.Proxy!babel!proxy-polyfill'
+					fetch: 'exports?global.fetch!babel!whatwg-fetch', 
+					Proxy: 'exports?global.Proxy!babel!proxy-polyfill'
 				}),
 		        new webpack.optimize.CommonsChunkPlugin({
 		            names: ['config', 'vendor']
@@ -400,7 +415,84 @@ Created by ${package.author}`, {
 
 		if (err) throw new util.PluginError("webpack", err);
 		util.log("[webpack]", stats.toString({
-			// output options
+			chunks: true, // Makes the build much quieter
+			chunkModules: true,
+			timings: true,
+            colors: true
+		}));
+		done();
+	});
+}
+
+function dllBundle(done) {
+
+	var alias = {}
+
+    for(var k in src.alias) {
+
+    	alias[k] = path.resolve(src.alias[k])
+    }
+
+    for(var k in src.moduleAlias) {
+
+    	alias[k] = src.moduleAlias[k]
+    }
+
+	let config = {
+
+	    entry:{
+
+	        'vendor': src.vendor,
+	    },
+
+	    output:{
+
+	        path: path.resolve('./static'),
+	        filename: '[name].dll.js',
+	        library: '[name]_library'
+	    },
+
+	 	resolve: {
+
+	        alias: alias,
+	    },
+
+	    plugins:[
+	    	new WebpackMd5Hash(),
+	    	new webpack.BannerPlugin(
+	`${package.name}
+	Version ${package.version}
+	Created by ${package.author}`, {
+
+	    		entryOnly: true
+	    	}), 
+	        new webpack.DllPlugin({
+
+	            path:'manifest.json',
+	            name: '[name]_library',
+	            context: __dirname
+	        }),
+	        new UglifyJsParallelPlugin({
+		    	sourceMap: false,
+		    	workers: os.cpus().length,
+			    compress: {
+			        warnings: false
+			    }
+			}),
+			new webpack.ProvidePlugin({
+				
+				Promise: 'babel!es6-promise'
+			})
+	    ]
+	}
+
+	webpack(config, function(err, stats) {
+
+		if (err) throw new util.PluginError("webpack", err);
+		util.log("[webpack]", stats.toString({
+			chunks: true, // Makes the build much quieter
+			timings: true,
+            colors: true
 		}));
 		done();
 	});
@@ -431,6 +523,9 @@ gulp.task('publish', ssh)
 //打包源文件
 gulp.task('bundle', webpackBundle)
 
+//单独打包第三方库
+gulp.task('dll', dllBundle)
+
 //编译基础样式库
 gulp.task('complie:base', gulp.series(
 	cleanBaseLess,
@@ -438,18 +533,14 @@ gulp.task('complie:base', gulp.series(
 	cssCompress
 ));
 
-//编译
-gulp.task('complie', gulp.parallel(
-	gulp.series(cleanBaseLess, less2css_base, cssCompress),
-	gulp.series(clean, 'bundle')
-));
-
 gulp.task('complie:css', gulp.series('complie:base', watch))
+
+gulp.task('complie', gulp.parallel('complie:base', gulp.series(clean, 'bundle')))
 
 if (isProduct) {
 
-	//默认product task，编译
-	gulp.task('default', gulp.series('complie'))
+	//默认product task，只进行app打包
+	gulp.task('default', gulp.series(clean, 'bundle'))
 
 } else {
 

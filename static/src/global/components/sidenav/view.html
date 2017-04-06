@@ -36,6 +36,15 @@
 
 							<md-whiteframe md-elevation="2" md-tag="div" class="settings-theme fa" :class="[theme, { active : theme == vtheme }]" v-for="theme in themes" @click.native.stop="updateTheme(theme)" :key="theme"></md-whiteframe>
 						</div>
+						<div class="settings-section">
+							
+							<label>
+								
+								{{$t('commons.localstorage')}}
+							</label>
+
+							<md-button class="md-raised md-primary" @click.native="clear">{{$t('button.storageClear')}}</md-button>
+						</div>
 					</div>
 				</sti-tab>
 				<sti-tab id="visualize" :label="$t('commons.visualize')">

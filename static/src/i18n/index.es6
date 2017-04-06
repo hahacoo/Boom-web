@@ -3,18 +3,21 @@ import VueI18n from 'vue-i18n'
 
 import { STI_LOCALE_CN, STI_LOCALE_EN } from 'constant'
 import { cn as commons, en as commons_e } from './locales/commons'
+import { cn as button, en as button_e } from './locales/button'
 
 Vue.use(VueI18n)
 
 //注册国际化文件
 Vue.locale(STI_LOCALE_CN, {
 
-	commons
+	commons,
+	button
 })
 
 Vue.locale(STI_LOCALE_EN, {
 
-	commons: commons_e
+	commons: commons_e,
+	button: button_e
 })
 
 let i18n = {
