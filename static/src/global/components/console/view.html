@@ -1,26 +1,26 @@
-<div class="sti-console">
-	<sti-drag :init-top="initTop" :init-left="initLeft" :init-width="initWidth" :init-height="initHeight" v-if="active" @resize="resize" @move="move">
+<div class="boom-console">
+	<boom-drag :init-top="initTop" :init-left="initLeft" :init-width="initWidth" :init-height="initHeight" v-if="active" @resize="resize" @move="move">
 	
 		<div class="console-header" slot="header">
 
-			<span>sti-console</span>
+			<span>boom-console</span>
 		</div>
-		<sti-tabs @change="change" slot="body">
+		<boom-tabs @change="change" slot="body">
 
-			<sti-tab id="route" label="路由" :active="activeLable == 0">
+			<boom-tab id="route" label="路由" :active="activeLable == 0">
 
-				<transition-group name="sti-list" tag="div">
+				<transition-group name="boom-list" tag="div">
 
 					<p v-for="(route, index) in routes" v-html="route" :key="index"></p>
 				</transition-group>
-			</sti-tab>
-			<sti-tab id="request" label="请求" :active="activeLable == 1">
+			</boom-tab>
+			<boom-tab id="request" label="请求" :active="activeLable == 1">
 
-				<transition-group name="sti-list" tag="div">
+				<transition-group name="boom-list" tag="div">
 
 					<p v-for="(http, index) in https" v-html="http" :key="index"></p>
 				</transition-group>
-			</sti-tab>
-		</sti-tabs>
-	</sti-drag>
+			</boom-tab>
+		</boom-tabs>
+	</boom-drag>
 </div>

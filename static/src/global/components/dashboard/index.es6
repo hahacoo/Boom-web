@@ -1,7 +1,7 @@
 /**
  * 基于gridstackjs的dashboard
  *
- * by zhangdi
+ * by hahacoo
  */
 import 'gridstack/gridstack'
 import 'gridstack/gridstack.css'

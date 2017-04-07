@@ -1,7 +1,7 @@
 /**
  * 工具库
  *
- * by zhangdi
+ * by hahacoo
  */
 import 'utils/classList'
 

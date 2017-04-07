@@ -1,7 +1,7 @@
 {
-  "name": "sti-web",
+  "name": "Boom-web",
   "version": "0.0.2",
-  "description": "基于vue前端开发环境",
+  "description": "基于vue2前端开发环境",
   "main": "app.js",
   "scripts": {
     "test": "mocha || exit 0",
@@ -116,6 +116,6 @@
     "webpack-md5-hash": "0.0.5",
     "webpack-uglify-parallel": "^0.1.3"
   },
-  "author": "zhangdi@b.360.cn",
+  "author": "zhangdi525@163.com",
   "license": "MIT"
 }

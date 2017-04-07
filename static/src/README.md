@@ -80,7 +80,7 @@ app的创建一定要通过平台的创建函数生成
 		}
 	}
 	
-	.sti-web.default {
+	.boom-web.default {
 	
 		.content-aside {
 	
@@ -93,7 +93,7 @@ app的创建一定要通过平台的创建函数生成
 		}
 	}
 	
-	.sti-web.dark {
+	.boom-web.dark {
 	
 		.content-aside {
 	

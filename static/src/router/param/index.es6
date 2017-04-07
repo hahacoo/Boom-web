@@ -1,6 +1,6 @@
 import CryptoJS from 'crypto-js'
 
-import { STI_ROUTE_SEC } from 'constant'
+import { BOOM_ROUTE_SEC } from 'constant'
 
 let serialize = JSON.stringify,
 	deserialize = JSON.parse
@@ -22,7 +22,7 @@ export function before(to, from, store) {
 
 		try {
 
-			let bytes = CryptoJS.AES.decrypt(rq, STI_ROUTE_SEC)
+			let bytes = CryptoJS.AES.decrypt(rq, BOOM_ROUTE_SEC)
 
 			param = deserialize(bytes.toString(CryptoJS.enc.Utf8))
 
@@ -70,7 +70,7 @@ export function setParam(id, data) {
 	// 	path: curRoutePath,
 	// 	query: {
 
-	// 		rq: CryptoJS.AES.encrypt(serialize(param), STI_ROUTE_SEC).toString()
+	// 		rq: CryptoJS.AES.encrypt(serialize(param), BOOM_ROUTE_SEC).toString()
 	// 	}
 	// })
 }

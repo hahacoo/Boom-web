@@ -1,7 +1,7 @@
 /**
  * 创建只读配置代理
  *
- * by zhangdi
+ * by hahacoo
  */
 import config from 'config'
 

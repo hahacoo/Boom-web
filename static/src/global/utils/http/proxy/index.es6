@@ -3,7 +3,7 @@
  * 确保平台所有请求可控（平台自身数据接口，第三方库）
  * 
  */
-import { STI_AJAX_TIMEOUT, STI_AJAX_BASEURL } from 'constant'
+import { BOOM_AJAX_TIMEOUT, BOOM_AJAX_BASEURL } from 'constant'
 import { HttpLogger } from 'utils/Logger'
 import { pathJoin } from 'utils'
 
@@ -31,7 +31,7 @@ function proxyAjax({
 			let logger
 
 			//设置url
-			url = pathJoin(STI_AJAX_BASEURL, url)
+			url = pathJoin(BOOM_AJAX_BASEURL, url)
 
 			//设置通用参数
 			Object.assign(settings, {
@@ -48,7 +48,7 @@ function proxyAjax({
 					logger = new HttpLogger()
 				},
 
-				timeout: STI_AJAX_TIMEOUT
+				timeout: BOOM_AJAX_TIMEOUT
 			})
 
 			let deferred = Reflect.apply(target, thisBinding, [ url, settings ])

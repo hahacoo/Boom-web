@@ -1,6 +1,6 @@
-# STI-WEB前端开发环境
+# Boom-web前端开发环境
 
-该项目提供了express搭建的一个本地node服务器，方便本地调试，同时使用gulp+webpack构建前端，提高编译效率，前端框架采用Vue2.0。
+该项目提供了express搭建的一个本地node服务器，方便本地调试，同时使用gulp+webpack构建前端，提高编译效率，前端框架采用Vue2.x。
 
 ## 安装依赖
 

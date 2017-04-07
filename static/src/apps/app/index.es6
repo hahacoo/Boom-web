@@ -2,24 +2,22 @@
  * 内容区组件
  * 二级路由入口
  *
- * by zhangdi
+ * by hahacoo
  */
 import { mapState, mapActions } from 'vuex'
 
-import { STI_THEME_DEFAULT } from 'constant'
 import appHeader from './components/header'
-import { browserIs } from 'utils'
 
 let template = 
-`<div class="sti-container">
+`<div class="boom-container">
 	<!--头部区域-->
 	<app-header></app-header>
 	<!--主视图区域-->
-	<transition name="sti-fade" mode="out-in" appear>
+	<transition name="boom-fade" mode="out-in" appear>
 		<router-view></router-view>
 	</transition>
 	<!--提示区域-->
-	<sti-notice></sti-notice>
+	<boom-notice></boom-notice>
 </div>`
 
 export default {

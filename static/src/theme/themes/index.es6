@@ -2,11 +2,11 @@
  * 基于Vue-material主题配置文件
  * 
  */
-import { STI_THEME_DEFAULT, STI_THEME_DARK, STI_THEME_DASHBORD } from 'constant'
+import { BOOM_THEME_DEFAULT, BOOM_THEME_DARK, BOOM_THEME_DASHBORD } from 'constant'
 
 export default {
 
-	[STI_THEME_DEFAULT]: {
+	[BOOM_THEME_DEFAULT]: {
 
 		primary: {
 
@@ -22,7 +22,7 @@ export default {
 		},
 	},
 
-	[STI_THEME_DARK]: {
+	[BOOM_THEME_DARK]: {
 
 		primary: 'black',
 		accent: 'pink',
@@ -35,7 +35,7 @@ export default {
 		}
 	},
 
-	[STI_THEME_DASHBORD]: {
+	[BOOM_THEME_DASHBORD]: {
 
 		primary: 'black',
 		accent: 'pink',

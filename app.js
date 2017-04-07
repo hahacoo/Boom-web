@@ -99,7 +99,7 @@ if(!isProduct) {
 
     webpackDevMiddlewareInstance.waitUntilValid(function(){
 
-        console.log(chalk.green.bold('[sti-web] webpack打包完成'));
+        console.log(chalk.green.bold('[boom-web] webpack打包完成'));
     });
 }
 
@@ -118,11 +118,11 @@ app.use(cookieParser());
 
 //中间件和路由的匹配原则不同，使用根路径会对所有请求进行隐射
 app.get("/", function(req, res, next) {
-    res.redirect('/ngsoc');
+    res.redirect('/boom');
 })
 
 //注册路由中间件
-app.use('/ngsoc', home(isProduct, _config.port));
+app.use('/boom', home(isProduct, _config.port));
 
 //注册代理转发中间件
 var proxy = Object(_config.proxy),

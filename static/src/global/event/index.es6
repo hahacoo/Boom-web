@@ -2,17 +2,17 @@
  * 消息总线
  * 跨组件通信
  *
- * by zhangdi
+ * by hahacoo
  */
 import Vue from 'vue'
 
-import { STI_EVENT_PREFIX } from 'constant'
+import { BOOM_EVENT_PREFIX } from 'constant'
 
 //用于跨组件通信
 let eventHub = new Vue()
 //用于跨屏通信
 let eventList = {},
-	prefix = STI_EVENT_PREFIX,
+	prefix = BOOM_EVENT_PREFIX,
 	serialize = JSON.stringify,
 	deserialize = JSON.parse
 

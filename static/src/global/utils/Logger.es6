@@ -6,17 +6,17 @@
  */
 import {
 	
-	STI_BASEURL,
-	STI_LOG_PREFIX,
-	STI_LOG_ROUT_PREFIX,
-	STI_LOG_HTTP_PREFIX,
-	STI_LOG_PATH_PREFIX,
-	STI_LOG_APP_PREFIX,
-	STI_LOG_REQ_PREFIX,
-	STI_LOG_RES_PREFIX,
-	STI_LOG_ELA_PREFIX,
-	STI_LOG_STA_PREFIX,
-	STI_LOG_DTA_PREFIX
+	BOOM_BASEURL,
+	BOOM_LOG_PREFIX,
+	BOOM_LOG_ROUT_PREFIX,
+	BOOM_LOG_HTTP_PREFIX,
+	BOOM_LOG_PATH_PREFIX,
+	BOOM_LOG_APP_PREFIX,
+	BOOM_LOG_REQ_PREFIX,
+	BOOM_LOG_RES_PREFIX,
+	BOOM_LOG_ELA_PREFIX,
+	BOOM_LOG_STA_PREFIX,
+	BOOM_LOG_DTA_PREFIX
 } from 'constant'
 
 import Console from 'utils/Console'
@@ -25,7 +25,7 @@ class Logger {
 
 	constructor({
 
-		prefix = STI_LOG_PREFIX,
+		prefix = BOOM_LOG_PREFIX,
 		labelStyle = `
 				color: green;
 				font-weight: bold
@@ -63,7 +63,7 @@ class Logger {
 			//开发模式下输出操作信息
 			this.output.log(
 
-				this.prefix + STI_LOG_DTA_PREFIX, 
+				this.prefix + BOOM_LOG_DTA_PREFIX, 
 				this.labelStyle, 
 				this.normalStyle
 			)
@@ -88,7 +88,7 @@ class RouterLogger extends Logger {
 
 	constructor({
 
-		prefix = STI_LOG_ROUT_PREFIX,
+		prefix = BOOM_LOG_ROUT_PREFIX,
 		labelStyle = `
 				color: green;
 				font-weight: bold
@@ -107,8 +107,8 @@ class RouterLogger extends Logger {
 			output
 		})
 
-		this.appPrefix = STI_LOG_APP_PREFIX
-		this.pathPrefix = STI_LOG_PATH_PREFIX
+		this.appPrefix = BOOM_LOG_APP_PREFIX
+		this.pathPrefix = BOOM_LOG_PATH_PREFIX
 	}
 
 	/**
@@ -128,7 +128,7 @@ class RouterLogger extends Logger {
 	 */
 	path(path) {
 
-		this.log(this.pathPrefix + STI_BASEURL + path)
+		this.log(this.pathPrefix + BOOM_BASEURL + path)
 	}
 }
 
@@ -139,7 +139,7 @@ class HttpLogger extends Logger {
 
 	constructor({
 
-		prefix = STI_LOG_HTTP_PREFIX,
+		prefix = BOOM_LOG_HTTP_PREFIX,
 		labelStyle = `
 				color: green;
 				font-weight: bold
@@ -158,10 +158,10 @@ class HttpLogger extends Logger {
 			output
 		})
 
-		this.reqPrefix = STI_LOG_REQ_PREFIX
-		this.resPrefix = STI_LOG_RES_PREFIX
-		this.statePrefix = STI_LOG_STA_PREFIX
-		this.elapsePrefix = STI_LOG_ELA_PREFIX
+		this.reqPrefix = BOOM_LOG_REQ_PREFIX
+		this.resPrefix = BOOM_LOG_RES_PREFIX
+		this.statePrefix = BOOM_LOG_STA_PREFIX
+		this.elapsePrefix = BOOM_LOG_ELA_PREFIX
 		this.start = +new Date()
 	}
 

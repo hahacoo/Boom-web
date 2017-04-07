@@ -1,17 +1,17 @@
 /**
  * 头部组件
  *
- * by zhangdi
+ * by hahacoo
  */
 import { mapState, mapActions } from 'vuex'
 
 import { 
 
-	STI_THEME_DEFAULT, 
-	STI_THEME_DARK, 
-	STI_THEME_LIGHT, 
-	STI_LOCALE_CN, 
-	STI_LOCALE_EN 
+	BOOM_THEME_DEFAULT, 
+	BOOM_THEME_DARK, 
+	BOOM_THEME_LIGHT, 
+	BOOM_LOCALE_CN, 
+	BOOM_LOCALE_EN 
 } from 'constant'
 import './style'
 import template from './view'
@@ -45,14 +45,14 @@ export default {
 
 		toggleTheme() {
 			
-			let themes = [ STI_THEME_DEFAULT, STI_THEME_DARK ]
+			let themes = [ BOOM_THEME_DEFAULT, BOOM_THEME_DARK ]
 			
 			this.updateTheme(themes.filter(item => item !== this.theme)[0])
 		},
 
 		toggleLocale() {
 
-			let locales = [ STI_LOCALE_CN, STI_LOCALE_EN ]
+			let locales = [ BOOM_LOCALE_CN, BOOM_LOCALE_EN ]
 
 			this.updateLocale(locales.filter(item => item !== this.locale)[0])
 		},

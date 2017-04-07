@@ -12,7 +12,7 @@
  * @param {Boolean} [debug=false] - 是否为调试状态，默认false
  */
 
-const template = '<div class="sti-validator"> <slot></slot> </div>'
+const template = '<div class="boom-validator"> <slot></slot> </div>'
 
 export default {
 
@@ -150,13 +150,13 @@ export default {
                 debug : this.debug,
                 ignore : '.ignore',
                 errorElement : 'label',
-                errorClass : 'sti-error',
+                errorClass : 'boom-error',
                 validClass : '',
 
                 errorPlacement : function(error, element) {
-                    let field = element.parents('.sti-field'),
+                    let field = element.parents('.boom-field'),
                         formGroup = field.parents('.form-group'),
-                        validEl = formGroup.find('.sti-validator-rule[valid-for=' + element.prop('name') + ']')
+                        validEl = formGroup.find('.boom-validator-rule[valid-for=' + element.prop('name') + ']')
 
                     if(!$(error).html()){
 
@@ -170,11 +170,11 @@ export default {
                     } else {
                         field.append(error)
                     }
-                    formGroup.addClass('sti-has-error')
+                    formGroup.addClass('boom-has-error')
                 },
 
                 success : function(error) {
-                    let field = error.parents('.sti-field'),
+                    let field = error.parents('.boom-field'),
                         formGroup = field.parents('.form-group')
 
                     formGroup.removeClass('has-error')

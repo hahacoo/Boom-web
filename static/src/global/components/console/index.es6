@@ -2,7 +2,7 @@
  * 控制台调试组件
  * 记录一些关键信息
  *
- * by zhangdi
+ * by hahacoo
  */
 import { mapGetters } from 'vuex'
 

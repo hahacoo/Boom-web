@@ -1,7 +1,7 @@
 /**
  * app注册
  *
- * by zhangdi
+ * by hahacoo
  */
 
 const routes = {
@@ -9,259 +9,85 @@ const routes = {
 	apps: [
 
 		{
-			path: 'test',
-			component: resolve => {
-				//require.ensure(dep, cb, name)
-				//dep,文件路径
-				//cb,执行
-				//name,包名，确保同一个app的内容打包成一个文件
-				require.ensure(['apps/app/test'], () => {
+			path: 'demo',
 
-					resolve(require('apps/app/test'))
-				}, 'app')
-			},
-			meta: {
+			component: resolve => {
 				
-				text: '测试app',
-			},
-			children: [
+				require.ensure(['apps/app/demo'], () => {
 
-				{
-					path: 'sec',
-					defaultView: true,
-					component: resolve => {
-
-						require.ensure(['apps/app/test/sec'], () => {
-
-							resolve(require('apps/app/test/sec'))
-						}, 'app')
-
-					},
-					meta: {
-						icon: 'snowflake-o',
-						text: '测试菜单sec',
-					}
-				},
-
-				{
-					path: 'vali',
-					component: resolve => {
-
-						require.ensure(['apps/app/test/vali'], () => {
-
-							resolve(require('apps/app/test/vali'))
-						}, 'app')
-
-					},
-					meta: {
-						icon: 'snowflake-o',
-						text: '测试菜单vali',
-					}
-				},
-			]
-		},
-
-		{
-			path: 'config',
-			component: resolve => {
-				//require.ensure(dep, cb, name)
-				//dep,文件路径
-				//cb,执行
-				//name,包名，确保同一个app的内容打包成一个文件
-				require.ensure(['apps/app/config'], () => {
-
-					resolve(require('apps/app/config'))
+					resolve(require('apps/app/demo'))
 				}, 'app')
 			},
-			meta: {
-				text: '通用配置'
-			},
+
 			children: [
 
 				{
-					path: 'important',
+					path: 'test',
+
 					defaultView: true,
+
 					component: resolve => {
 
-						require.ensure(['apps/app/config/important'], () => {
+						require.ensure(['apps/app/demo/test'], () => {
 
-							resolve(require('apps/app/config/important'))
+							resolve(require('apps/app/demo/test'))
 						}, 'app')
 
 					},
+
 					meta: {
+
 						icon: 'snowflake-o',
-						text: '重保单位',
-						desc: '我是重保单位的描述'
+						text: '一级菜单',
+						desc: '一级菜单描述'
 					},
+
 					children: [
 						{
 							path: 'new',
 							component: resolve => {
 
-								require.ensure(['apps/app/config/important/edit'], () => {
+								require.ensure(['apps/app/demo/test/new'], () => {
 
-									resolve(require('apps/app/config/important/edit'))
+									resolve(require('apps/app/demo/test/new'))
 								}, 'app')
 
 							},
 							meta: {
+
 								text: '新建'
-							}
-						},
-
-						{
-							path: 'edit',
-							component: resolve => {
-
-								require.ensure(['apps/app/config/important/edit'], () => {
-
-									resolve(require('apps/app/config/important/edit'))
-								}, 'app')
-
-							},
-							meta: {
-								text: '编辑'
 							}
 						}
 					],
 				},
 
 				{
-					path: 'user',
-					component: resolve => {
-
-						require.ensure(['apps/app/config/user'], () => {
-
-							resolve(require('apps/app/config/user'))
-						}, 'app')
-
-					},
-					meta: {
-						icon: 'snowflake-o',
-						text: '用户管理',
-						desc: '我是用户管理的描述'
-					}
-				},
-
-				{
+					
+					path: 'expand',
 					meta: {
 						icon: 'snowflake-o',
 						text: '二级菜单'
-					},
-					path: 'expand'
+					}
 				},
 
 				{
-					path: 'third111',
+					path: 'test2',
 					component: resolve => {
 
-						require.ensure(['apps/app/config/third111'], () => {
+						require.ensure(['apps/app/demo/test2'], () => {
 
-							resolve(require('apps/app/config/third111'))
+							resolve(require('apps/app/demo/test2'))
 						}, 'app')
 
 					},
 					meta: {
 						parent: 'expand',
 						icon: 'snowflake-o',
-						text: '三级菜单1'
-					}
-				},
-
-				{
-					path: 'third222',
-					component: resolve => {
-
-						require.ensure(['apps/app/config/third222'], () => {
-
-							resolve(require('apps/app/config/third222'))
-						}, 'app')
-
-					},
-					meta: {
-						parent: 'expand',
-						icon: 'snowflake-o',
-						text: '某级菜单'
-					}
-				},
-
-				{
-					path: 'thir_naked',
-					meta: {
-						parent: 'expand',
-						icon: 'snowflake-o',
-						text: '空的二级菜单'
-					}
-				},
-
-				{
-					path: 'vali',
-					component: resolve => {
-
-						require.ensure(['apps/app/test/vali'], () => {
-
-							resolve(require('apps/app/test/vali'))
-						}, 'app')
-
-					},
-					meta: {
-						icon: 'snowflake-o',
-						text: 'vali'
-					}
-				},
-
-				{
-					meta: {
-						icon: 'snowflake-o',
-						text: '我也是二级菜单'
-					},
-					path: 'expand2'
-				},
-
-				{
-					path: 'valii',
-					component: resolve => {
-
-						require.ensure(['apps/app/test/vali'], () => {
-
-							resolve(require('apps/app/test/vali'))
-						}, 'app')
-
-					},
-					meta: {
-						parent: 'expand2',
-						icon: 'snowflake-o',
-						text: 'valiii'
+						text: '子菜单',
+						desc: '子菜单描述'
 					}
 				}
 			]
-		}
-	],
-
-	visualize: [
-		{
-			name: 'page1',
-			path: 'test',
-			component: resolve => {
-				
-				require.ensure(['apps/visualize/test'], () => {
-
-					resolve(require('apps/visualize/test'))
-				}, 'visualize')
-			}
-		},
-		{
-			name: 'page',
-			path: 'equalProtection',
-			component: resolve => {
-				
-				require.ensure(['apps/visualize/equalProtection'], () => {
-
-					resolve(require('apps/visualize/equalProtection'))
-
-				}, 'visualize')
-			}
 		}
 	]
 }

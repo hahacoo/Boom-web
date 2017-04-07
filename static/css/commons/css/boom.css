@@ -1,0 +1,294 @@
+/**
+ * boom.base.css
+ * 
+ * by hahacoo
+ * emailto: zhangdi525@163.com 
+ */
+/*
+* boom样式表基本样式，包括灰度，核心颜色，脚手架样式，排版，各个组件
+*
+*/
+html,
+body,
+h1,
+h2,
+h3,
+div,
+p,
+form,
+ul,
+ol,
+li,
+table,
+th,
+td,
+label,
+pre,
+input,
+select,
+textarea {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+body,
+button,
+input,
+select,
+textarea {
+  font: normal 14px/1.5em 'Microsoft YaHei', '微软雅黑', arial, helvetica, sans-serif;
+}
+html,
+body {
+  height: 100%;
+  overflow: hidden;
+}
+li {
+  list-style: none;
+}
+a {
+  text-decoration: none;
+}
+button,
+input {
+  outline: none;
+}
+/**
+ * layout
+ */
+.boom-web {
+  height: 100%;
+  position: relative;
+  overflow-x: hidden;
+  overflow-y: auto;
+  /*版权信息*/
+}
+.boom-web .boom-container {
+  height: 100%;
+  padding-top: 50px;
+  /*小屏app*/
+  /*大屏显示*/
+}
+.boom-web .boom-container.visualize {
+  position: relative;
+  z-index: 0;
+  overflow: hidden;
+}
+.boom-web .boom-container .boom-content {
+  height: 100%;
+  -webkit-transition: padding 0.5s cubic-bezier(0.25, 0.8, 0.25, 1);
+  transition: padding 0.5s cubic-bezier(0.25, 0.8, 0.25, 1);
+}
+.boom-web .boom-container .boom-content .content-aside {
+  height: 100%;
+  width: 200px;
+  padding-top: 5px;
+  position: relative;
+  z-index: 6;
+  float: left;
+  overflow: visible;
+  -webkit-transition: all 0.5s cubic-bezier(0.25, 0.8, 0.25, 1);
+  transition: all 0.5s cubic-bezier(0.25, 0.8, 0.25, 1);
+}
+.boom-web .boom-container .boom-content .content-aside.fold {
+  width: 50px;
+}
+.boom-web .boom-container .boom-content .content-main {
+  height: 100%;
+  padding: 0px 15px;
+  overflow: auto;
+}
+.boom-web .boom-container .boom-content .content-main .main-crumbs {
+  height: 80px;
+  background-color: #fff;
+  margin: 0 -15px 15px -15px;
+  color: #676a6c;
+}
+.boom-web .boom-container .visualize-main {
+  height: 100%;
+  width: 100%;
+}
+.boom-web .boom-container .boom-visualize {
+  height: 100%;
+  width: 100%;
+  background-color: #131A1F;
+}
+.boom-web .boom-container .boom-visualize .visualize-main {
+  height: 100%;
+  width: 100%;
+}
+.boom-web .boom-footer {
+  text-align: center;
+}
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+::-webkit-scrollbar-track-piece {
+  background-color: #fff;
+  z-indexwebkit-border-radius: 6px;
+}
+::-webkit-scrollbar-thumb:vertical {
+  height: 5px;
+  background-color: #999999;
+  -webkit-border-radius: 6px;
+}
+::-webkit-scrollbar-thumb:horizontal {
+  width: 5px;
+  background-color: #CCCCCC;
+  z-indexwebkit-border-radius: 6px;
+}
+#boom-error {
+  font-size: 12px;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.85098);
+  padding: 10px;
+  position: fixed;
+  top: 0;
+  z-index: 13;
+  overflow: auto;
+}
+.boom-fade-enter-active,
+.boom-fade-leave-active {
+  -webkit-transition: opacity 0.5s;
+  transition: opacity 0.5s;
+}
+.boom-fade-enter,
+.boom-fade-leave-active {
+  opacity: 0;
+}
+.boom-list-enter-active,
+.boom-list-leave-active {
+  -webkit-transition: all 1s;
+  transition: all 1s;
+}
+.boom-list-enter,
+.boom-list-leave-active {
+  opacity: 0;
+  -webkit-transform: translateY(10px);
+      -ms-transform: translateY(10px);
+          transform: translateY(10px);
+}
+.boom-flip-enter-active {
+  -webkit-animation: flipInX 0.5s;
+          animation: flipInX 0.5s;
+}
+.boom-flip-leave-active {
+  -webkit-animation: flipOutX 0.5s;
+          animation: flipOutX 0.5s;
+}
+/*
+ * 自下往上切换效果
+ */
+.boom-fadeInUp-enter-active {
+  -webkit-animation: fadeInUp 0.5s;
+          animation: fadeInUp 0.5s;
+}
+.boom-fadeInUp-leave-active {
+  -webkit-animation: fadeOutDown 0.5s;
+          animation: fadeOutDown 0.5s;
+}
+/*
+ * 自上往下切换效果
+ */
+.boom-fadeInDown-enter-active {
+  -webkit-animation: fadeInDown 0.5s;
+          animation: fadeInDown 0.5s;
+}
+.boom-fadeInDown-leave-active {
+  -webkit-animation: fadeOutUp 0.5s;
+          animation: fadeOutUp 0.5s;
+}
+/*
+ * 弹跳切换效果
+ */
+.boom-bounce-enter-active {
+  -webkit-animation: bounceInDown 0.5s;
+          animation: bounceInDown 0.5s;
+}
+.boom-bounce-leave-active {
+  -webkit-animation: bounceOutUp 0.5s;
+          animation: bounceOutUp 0.5s;
+}
+/*
+ * 缩放切换
+ */
+.boom-zoom-enter-active {
+  -webkit-animation: zoomIn 0.5s;
+          animation: zoomIn 0.5s;
+}
+.boom-zoom-leave-active {
+  -webkit-animation: zoomOut 0.5s;
+          animation: zoomOut 0.5s;
+}
+/**
+ * 翻转效果，由右向左
+ */
+.boom-flippers-enter-active {
+  -webkit-animation: flipOutY 1s;
+          animation: flipOutY 1s;
+}
+.boom-flippers-leave-active {
+  -webkit-animation: flipOutY 1s;
+          animation: flipOutY 1s;
+}
+/**
+ * 以左上角为中心旋转切换动画
+ */
+.boom-rotating-enter-active {
+  -webkit-animation: rotateInDownLeft 1s;
+          animation: rotateInDownLeft 1s;
+}
+.boom-rotating-leave-active {
+  -webkit-animation: rotateOutUpLeft 1s;
+          animation: rotateOutUpLeft 1s;
+}
+/**
+ * 向左滑出效果
+ */
+.boom-fading-enter-active {
+  -webkit-animation: fadeOutLeft 1s;
+          animation: fadeOutLeft 1s;
+}
+/**
+ * layout
+ */
+.boom-web.default {
+  background-color: #F5F5F5;
+}
+.boom-web.default .boom-header {
+  background-color: #00BFA5;
+}
+.boom-web.default .boom-aside {
+  background-color: #F5F5F5;
+}
+.md-theme-default .md-snackbar.notice .md-snackbar-container {
+  background-color: #80CBC4;
+}
+.md-theme-default .md-snackbar.alert .md-snackbar-container {
+  background-color: #F44336;
+}
+/**
+ * layout
+ */
+.boom-web.dark {
+  background-color: #EEEEEE;
+}
+.boom-web.dark .boom-header {
+  background-color: #000;
+}
+.md-theme-dark .md-snackbar.notice .md-snackbar-container {
+  background-color: #9E9E9E;
+}
+.md-theme-dark .md-snackbar.alert .md-snackbar-container {
+  background-color: #F57F17;
+}
+.boom-container.dashboard {
+  background-color: #000;
+}
+.boom-container.dashboard .boom-header {
+  background-color: transparent;
+}
+
+/*# sourceMappingURL=map/boom.css.map */

@@ -1,12 +1,12 @@
 /**
  * vuex本地化存储插件
  *
- * by zhangdi
+ * by hahacoo
  */
 
 export default function storagePlugin({
 
-	namespace = 'sti-vux-',
+	namespace = 'boom-vux-',
 	storage = localStorage,
 	persistence = []
 } = {}) {

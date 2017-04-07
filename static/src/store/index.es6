@@ -3,18 +3,18 @@
  * 1.配置平台状态(如登录状态，用户信息)，此类状态在所有组件中均可以获取
  * 2.管理各模块状态，针对各app管理的状态信息
  *
- * by zhangdi
+ * by hahacoo
  */
 import Vue from 'vue'
 import Vuex from 'vuex'
 
 import { 
 	
-	STI_LOCALE_CN, 
-	STI_LOCALE_EN, 
-	STI_THEME_DEFAULT, 
-	STI_THEME_DARK, 
-	STI_THEME_DASHBORD 
+	BOOM_LOCALE_CN, 
+	BOOM_LOCALE_EN, 
+	BOOM_THEME_DEFAULT, 
+	BOOM_THEME_DARK, 
+	BOOM_THEME_DASHBORD 
 } from 'constant'
 import * as types from './types'
 import storage from './plugins/storage'
@@ -31,11 +31,11 @@ const state = {
 
 		name: 'admin',
 		roles: [],
-		org: 'STI-WEB'
+		org: 'BOOM-WEB'
 	}, //用户信息
 	menu: true, //菜单状态
-	locale: STI_LOCALE_CN, //国际化信息
-	theme: STI_THEME_DEFAULT //主题信息
+	locale: BOOM_LOCALE_CN, //国际化信息
+	theme: BOOM_THEME_DEFAULT //主题信息
 }
 
 const mutations = {
@@ -80,21 +80,21 @@ const actions = {
 	},
 	updateLocale: ({commit}, locale) => {
 
-		let locales = [ STI_LOCALE_CN, STI_LOCALE_EN ]
+		let locales = [ BOOM_LOCALE_CN, BOOM_LOCALE_EN ]
 
 		locale = locales.some((item) => item === locale) 
 			? locale 
-			: STI_LOCALE_CN
+			: BOOM_LOCALE_CN
 			
 		commit(types.LOCALE_UPDATE, locale)
 	},
 	updateTheme: ({commit}, theme) => {
 
-		let themes = [ STI_THEME_DEFAULT, STI_THEME_DARK, STI_THEME_DASHBORD ]
+		let themes = [ BOOM_THEME_DEFAULT, BOOM_THEME_DARK, BOOM_THEME_DASHBORD ]
 
 		theme = themes.some((item) => item === theme) 
 			? theme 
-			: STI_THEME_DEFAULT
+			: BOOM_THEME_DEFAULT
 
 		commit(types.THEME_UPDATE, theme)
 	}

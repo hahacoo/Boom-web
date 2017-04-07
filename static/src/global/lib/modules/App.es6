@@ -16,7 +16,7 @@ function App(options) {
 
 	let template = `
 
-		<div class="sti-content">
+		<div class="boom-content">
 			<!--菜单区域-->
 			<app-menu></app-menu>
 			<!--主视图区域-->
@@ -25,14 +25,14 @@ function App(options) {
 				<div class="main-crumbs">
 					<breadc-nav></breadc-nav>
 				</div>
-				<transition name="sti-fadeInUp" mode="out-in" appear>
+				<transition name="boom-fadeInUp" mode="out-in" appear>
 					<router-view></router-view>
 				</transition>
 			</main>
 			<!--辅助区域-->
-			<sti-assist />
+			<boom-assist />
 			<!--侧边快捷面板-->
-			<sti-sidenav ref="rightSidenav" />
+			<boom-sidenav ref="rightSidenav" />
 		</div>
 	`,
 	basic = {

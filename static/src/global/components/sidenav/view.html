@@ -1,12 +1,12 @@
-<div class="sti-sidenav">
+<div class="boom-sidenav">
 
 	<md-sidenav class="md-right md-transparent md-primary" ref="sidenav">
 		
 		<slot>
 
-			<sti-tabs direction="bottom" :text-icon="true">
+			<boom-tabs direction="bottom" :text-icon="true">
 
-				<sti-tab id="settings" :label="$t('commons.settings')">
+				<boom-tab id="settings" :label="$t('commons.settings')">
 
 					<div class="sidenav-settings">
 						
@@ -46,17 +46,17 @@
 							<md-button class="md-raised md-primary" @click.native="clear">{{$t('button.storageClear')}}</md-button>
 						</div>
 					</div>
-				</sti-tab>
-				<sti-tab id="visualize" :label="$t('commons.visualize')">
+				</boom-tab>
+				<boom-tab id="visualize" :label="$t('commons.visualize')">
 					
-					<sti-card :title="$t('commons.safety')" path="/visualize/test">
+					<boom-card :title="$t('commons.safety')" path="/visualize/test">
 
-					</sti-card>
-					<sti-card :title="$t('commons.safety')" path="/visualize/equalProtection">
+					</boom-card>
+					<boom-card :title="$t('commons.safety')" path="/visualize/equalProtection">
 
-					</sti-card>
-				</sti-tab>
-			</sti-tabs>
+					</boom-card>
+				</boom-tab>
+			</boom-tabs>
 		</slot>
 	</md-sidenav>
 </div>

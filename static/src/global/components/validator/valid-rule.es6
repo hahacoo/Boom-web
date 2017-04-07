@@ -13,7 +13,7 @@
  * @param {String} [message] - 错误提示信息
  */
 
-const template = '<div class="sti-validator-rule" :valid-for="validFor"></div>'
+const template = '<div class="boom-validator-rule" :valid-for="validFor"></div>'
 
 export default {
 

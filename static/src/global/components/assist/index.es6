@@ -3,7 +3,7 @@
  * 1.快速返回顶部
  * 2.快捷跳转面板
  *
- * by zhangdi
+ * by hahacoo
  */
 import template from './view'
 

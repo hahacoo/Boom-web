@@ -1,5 +1,4 @@
 /**
- *
  * webpack.config.js 
  *
  * by hahacoo
@@ -93,7 +92,7 @@ function generator(config, options) {
 								[path.resolve('./babel-plugin-try-catch'), {
 									
 									"enable": true,
-						 			"errorHandler": "stiError",
+						 			"errorHandler": "boomError",
  									"throwError": false
 						 		}]
 							]

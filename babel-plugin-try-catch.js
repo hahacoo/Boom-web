@@ -2,7 +2,7 @@
  * babel-plugin-try-catch
  * 为function提供统一异常处理
  * 
- * by zhangdi
+ * by hahacoo
  */
 let template = require('babel-template'),
 	functionNameHelper = require('babel-helper-function-name')

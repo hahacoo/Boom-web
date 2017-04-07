@@ -63,7 +63,7 @@ export default {
 
 		let tabData = this.getTabData()
 
-		this.parentTabs = getClosestVueParent(this.$parent, 'sti-tabs')
+		this.parentTabs = getClosestVueParent(this.$parent, 'boom-tabs')
 
 		if (!this.parentTabs) {
 

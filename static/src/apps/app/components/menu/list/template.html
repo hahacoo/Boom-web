@@ -6,9 +6,9 @@
 
       <md-button class="menu-item" :style="{paddingLeft: (model.level - 1) * 1 + 'em'}">
 
-          <sti-icon :icon="iconShow"></sti-icon>
+          <boom-icon :icon="iconShow"></boom-icon>
           <span>{{model.meta.text}}</span>
-          <sti-icon class="sti-menu-arrow" :icon="open|arrowFilter" v-if="isFolder"></sti-icon>
+          <boom-icon class="boom-menu-arrow" :icon="open|arrowFilter" v-if="isFolder"></boom-icon>
       </md-button>
   </a>
   <ul :style="{height: isShow ? 35 * model.children.length + 'px' : null}">

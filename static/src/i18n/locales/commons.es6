@@ -1,9 +1,7 @@
 export const cn = {
 
-	footer: 'STI前端工作组',
-	safety: '安全检测系统',
-	situation: '态势感知系统',
-	config: '菜单测试',
+	footer: 'Hahacoo-WFront',
+	demo: '示例',
 	operate: '操作台',
 	lang: '语言',
 	lan: {
@@ -20,10 +18,8 @@ export const cn = {
 
 export const en = {
 
-	footer: 'STI-WFront',
-	safety: 'Safety inspection',
-	situation: 'Situational awareness',
-	config: 'Menu test',
+	footer: 'Hahacoo-WFront',
+	demo: 'Demo',
 	operate: 'Operate',
 	lang: 'language',
 	lan: {

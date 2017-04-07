@@ -1,5 +1,5 @@
 import proxyAjax from './proxy'
-import { STI_STORAGE } from 'constant'
+import { BOOM_STORAGE } from 'constant'
 
 let serialize = JSON.stringify,
 	deserialize = JSON.parse,
@@ -127,7 +127,7 @@ http.postJson = function(...args) {
  */
 http.setItem = function(key, value) {
 
-	localStorage.setItem(STI_STORAGE + separator + key, serialize(value))
+	localStorage.setItem(BOOM_STORAGE + separator + key, serialize(value))
 }
 
 /**
@@ -137,7 +137,7 @@ http.setItem = function(key, value) {
  */
 http.getItem = function(key) {
 
-	return deserialize(localStorage.getItem(STI_STORAGE + separator + key))
+	return deserialize(localStorage.getItem(BOOM_STORAGE + separator + key))
 }
 
 /**
@@ -147,7 +147,7 @@ http.getItem = function(key) {
  */
 http.remove = function(key) {
 
-	localStorage.removeItem(STI_STORAGE + separator + key)
+	localStorage.removeItem(BOOM_STORAGE + separator + key)
 }
 
 /**

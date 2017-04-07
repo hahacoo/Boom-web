@@ -1,7 +1,7 @@
 /**
  * 可拖动窗体
  *
- * by zhangdi
+ * by hahacoo
  */
 import './style'
 import template from './view'

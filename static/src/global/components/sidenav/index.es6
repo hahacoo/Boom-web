@@ -2,7 +2,7 @@
  * 快捷操作面板
  * 1.app快速切换
  *
- * by zhangdi
+ * by hahacoo
  */
 import { mapState, mapActions } from 'vuex'
 
@@ -10,11 +10,11 @@ import './style'
 import template from './view'
 import { 
 
-	STI_THEME_DEFAULT, 
-	STI_THEME_DARK, 
-	STI_THEME_LIGHT, 
-	STI_LOCALE_CN, 
-	STI_LOCALE_EN 
+	BOOM_THEME_DEFAULT, 
+	BOOM_THEME_DARK, 
+	BOOM_THEME_LIGHT, 
+	BOOM_LOCALE_CN, 
+	BOOM_LOCALE_EN 
 } from 'constant'
 
 export default {
@@ -31,18 +31,18 @@ export default {
 
 				{
 
-					id: STI_LOCALE_CN,
+					id: BOOM_LOCALE_CN,
 				},
 				{
 
-					id: STI_LOCALE_EN,
+					id: BOOM_LOCALE_EN,
 				}
 			],
 
 			themes: [
 
-				STI_THEME_DEFAULT, 
-				STI_THEME_DARK
+				BOOM_THEME_DEFAULT, 
+				BOOM_THEME_DARK
 			]
 		}
 	},
