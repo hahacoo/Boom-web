@@ -225,8 +225,8 @@ export default {
 				editable: false,
 				x: 0, 
 				y: 0, 
-				width: 4, 
-				height: 4
+				width: 3, 
+				height: 3
 			})
 
 			this.$nextTick(() => {

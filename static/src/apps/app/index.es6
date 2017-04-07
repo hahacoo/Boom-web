@@ -22,8 +22,6 @@ let template =
 	<sti-notice></sti-notice>
 </div>`
 
-debugger
-
 export default {
 
 	template,

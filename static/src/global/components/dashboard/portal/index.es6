@@ -58,6 +58,10 @@ export default {
 
 			this.locked = !this.locked
 			this.parentDashboard.lock(this.$el, this.locked)
+		},
+
+		edit() {
+			
 		}
 	},
 
