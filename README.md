@@ -71,6 +71,11 @@ npm run karma
 启动karma
 
 ```
+npm run dll
+```
+单独打包第三方库
+
+```
 npm run build
 ```
 将前端代码编译到`dev`目录下，省去不必要的操作
