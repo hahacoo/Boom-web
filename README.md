@@ -42,6 +42,8 @@
 |-.babelrc babel配置文件
 |-.eslintrc eslint配置文件
 |-app.js 服务端入口文件
+|-babel-plugin-try-catch.js tryCatch插件
+|-browserslist autoprefixer配置
 |-config.yml 项目配置文件
 |-gulpfile gulp配置文件
 |-karma.conf.js karma配置文件
